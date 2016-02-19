@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>AppSocks - 科学上网您最好的选择</title>
+    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+    <!-- Bootstrap 文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <!-- 字体文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+    <!-- 自定义css文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/statistics.css">
+</head>
+<body>
+    <div class="panel panel-info">
+        <div class="panel-heading">统计信息</div>
+        <div class="panel-body">
+            <p>注册用户总数：{$statistics_data['user_sign']} 人</p>
+            <p>已激活用户数：{$statistics_data['user_active']} 人</p>
+            <p>共产生流量：{$statistics_data['flow_used']} M</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+.active {
+	background-color: #336699;
+}
+.top-nav .navbar {
+	background-color: #28A5DE;
+	height: 60px;
+}
+.top-nav .navbar .glyphicon-send{
+	font-size: 25px;
+	padding: 0 15px 0 15px;
+}
+.top-nav .brand {
+	color: #FFF;
+	float: left;
+}
+.top-nav .brand a{
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bolder;
+	font-size: 30px;
+	padding: 10px;
+}
+.top-nav .brand a:hover{
+	color: #FFF;
+	text-decoration: none;
+}
+.top-nav .nav-list ul {
+	float: right;
+}
+.top-nav .nav-list ul li {
+	color: #FFF;
+	float: left;
+}
+.top-nav .nav-list ul li a {
+	width: 80px;
+	height: 60px;
+	padding: 16px 0px 0px 0px;
+	text-align: center;
+	display: block;
+	color: #FFF;
+	font-size: 13px;
+}
+.top-nav .nav-list ul li a:hover {
+	background-color: #336699;
+	text-decoration: none;
+}
+.footer {
+	padding-top: 30px;
+	background-color: #FFBB33;
+}
+.footer p {
+	border-top: 1px solid #FFF;
+	padding: 5px 0 5px 0;
+}

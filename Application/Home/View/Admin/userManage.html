@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>AppSocks - 科学上网您最好的选择</title>
+    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+    <!-- Bootstrap 文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <!-- 字体文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+    <!-- 自定义css文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/userManage.css">
+</head>
+<body>
+    <div class="info">
+        <span>用户管理</span>
+        <button class="btn btn-success add-user">添加</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>用户昵称</th>
+                <th>邮箱</th>
+                <th>邀请人数</th>
+                <th>是否激活</th>
+                <th>最近一次在线时间</th>
+                <th>最后一次登录IP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="list" id="user">
+                <td>{$user.uid}</td>
+                <td><a id="check_user_order" role="button" data-toggle="modal" data-target="#user_info_modal" data-uid="{$user.uid}">{$user.nickname}</a></td>
+                <td>{$user.email}</td>
+                <td>{$user.invite}</td>
+                <td><?php echo $user['actived'] == 1 ? '已激活' : '未激活';?></td>
+                <td>{$user.last_login_time}</td>
+                <td>{$user.last_login_ip}</td>
+            </volist>
+        </tbody>
+    </table>
+    {$page}
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="user_info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">最近账单</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">修改用户信息</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<import type='js' file="js.userManage" />
+</html>

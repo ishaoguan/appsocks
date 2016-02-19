@@ -1,0 +1,15 @@
+[ 2016-02-19T13:13:17+08:00 ] ::1 /appsocks/index.php?m=Master&c=Index&a=welcome
+ERR: 无法加载模块:Master
+
+[ 2016-02-19T16:40:30+08:00 ] ::1 /appsocks/index.php?m=PUBLIC&c=js&a=userManage.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000024s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000425s ]
+ERR: 无法加载模块:PUBLIC
+
+[ 2016-02-19T16:42:58+08:00 ] ::1 /appsocks/index.php?m=PUBLIC&c=js&a=userManage.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000399s ]
+ERR: 无法加载模块:PUBLIC
+

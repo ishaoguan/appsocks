@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>AppSocks - 科学上网您最好的选择</title>
+    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+    <!-- Bootstrap 文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <!-- 字体文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+    <!-- 自定义css文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/nodeManage.css">
+</head>
+<body>
+    <div class="info">
+            <span>节点管理</span>
+            <button class="btn btn-success add-node">添加</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>节点名称</th>
+                <th>服务器地址</th>
+                <th>加密方式</th>
+                <th>所属套餐</th>
+                <th>备注说明</th>
+                <th>是否可用</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="node_data" id="node">
+                <td>{$node.nid}</td>
+                <td>{$node.name}</td>
+                <td>{$node.server}</td>
+                <td>{$node.method}</td>
+                <td>{$node.combo}</td>
+                <td>{$node.remark}</td>
+                <td><?php echo $node['status'] == 1 ? '可用' : '不可用';?></td>
+            </volist>
+        </tbody>
+    </table>
+
+</body>
+</html>
