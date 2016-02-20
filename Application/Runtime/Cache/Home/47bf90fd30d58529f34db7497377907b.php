@@ -29,7 +29,7 @@
                     <li><a href="/appsocks/index.php/Home/Help/method" target="_self">使用教程</a></li>
                     <li><a href="/appsocks/index.php/Home/Help/support" target="_self">技术支持</a></li>
                     <li><a href="/appsocks/index.php/Home/Public/login" target="_self">用户登录</a></li>
-                    <li><a href="/appsocks/index.php/Home/Public/registe" target="_self">用户注册</a></li>
+                    <li><?php echo session('?uid') ? '<a href="/appsocks/index.php/Public/logout" target="_self">退出</a>' : '<a href="/appsocks/index.php/Home/Public/registe" target="_self">用户注册</a>'; ?></li>
                 </ul>
             </div>
         </nav>

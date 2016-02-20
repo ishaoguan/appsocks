@@ -16,7 +16,10 @@ class PublicController extends Controller {
 			session('nickname', $res['nickname']);
 			session('uid', $res['uid']);
 			session('admin', $res['admin']);
-			$this->success('登录成功', U('Home/Index/index'));
+			$user_data['last_login_time'] = date('Y-m-d H:i:s');
+			$user_data['last_login_ip'] = get_client_ip();
+			M('Login')->where(array('uid' => $res['uid']))->save($user_data);
+			$this->success('登录成功', U('Home/User/dashboard'));
 		} else {
 			$this->error('账号或密码不正确');
 		}
@@ -26,7 +29,7 @@ class PublicController extends Controller {
 		$user['nickname'] = I('post.nickname');
 		$user['password'] = sha1(I('post.password'));
 		$user['last_login_ip'] = get_client_ip();
-		$user['last_login_time'] = date('y-m-d h:i:s',time());;
+		$user['last_login_time'] = date('Y-m-d H:i:s');
 		$user['actived'] = 1;
 		$res = M('Login')->data($user)->add();
 		if ($res) {
@@ -37,5 +40,9 @@ class PublicController extends Controller {
 		} else {
 			$this->error('Opps..注册出错了');
 		}
+	}
+	public function logout() {
+		session(null);
+		$this->success('退出成功！', U('Home/Index/index'));
 	}
 }

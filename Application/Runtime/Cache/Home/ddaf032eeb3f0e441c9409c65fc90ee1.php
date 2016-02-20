@@ -26,7 +26,7 @@
                     <li><a href="/appsocks/index.php/Home/Help/download">客户端下载</a></li>
                     <li><a href="/appsocks/index.php/Home/Help/method">使用教程</a></li>
                     <li><a href="/appsocks/index.php/Home/Help/support">技术支持</a></li>
-                    <li><a class="active" href="/appsocks/index.php/Home/Public/login">用户登录</a></li>
+                    <li><?php echo session('?uid') ? ('<a href="/appsocks/index.php/Home/User/dashboard/uid/'.session('uid').'">'.session('nickname').'</a>') : '<a href="/appsocks/index.php/Home/Public/login">用户登录</a>'; ?></li>
                     <li><a href="/appsocks/index.php/Home/Public/registe">用户注册</a></li>
                 </ul>
             </div>

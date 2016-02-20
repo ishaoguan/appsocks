@@ -40,7 +40,17 @@ class UserController extends AuthorizedController {
 		if (!I('post.')) {
 			$this->display();
 		} else {
-
+			$receive['old_password'] = sha1(I('post.old_password'));
+			$receive['new_password'] = sha1(I('post.new_password'));
+			$password = M('Login')->where(array('uid' => session('uid')))->getField('password');
+			if ($receive['old_password'] === $password) {
+				$data['password'] = $receive['new_password'];
+				M('Login')->where(array('uid' => session('uid')))->field('password')->save($data);
+				// session(null);
+				$this->success('密码修改成功');
+			} else {
+				$this->error('原始密码不正确');
+			}
 		}
 	}
 	public function inviteFriends() {

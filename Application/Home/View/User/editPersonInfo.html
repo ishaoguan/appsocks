@@ -17,21 +17,25 @@
 </head>
 
 <body>
-    <form action="{:U('Home/User/editPersonInfo')}" method="post">
-        <div class="form-group">
-            <label for="old-password">原始密码：</label>
-            <input type="password" class="form-control" id="old-password" placeholder="必填" required>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <form action="{:U('Home/User/editPersonInfo')}" method="post">
+                <div class="form-group">
+                    <label for="old-password">原始密码：</label>
+                    <input type="password" class="form-control" name="old_password" id="old-password" placeholder="必填" required>
+                </div>
+                <div class="form-group">
+                    <label for="new-password">新密码：</label>
+                    <input type="password" class="form-control" name="new_password" id="new-password" placeholder="确保密码高强度" required>
+                </div>
+                <div class="form-group">
+                    <label for="re-new-password">确认密码：</label>
+                    <input type="password" class="form-control" id="re-new-password" placeholder="确保密码高强度" required>
+                </div>
+                <button type="submit" class="btn btn-warning">修改</button>
+            </form>
         </div>
-        <div class="form-group">
-            <label for="new-password">新密码：</label>
-            <input type="password" class="form-control" id="new-password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label for="re-new-password">确认密码：</label>
-            <input type="password" class="form-control" id="re-new-password" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-warning">修改</button>
-    </form>
+    </div>
 </body>
 
 </html>
