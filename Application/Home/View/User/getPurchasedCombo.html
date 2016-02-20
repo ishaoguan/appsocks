@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <title>AppSocks - 科学上网您最好的选择</title>
+    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+    <!-- Bootstrap 文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+    <script src="__PUBLIC__/js/jquery.min.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <!-- 字体文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+    <!-- 自定义css文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/User/getPurchasedCombo.css">
+</head>
+<body>
+    <div class="info">
+        <span>购买记录</span>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>套餐名称</th>
+                <th>开通时间</th>
+                <th>到期时间</th>
+                <th>费用</th>
+                <th>是否购买成功</th>
+            </tr>
+        </thead>
+        <tbody>
+            <volist name="purchased_combo_data" id="purchased_combo">
+                <tr>
+                    <td>{$purchased_combo.oid}</td>
+                    <td>{$purchased_combo.title}</td>
+                    <td>{$purchased_combo.purchase_time}</td>
+                    <td>{$purchased_combo.expire_time}</td>
+                    <td>{$purchased_combo.cost}RMB</td>
+                    <td><?php echo $purchased_combo['success'] == 1 ? '成功' : '失败';?></td>
+                </tr>
+            </volist>
+        </tbody>
+    </table>
+    {$page}
+</body>
+</html>

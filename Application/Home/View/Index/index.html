@@ -25,7 +25,7 @@
                     <li><a href="__APP__/Home/Help/download">客户端下载</a></li>
                     <li><a href="__APP__/Home/Help/method">使用教程</a></li>
                     <li><a href="__APP__/Home/Help/support">技术支持</a></li>
-                    <li><a href="__APP__/Home/Public/login">用户登录</a></li>
+                    <li><?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard/uid/'.session('uid').'">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
                     <li><a href="__APP__/Home/Public/registe">用户注册</a></li>
                 </ul>
             </div>

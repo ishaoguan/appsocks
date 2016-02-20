@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/appsocks/Public/css/typo.css">
     <!-- 自定义css文件 -->
     <link rel="stylesheet" href="/appsocks/Public/css/default.css">
-    <link rel="stylesheet" href="/appsocks/Public/css/login.css">
+    <link rel="stylesheet" href="/appsocks/Public/css/registe.css">
 </head>
 
 <body>
@@ -34,18 +34,26 @@
     </div>
     <div class="main container">
         <div class="row">
-            <div class="log-pannel">
-                <form action="/appsocks/index.php/Public/doLogin" method="post">
-                    <div class="form-group input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-                            <input type="email" class="form-control" placeholder="电子邮箱" required>
-                    </div>
-                    <div class="form-group input-group">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></span>
-                        <input type="password" class="form-control" placeholder="密码" required>
-                    </div>
-                    <button type="submit" class="btn">登入</button>
-                </form>
+            <div class="col-md-7 col-xs-12">
+                    <img src="/appsocks/Public/pictures/register_logo.jpg" class="register_logo" alt="register_logo.jpg">
+            </div>
+            <div class="col-md-5 col-xs-12">
+                <div class="log-pannel">
+                    <div class="space-box col-md-12 col-sm-0"></div>
+                    <p class="log-pannel-msg"><span>登录</span><strong>Appsocks</strong>,一秒都等不及了</p>
+                    <form action="/appsocks/index.php/Public/doLogin" method="post">
+                        <div class="form-group input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+                                <input type="email" class="form-control" name="email" placeholder="电子邮箱" required>
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></span>
+                            <input type="password" class="form-control" name="password" placeholder="密码" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary registe-btn">登录</button>
+                    </form>
+                    <a role="button" href="/appsocks/index.php/Home/Public/registe">听说你还没有帐号？</a>
+                </div>
             </div>
         </div>
     </div>

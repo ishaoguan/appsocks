@@ -1,0 +1,23 @@
+.main {
+	margin-top: 5%;
+}
+.register_logo {
+	width: 100%;
+	padding: 50px;
+}
+.space-box {
+	height: 100px;
+}
+.log-pannel {
+	padding: 50px;
+}
+.log-pannel-msg {
+	padding: 10px 0 10px 0;
+	font-size: 15px;
+}
+.log-pannel-msg span {
+	font-size: 23px;
+}
+.registe-btn {
+	width: 100px;
+}

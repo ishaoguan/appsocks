@@ -8,4 +8,34 @@ class PublicController extends Controller {
 	public function registe() {
 		$this->display();
 	}
+	public function doLogin() {
+		$email = I('post.email');
+		$password = sha1(I('post.password'));
+		$res = M('Login')->where(array('email' => $email, 'password' => $password))->field('nickname,uid,admin')->find();
+		if ($res) {
+			session('nickname', $res['nickname']);
+			session('uid', $res['uid']);
+			session('admin', $res['admin']);
+			$this->success('登录成功', U('Home/Index/index'));
+		} else {
+			$this->error('账号或密码不正确');
+		}
+	}
+	public function doRegiste() {
+		$user['email'] = I('post.email');
+		$user['nickname'] = I('post.nickname');
+		$user['password'] = sha1(I('post.password'));
+		$user['last_login_ip'] = get_client_ip();
+		$user['last_login_time'] = date('y-m-d h:i:s',time());;
+		$user['actived'] = 1;
+		$res = M('Login')->data($user)->add();
+		if ($res) {
+			session('nickname', $res['nickname']);
+			session('uid', $res['uid']);
+			session('admin', $res['admin']);
+			$this->success('注册成功', U('Home/Index/index'));
+		} else {
+			$this->error('Opps..注册出错了');
+		}
+	}
 }
