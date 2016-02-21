@@ -5,8 +5,9 @@
 
 ## 更新
 
-考虑到用户与开通套餐多对多的关系，简化原先user表。并重新设计，实现用户注册但不及时开通端口，订购后才为其开通。  
-关于可用节点的问题暂时还没有思路。
+1. 修改login表里的last_login_time和create_time的默认值，取消原来的current_time，改为null，由此兼容MYSQL 5.6.4之前版本
+2. 考虑到用户与开通套餐多对多的关系，简化原先user表。并重新设计，实现用户注册但不及时开通端口，订购后才为其开通。  
+3. 关于可用节点的问题暂时还没有思路。
 
 ## 优点
 
@@ -22,13 +23,31 @@ ss-panel不是说不好，满足不了我想要的。
 ## 依赖
 
 * PHP >= 5.4
-* MYSQL
+* MYSQL（避免一张表两个时间戳无法创建表问题）
 * Apache/Nginx
 
 ## 框架
 
 * ThinkPHP 3.2
 * Bootstrap 3.3.5
+
+## 安装
+
+1. 在Application/Common/config.php里修改数据库相关配置
+2. 把源码放入网站根目录（请保证目录有足够的读写权限）
+3. Apache开启rewrite模块/Nginx在配置文件中url重写并重启服务
+
+            location / {
+            root /var/www;
+            index index.html index.htm index.php;
+            if (!-d $request_filename) {
+                rewrite ^/(.*)/(.*)/*$  /index.php?m=$1&a=$2  last;
+                break;
+                }
+            }
+
+4. 将appsocks.sql导入数据库
+5. 打开站点
 
 ## 缺陷
 
@@ -39,7 +58,7 @@ ss-panel不是说不好，满足不了我想要的。
 * 后台管理员添加、修改、删除节点功能
 * 后台管理员编辑普通用户信息功能
 * 第二次确认密码的js及后端实现
-* 购买支付功能
+* 购买支付功能（** 支付宝免签是个难题 **）
 * 邀请注册功能
 * 找回密码功能
 * 使用教程
