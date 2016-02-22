@@ -41,10 +41,10 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>{$server_data['node']}</td>
+                                        <td>{$server_data['domain_name']}</td>
                                         <td>{$server_data['passwd']}</td>
                                         <td>{$server_data['port']}</td>
-                                        <td>rc4-md5</td>
+                                        <td>{$server_data['method']}</td>
                                         <td>{$server_data['expire_time']}</td>
                                         <td><?php echo round($server_data['used_flow']/1073741824, 2).'GB / '.round($server_data['transfer_enable']/1073741824, 2).'GB'; ?></td>
                                     </tr>

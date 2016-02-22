@@ -17,6 +17,34 @@ class AdminController extends AuthorizedController {
 		$this->assign('statistics_data', $statistics_data);
 		$this->display();
 	}
+	public function orderManage() {
+		$orders_data = D('OrdersComboView')->where(array('status' => 1))->select();
+		for ($i=0; $i < count($orders_data); $i++) {
+			$res = M('Combo')->where(array('cid' => $orders_data[$i]['cid']))->field('duration,cost')->find();
+			$orders_data[$i]['duration'] = $res['duration'];
+			$orders_data[$i]['cost'] = $res['cost'];
+		}
+		$this->assign('orders_data', $orders_data);
+		$this->display();
+	}
+	public function OpenServer() {
+		$oid = I('get.oid');
+		$uid = I('get.uid');
+		$order_data['status'] = 0;
+		$res = M('Orders')->where(array('oid' => $oid))->save($order_data);
+		/*if (!$res) {
+			$this->error('开通出错');
+		}*/
+		/*$order_record['uid'] =
+		$order_record['purchase_time'] = date('y-m-d h:i:s');
+		$order_record['expire_time'] =
+		$order_record['cost'] =*/
+	}
+	public function closeOrder() {
+		$oid = I('get.oid');
+		dump($oid);
+		// $this->success('拒绝成功');
+	}
 	public function userManage(){
 		$User = M('Login');
 		$count      = $User->count();
