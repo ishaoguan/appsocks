@@ -44,6 +44,9 @@
                         <li><a href="{:U('Home/Admin/comboManage')}"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span> 套餐管理</a></li>
                         <li><a href="{:U('Home/Admin/nodeManage')}"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 节点管理</a></li>
                         <li><a href="{:U('Home/Admin/inviteManage')}"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> 邀请管理</a></li>
+                        <?php
+                            echo session('admin') == 1 ? '<li><a href="__APP__/User/dashboard" target="_self"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 用户中心</a></li>' : '';
+                        ?>
                     </ul>
                 </div>
             </div>

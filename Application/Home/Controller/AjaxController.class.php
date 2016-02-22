@@ -4,8 +4,7 @@ use Think\Controller;
 class AjaxController extends AuthorizedController {
     public function getPersonOrderRecord() {
     	$uid = I('post.uid');
-    	// $uid = 7;
-    	$record_data = D('UserOrderComboView')->where(array('uid' => $uid))->select();
+    	$record_data = D('OrderComboView')->where(array('uid' => $uid))->select();
     	// var_dump($record_data);
     	$this->ajaxReturn($record_data);
     }
