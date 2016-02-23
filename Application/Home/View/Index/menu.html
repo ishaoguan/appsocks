@@ -34,54 +34,22 @@
     </div>
     <div class="main container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">套餐一：月付</div>
-                    <div class="panel-body">
-                        <p>每月50GB流量</p>
-                        <p>美国/日本</p>
-                        <p>同时连接2台设备</p>
-                        <p>UDP转发：不支持</p>
-                        <p>在线维基、网站服务单、QQ群</p>
-                        <p>支持Mac OS X / Windows / Android / iOS / Linux</p>
-                        <p>30天</p>
-                        <a type="role" class="btn btn-primary" href="__APP__/Index/cart/mid/1">立即订购</a>
+            <volist name="menu_data" id="menu">
+                <div class="col-md-4">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">{$menu.title}</div>
+                        <div class="panel-body">
+                            <p>每月{$menu['flow']/1024}GB流量</p>
+                            <p>{$menu.node}</p>
+                            <p>{$menu.remark}</p>
+                            <p>UDP转发：不支持</p>
+                            <p>{$menu.cost} RMB</p>
+                            <p>{$menu.duration}天</p>
+                            <a type="role" class="btn btn-primary" href="{:U('Home/Index/cart', array('cid' => $menu['cid']))}">立即订购</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">套餐二：年付</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>每月50GB流量</p>
-                        <p>美国/日本</p>
-                        <p>同时连接2台设备</p>
-                        <p>UDP转发：不支持</p>
-                        <p>在线维基、网站服务单、QQ群、VIP客服</p>
-                        <p>支持Mac OS X / Windows / Android / iOS / Linux</p>
-                        <p>365天</p>
-                        <a role="button" class="btn btn-primary" href="__APP__/Index/cart/mid/2">立即订购</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">套餐三：敬请期待</h3>
-                    </div>
-                    <div class="panel-body">
-                        <p>敬请期待</p>
-                        <p>敬请期待</p>
-                        <p>敬请期待</p>
-                        <p>敬请期待</p>
-                        <p>敬请期待</p>
-                        <p>敬请期待</p>
-                        <a role="button" class="btn btn-primary" href="__APP__/Index/cart/mid/3">立即订购</a>
-                    </div>
-                </div>
-            </div>
+            </volist>
         </div>
     </div>
 

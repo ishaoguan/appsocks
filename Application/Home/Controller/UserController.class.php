@@ -15,7 +15,7 @@ class UserController extends AuthorizedController {
 		$Server = M('User');
 		$Node = M('Node');
 		for ($i=0; $i < count($available_order_record); $i++) {
-			$server_data[$i] = $Server->where(array('sid' => $available_order_record[$i]['sid']))->find();
+			$server_data[$i] = $Server->where(array('port' => $available_order_record[$i]['sid']))->find();
 			$server_data[$i]['used_flow'] = $server_data[$i]['u'] + $server_data[$i]['d'];
 			$server_data[$i]['expire_time'] = $available_order_record[$i]['expire_time'];
 			$nid = $available_order_record[$i]['nid'];
@@ -24,7 +24,7 @@ class UserController extends AuthorizedController {
 			$server_data[$i]['domain_name'] = $node_data['domain_name'];
 		}
 		$user_center_data['server_data'] = $server_data;
-		// dump($user_center_data);
+		// dump($available_order_record);
 		$this->assign('user_center_data', $user_center_data);
 		$this->display();
 	}

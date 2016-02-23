@@ -30,15 +30,38 @@ class AdminController extends AuthorizedController {
 	public function OpenServer() {
 		$oid = I('get.oid');
 		$uid = I('get.uid');
+		// mark the record as hvae read
 		$order_data['status'] = 0;
 		$res = M('Orders')->where(array('oid' => $oid))->save($order_data);
-		/*if (!$res) {
+		if (!$res) {
 			$this->error('开通出错');
-		}*/
-		/*$order_record['uid'] =
+		}
+		// add to the order record
+		unset($order_data);
+		$order_data = D('OrdersComboView')->where(array('oid' => $oid))->find();
+		$order_record['uid'] = $uid;
+		$order_record['cid'] = $order_data['cid'];
 		$order_record['purchase_time'] = date('y-m-d h:i:s');
-		$order_record['expire_time'] =
-		$order_record['cost'] =*/
+		$order_record['expire_time'] = date('y-m-d h:i:s', strtotime(date('y-m-d h:i:s')) + $order_data['duration']*86400);
+		$order_record['cost'] = $order_data['cost'];
+		$orid = M('OrderRecord')->data($order_record)->add();
+		if (!$orid) {
+			$this->error('开通失败');
+		}
+		// open the server
+		$server_data['passwd'] = rand(100000, 999999);
+		$server_data['transfer_enablse'] = $order_data['flow']*1024*1024;
+		$server_data['u'] = 0;
+		$server_data['d'] = 0;
+		$port = M('User')->data($server_data)->add();
+		$OrderRecord = M('OrderRecord');
+		if (!$port) {
+			$this->error('开通失败');
+		} else {
+			$OrderRecord->sid = $port;
+			$OrderRecord->where(array('oid' => $orid))->save();
+			$this->success('开通成功');
+		}
 	}
 	public function closeOrder() {
 		$oid = I('get.oid');

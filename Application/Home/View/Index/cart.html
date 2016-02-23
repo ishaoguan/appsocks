@@ -60,17 +60,18 @@
                     <p>小结：￥{$combo['summary']}</p>
                 </div>
                 <form class="form" action="__APP__/Index/pay" method="post">
-                    <div class="row">
+                    <?php echo session('?uid') ?
+                    '' : '<div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="nickname">昵称</label>
-                                <input type="text" class="form-control" id="nickname" placeholder="张全蛋" required>
+                                <input type="text" class="form-control" name="nickname" id="nickname" placeholder="张全蛋" required>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="password">密码</label>
-                                <input type="password" class="form-control" id="password" placeholder="不少于6位数" required>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="不少于6位数" required>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -82,13 +83,24 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="email">邮箱</label>
-                                <input type="email" class="form-control" id="email" placeholder="quandan@example.com" required>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="quandan@example.com" required>
+                            </div>
+                        </div>
+                    </div>';
+                    ?>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="hidden" name="cid" value="{$combo['cid']}">
+                                <label for="remark">额外备注</label>
+                                <input type="textarea" class="form-control" name="remark" id="remark" placeholder="如有特殊要求可在此留言">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-offset-10">
-                            <a href="__APP__/Public/login">你已经有帐号？</a>
+                            <?php echo session('?uid') ? '' : '<a href="__APP__/Public/login">你已经有帐号？</a>';?>
                             <button type="submit" class="btn btn-success">确认订购</button>
                         </div>
                     </div>
