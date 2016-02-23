@@ -64,6 +64,16 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label for="combo-node" class="col-sm-3 control-label">选用节点</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="combo_node" id="combo-node">
+                                <volist name="node_data" id="node">
+                                    <option value="{$node.nid}" selected="selected">{$node.name}</option>
+                                </volist>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label for="combo-flow" class="col-sm-3 control-label">套餐流量/GB</label>
                         <div class="col-sm-9">
                             <input type="number" class="form-control" name="combo_flow" id="combo-flow" min="0" required>

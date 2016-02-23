@@ -30,8 +30,9 @@ class IndexController extends Controller {
             $user_data['nickname'] = I('post.nickname');
             $user_data['email'] = I('post.email');
             $user_data['password'] = sha1(I('post.password'));
+            $user_data['actived'] = 1;
             $user_data['last_login_ip'] = get_client_ip();
-            $uid = M('Login')->data($data)->add();
+            $uid = M('Login')->data($user_data)->add();
             if (!$uid) {
                 $this->error('用户注册错误，订单提交失败');
             } else {

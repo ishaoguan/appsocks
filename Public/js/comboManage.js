@@ -14,7 +14,8 @@ window.onload = function() {
             var status = modal.find('#combo-status');
             var form = modal.find('form');
             modal.find('#variable_btn').prev('button').after('<a role="button" class="btn btn-danger" href="index.php/Ajax/deleteCombo/cid/'+cid+'">删除</a>')
-            $.post('index.php/Home/Ajax/getCombo', { cid: cid }, function(data, textStatus, xhr) {
+            $.post('/index.php/Home/Ajax/getCombo', { cid : cid }, function(data, textStatus, xhr) {
+                console.log(data);
                 comboid.val(cid);
                 title.val(data['title']);
                 flow.val(data['flow'] / 1024);

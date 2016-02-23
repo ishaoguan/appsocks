@@ -19,10 +19,9 @@ class AdminController extends AuthorizedController {
 	}
 	public function orderManage() {
 		$orders_data = D('OrdersComboView')->where(array('status' => 1))->select();
+		$User = M('Login');
 		for ($i=0; $i < count($orders_data); $i++) {
-			$res = M('Combo')->where(array('cid' => $orders_data[$i]['cid']))->field('duration,cost')->find();
-			$orders_data[$i]['duration'] = $res['duration'];
-			$orders_data[$i]['cost'] = $res['cost'];
+			$orders_data[$i]['nickname'] = $User->where(array('uid' => $orders_data[$i]['uid']))->getField('nickname');
 		}
 		$this->assign('orders_data', $orders_data);
 		$this->display();
@@ -50,7 +49,7 @@ class AdminController extends AuthorizedController {
 		}
 		// open the server
 		$server_data['passwd'] = rand(100000, 999999);
-		$server_data['transfer_enablse'] = $order_data['flow']*1024*1024;
+		$server_data['transfer_enable'] = $order_data['flow']*1024*1024;
 		$server_data['u'] = 0;
 		$server_data['d'] = 0;
 		$port = M('User')->data($server_data)->add();
@@ -65,8 +64,9 @@ class AdminController extends AuthorizedController {
 	}
 	public function closeOrder() {
 		$oid = I('get.oid');
-		dump($oid);
-		// $this->success('拒绝成功');
+		$order_data['status'] = 0;
+		$res = M('Orders')->where(array('oid' => $oid))->save($order_data);
+		$this->success('拒绝成功');
 	}
 	public function userManage(){
 		$User = M('Login');
@@ -83,8 +83,11 @@ class AdminController extends AuthorizedController {
 		$this->assign('node_data', $node_data);
 		$this->display();
 	}
+
 	public function comboManage() {
 		$combo_data = M('Combo')->select();
+		$node_data = M('Node')->where(array('status' => 1))->field('nid,name')->select();
+		$this->assign('node_data', $node_data);
 		$this->assign('combo_data', $combo_data);
 		$this->display();
 	}
