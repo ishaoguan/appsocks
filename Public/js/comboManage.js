@@ -1,6 +1,6 @@
-window.onload = function() {
-    $('a#edit_combo_info').each(function(event) {
-        $(this).click(function() {
+$(document).ready(function(){
+            $('a#edit_combo_info').each(function(event) {
+            $(this).click(function() {
             var cid = $(this).data('cid');
             var modal = $('#combo-modal');
             modal.find('.modal-title').text('修改套餐');
@@ -13,8 +13,9 @@ window.onload = function() {
             var remark = modal.find('#combo-remark');
             var status = modal.find('#combo-status');
             var form = modal.find('form');
-            modal.find('#variable_btn').prev('button').after('<a role="button" class="btn btn-danger" href="index.php/Ajax/deleteCombo/cid/'+cid+'">删除</a>')
-            $.post('/index.php/Home/Ajax/getCombo', { cid : cid }, function(data, textStatus, xhr) {
+            modal.find('#variable_btn').prev('button').after('<a role="button" class="btn btn-danger" href="index.php/Ajax/deleteCombo/cid/'+cid+'">删除</a>');
+            var url = './../Ajax/getCombo';
+            $.post(url, { cid : cid }, function(data, textStatus, xhr) {
                 console.log(data);
                 comboid.val(cid);
                 title.val(data['title']);
@@ -39,6 +40,6 @@ window.onload = function() {
         modal.find('#combo-cost').val('');
         modal.find('#combo-remark').val('');
         modal.find('#combo-status').val('1');
-        modal.find('form').attr("action", "index.php/Home/Ajax/addCombo");
+        modal.find('form').attr("action", "./../Ajax/addCombo");
     });
-}
+});

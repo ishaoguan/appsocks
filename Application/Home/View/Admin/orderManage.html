@@ -43,8 +43,8 @@
                     <td>{$order.cost} RMB</td>
                     <td>{$order.remark}</td>
                     <td>
-                        <a role="button" href="{:U('Home/Admin/closeOrder', array('oid' => $order['oid']))}" class="btn btn-danger choose">拒绝</a>
-                        <a role="button" href="{:U('Home/Admin/openServer', array('oid' => $order['oid'], 'uid' => $order['uid']))}" class="btn btn-success right-block choose">开通</a>
+                        <a role="button" href="{:U('Home/Ajax/closeOrder', array('oid' => $order['oid']))}" class="btn btn-danger choose">拒绝</a>
+                        <a role="button" href="{:U('Home/Ajax/openServer', array('oid' => $order['oid'], 'uid' => $order['uid']))}" class="btn btn-success right-block choose">开通</a>
                     </td>
                 </tr>
             </volist>
