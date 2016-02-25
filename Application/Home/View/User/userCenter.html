@@ -11,7 +11,6 @@
     <!-- 字体文件 -->
     <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
     <!-- 自定义css文件 -->
-    <!-- <link rel="stylesheet" href="__PUBLIC__/css/userCenter.css"> -->
     <link rel="stylesheet" href="__PUBLIC__/css/User/userCenter.css">
 </head>
 <body>
@@ -27,6 +26,15 @@
                 <div class="panel panel-success">
                     <div class="panel-heading">可用服务</div>
                     <div class="panel-body">
+												<?php
+														if(!$user_center_data['server_data']){
+															if($user_center_data['server_hint']) {
+																echo $user_center_data['server_hint'];
+															} else {
+																echo '你还未订购任何套餐喔，<a href="__APP__/Home/Index/menu" target="_blank">马上去订购!</a>';
+															}
+														}
+												?>
                         <volist name="user_center_data['server_data']" id="server_data">
                             <table class="table table-bordered server-info">
                                 <thead>

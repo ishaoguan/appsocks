@@ -23,8 +23,16 @@ class UserController extends AuthorizedController {
 			$server_data[$i]['method'] = $node_data['method'];
 			$server_data[$i]['domain_name'] = $node_data['domain_name'];
 		}
-		$user_center_data['server_data'] = $server_data;
-		// dump($available_order_record);
+		if (!$server_data) {
+			$num =	M('Orders')->where(array('uid' => $uid, 'status' => 0))->count();
+			if ($num) {
+				$user_center_data['server_hint'] = '有'.$num.'个套餐待支付，联系售后群513222519与管理员联系转账';
+			} else {
+				$user_center_data['server_hint'] = null;
+			}
+		} else {
+			$user_center_data['server_data'] = $server_data;
+		}
 		$this->assign('user_center_data', $user_center_data);
 		$this->display();
 	}

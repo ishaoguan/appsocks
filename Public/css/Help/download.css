@@ -1,0 +1,12 @@
+.main {
+  margin-top: 10%;
+}
+.main p {
+  font-size: 2em!important;
+}
+.main .row div {
+  padding: 15px 0 0 70px;
+}
+.main li {
+  padding-left: 15px;
+}

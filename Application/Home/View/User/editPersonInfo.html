@@ -12,7 +12,6 @@
     <!-- 字体文件 -->
     <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
     <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
     <link rel="stylesheet" href="__PUBLIC__/css/User/getPersonInfo.css">
 </head>
 
@@ -27,11 +26,11 @@
                     </div>
                     <div class="form-group">
                         <label for="new-password">新密码：</label>
-                        <input type="password" class="form-control" name="new_password" id="new-password" placeholder="确保密码高强度" required>
+                        <input type="password" class="form-control" name="new_password" id="password" placeholder="确保密码高强度" required>
                     </div>
                     <div class="form-group">
                         <label for="re-new-password">确认密码：</label>
-                        <input type="password" class="form-control" id="re-new-password" placeholder="确保密码高强度" required>
+                        <input type="password" class="form-control" id="re-password" placeholder="确保密码高强度" required>
                     </div>
                     <button type="submit" class="btn btn-warning">修改</button>
                 </form>
@@ -39,5 +38,5 @@
         </div>
     </div>
 </body>
-
+<import type='js' file="js.verifyPwd" />
 </html>

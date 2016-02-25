@@ -29,17 +29,8 @@ CREATE TABLE `combo` (
   `title` char(20) NOT NULL COMMENT '套餐名称',
   `remark` varchar(300) DEFAULT NULL COMMENT '套餐备注',
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '默认1为可用'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `combo`
---
-
-INSERT INTO `combo` (`cid`, `nid`, `flow`, `duration`, `cost`, `title`, `remark`, `status`) VALUES
-(1, 1, 51200, 30, 15, '套餐一：月付', '假期优惠中', 1),
-(2, 1, 102400, 30, 50, '游戏套餐', '高速低延迟', 1),
-(3, 1, 1024000, 365, 2000, '企业套餐', '小型企业必备,线路专有', 0),
-(4, 2, 10240, 10, 10, '测试', '', 1);
 
 -- --------------------------------------------------------
 
@@ -65,7 +56,7 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`id`, `init_flow`, `invite`, `registe`, `signin`, `signin_interval`, `signin_max`, `signin_min`, `port_start`, `announcement`) VALUES
-(1, 0, 1, 1, 1, 22, 100, 10, 5000, '欢迎使用AppSocks服务');
+(1, 0, 1, 1, 1, 22, 100, 10, 5000, '欢迎使用AppSocks服务。立刻订购套餐并支付，享受高速科学上网服务。');
 
 -- --------------------------------------------------------
 
@@ -137,16 +128,8 @@ CREATE TABLE `node` (
   `method` varchar(64) NOT NULL COMMENT '加密方式',
   `remark` varchar(200) DEFAULT NULL,
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '默认1为可用'
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `node`
---
-
-INSERT INTO `node` (`nid`, `cid`, `name`, `server_ip`, `domain_name`, `method`, `remark`, `status`) VALUES
-(1, 1, '西雅图高速节点', '107.191.104.103', 'appsocks.net', 'rc4-md5', '站长推荐', 1),
-(2, NULL, '本地测试', '10.1.1.1', 'www.baidu.com', 'rc4-md5', '', 1),
-(3, NULL, '测试', '10.1.2.3', '测试', 'rc4-md5', '', 1);
 
 -- --------------------------------------------------------
 
@@ -161,14 +144,8 @@ CREATE TABLE `orders` (
   `submit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '提交订单时间',
   `remark` text COMMENT '订单备注',
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '默认1为未处理'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`oid`, `uid`, `cid`, `submit_time`, `remark`, `status`) VALUES
-(1, 1, 2, '2016-02-23 10:18:26', '', 0);
 
 -- --------------------------------------------------------
 
@@ -185,14 +162,8 @@ CREATE TABLE `order_record` (
   `cost` int(11) NOT NULL COMMENT '费用',
   `success` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否购买成功',
   `sid` int(11) DEFAULT NULL COMMENT '开启的服务id'
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `order_record`
---
-
-INSERT INTO `order_record` (`oid`, `uid`, `cid`, `purchase_time`, `expire_time`, `cost`, `success`, `sid`) VALUES
-(1, 1, 2, '2016-02-22 22:18:32', '2016-03-23 22:18:32', 50, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -212,12 +183,6 @@ CREATE TABLE `user` (
   `last_get_gift_time` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=5000 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`port`, `passwd`, `t`, `u`, `d`, `transfer_enable`, `switch`, `enable`, `last_get_gift_time`) VALUES
-(5001, '232412', 0, 0, 0, 107374182400, 1, 1, 0);
 
 --
 -- Indexes for dumped tables
@@ -285,12 +250,12 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `combo`
 --
 ALTER TABLE `combo`
-  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `cid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `config`
 --
 ALTER TABLE `config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `invite`
 --
@@ -310,19 +275,19 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `node`
 --
 ALTER TABLE `node`
-  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `order_record`
 --
 ALTER TABLE `order_record`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `port` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `port` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5000;

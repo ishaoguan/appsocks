@@ -1,9 +1,9 @@
-.active {
-	background-color: #336699;
+.navbar{
+	margin-bottom: 0 !important;
 }
+
 .top-nav .navbar {
 	background-color: #28A5DE;
-	height: 60px;
 }
 .top-nav .navbar .glyphicon-send{
 	font-size: 25px;
@@ -24,26 +24,16 @@
 	color: #FFF;
 	text-decoration: none;
 }
-.top-nav .nav-list ul {
-	float: right;
+
+.navbar-nav li:hover{
+	background-color: #336699;
 }
-.top-nav .nav-list ul li {
-	color: #FFF;
-	float: left;
-}
-.top-nav .nav-list ul li a {
-	width: 80px;
-	height: 60px;
-	padding: 16px 0px 0px 0px;
-	text-align: center;
-	display: block;
-	color: #FFF;
+
+.navbar-nav li a{
+	color: white !important;
 	font-size: 13px;
 }
-.top-nav .nav-list ul li a:hover {
-	background-color: #336699;
-	text-decoration: none;
-}
+
 .footer {
 	padding-top: 30px;
 	background-color: #FFBB33;
@@ -51,4 +41,15 @@
 .footer p {
 	border-top: 1px solid #FFF;
 	padding: 5px 0 5px 0;
+}
+
+@media (min-width:768px){
+
+	.top-nav #AppSocks{
+		float: right;
+	}
+
+	.navbar-nav li{
+		height: 54px;
+	}
 }

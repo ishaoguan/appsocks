@@ -1,0 +1,12 @@
+.main {
+  width: 600px;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+p {
+  padding: 30px;
+  font-size: 1.5em;
+}
+img {
+  width: 350px;
+}

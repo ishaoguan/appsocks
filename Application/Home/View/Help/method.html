@@ -2,42 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>AppSocks - 科学上网您最好的选择</title>
-    <base target="mainiframe" />
-    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-    <!-- Bootstrap 文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-    <script src="__PUBLIC__/js/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <!-- 字体文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-    <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
-    <link rel="stylesheet" href="__PUBLIC__/css/Help/method.css">
+  <meta charset="UTF-8">
+  <title>AppSocks - 科学上网您最好的选择</title>
+  <base target="mainiframe" />
+  <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+  <!-- Bootstrap 文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+  <script src="__PUBLIC__/js/jquery.min.js"></script>
+  <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+  <!-- 字体文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+  <!-- 自定义css文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/Index/default.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/Help/method.css">
 </head>
 
 <body>
-    <div class="top-nav">
-        <nav class="navbar navbar-fixed-top">
-            <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}" target="_self">AppSocks</a>- <span>您的加速科学上网助手</span></div>
-            <div class="nav-list">
-                <ul>
-                    <li><a href="__APP__/Home/Index/menu" target="_self">套餐订购</a></li>
-                    <li><a href="__APP__/Home/Help/download" target="_self">客户端下载</a></li>
-                    <li><a href="__APP__/Home/Help/method" class="active" target="_self">使用教程</a></li>
-                    <li><a href="__APP__/Home/Help/support" target="_self">技术支持</a></li>
-                    <li><?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard"'.' target="_self">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
-                    <li><?php echo session('?uid') ? '<a href="__APP__/Public/logout" target="_self">退出</a>' : '<a href="__APP__/Home/Public/registe" target="_self">用户注册</a>'; ?></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="main container">
-        <div class="row">
-
+  <div class="top-nav">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#AppSocks" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">AppSocks</a></div>
         </div>
+
+        <div class="collapse navbar-collapse " id="AppSocks">
+          <ul class="nav navbar-nav">
+            <li><a href="__APP__/Home/Index/menu">套餐订购</a></li>
+            <li><a href="__APP__/Home/Help/download" class="active">客户端下载</a></li>
+            <li><a href="__APP__/Home/Help/method">使用教程</a></li>
+            <li><a href="__APP__/Home/Help/support">技术支持</a></li>
+            <li>
+              <?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
+            <li>
+              <?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe">用户注册</a>'; ?></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="main container">
+    <div class="row">
+      <p>1.订购成功套餐后会得到节点地址、端口、加密方式、密码</p>
+      <div>
+        <p>2.分别填入进安装好的shadowsocks软件（还没有安装？<a href="{:U('Home/Help/download')}">赶紧来</a>）</p>
+        <img src="http://ww1.sinaimg.cn/large/005R1IGWgw1f1bn2nbe85j30ec091mxk.jpg" />
+      </div>
+      <div>
+        <p>3.最后进行配置</p>
+        <img src="http://ww1.sinaimg.cn/large/005R1IGWgw1f1bn4xm8k6j30cg09h752.jpg" alt="">
+      </div>
+      <div>
+        <p>4.打开你的浏览器畅快上网吧</p>
+      </div>
     </div>
+  </div>
 
 </body>
 

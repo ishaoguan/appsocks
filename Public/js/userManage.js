@@ -1,8 +1,9 @@
-window.onload = function(){
-	$('#check_user_order').on('shown.bs.modal', function () {
-		var uid = $(this).data('uid');
+$(document).ready(function() {
+	$('#user_info_modal').on('shown.bs.modal', function (event) {
+		var button = $(event.relatedTarget);
+		var uid = button.data('uid');
 		var bill = '<table class="table table-bordered"><thead><tr><th>订单号</th><th>套餐名</th><th>开通时间</th><th>到期时间</th><th>费用</th><th>是否成功</th></tr></thead><tbody>';
-		$.post('/index.php/Home/Ajax/getPersonOrderRecord', {uid : uid}, function(data, textStatus, xhr) {
+		$.post('./../Ajax/getPersonOrderRecord', {uid : uid}, function(data, textStatus, xhr) {
 			for (var i = 0; i < data.length; i++) {
 				bill += '<tr><td>' + data[i]['oid'] + '</td>' +
 				'<td>' + data[i]['title'] + '</td>' +
@@ -15,4 +16,4 @@ window.onload = function(){
 			$('.modal-body').html(bill);
 		});
 	});
-}
+});

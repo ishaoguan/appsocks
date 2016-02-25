@@ -43,3 +43,30 @@
 .play .carousel-caption {
 	font-size: 5em;
 }
+
+@media (min-width:768px){
+	.carousel-caption{
+		font-size: 5em !important;
+	}
+
+}
+
+@media (max-width: 768px){
+	.notice{
+		font-size: 12px !important;
+	}
+
+	.title{
+		margin-top: 50px !important;
+	}
+
+}
+
+.carousel-caption{
+	font-size: 2em;
+}
+
+.item{
+	max-height: 450px !important;
+	overflow: hidden;
+}

@@ -12,26 +12,37 @@
     <!-- 字体文件 -->
     <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
     <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
-    <link rel="stylesheet" href="__PUBLIC__/css/cart.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/Index/default.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/Index/cart.css">
 </head>
 
 <body>
-    <div class="top-nav">
-        <nav class="navbar navbar-fixed-top">
-            <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">AppSocks</a>- <span>您的加速科学上网助手</span></div>
-            <div class="nav-list">
-                <ul>
-                    <li><a class="active" href="__APP__/Home/Index/menu">套餐订购</a></li>
-                    <li><a href="__APP__/Home/Help/download">客户端下载</a></li>
-                    <li><a href="__APP__/Home/Help/method">使用教程</a></li>
-                    <li><a href="__APP__/Home/Help/support">技术支持</a></li>
-                    <li><?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
-                    <li><?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe">用户注册</a>'; ?></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+  <div class="top-nav">
+      <nav class="navbar navbar-default navbar-fixed-top">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#AppSocks" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">AppSocks</a></div>
+              </div>
+
+              <div class="collapse navbar-collapse " id="AppSocks">
+                  <ul class="nav navbar-nav">
+                      <li><a  href="__APP__/Home/Index/menu">套餐订购</a></li>
+                      <li><a href="__APP__/Home/Help/download">客户端下载</a></li>
+                      <li><a href="__APP__/Home/Help/method">使用教程</a></li>
+                      <li><a href="__APP__/Home/Help/support">技术支持</a></li>
+                      <li><?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
+                      <li><?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe">用户注册</a>'; ?></li>
+                  </ul>
+              </div>
+          </div>
+      </nav>
+  </div>
     <div class="main container">
         <div class="row">
             <div class="col-md-12">
@@ -77,7 +88,7 @@
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label for="password">确认密码</label>
-                                <input type="password" class="form-control" id="password" placeholder="不少于6位数" required>
+                                <input type="password" class="form-control" id="re-password" placeholder="不少于6位数" required>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -94,7 +105,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="cid" value="{$combo['cid']}">
                                 <label for="remark">额外备注</label>
-                                <input type="textarea" class="form-control" name="remark" id="remark" placeholder="如有特殊要求可在此留言">
+                                <input type="textarea" class="form-control" name="remark" maxlength="50" id="remark" placeholder="如有特殊要求可在此留言">
                             </div>
                         </div>
                     </div>
@@ -110,5 +121,5 @@
     </div>
 
 </body>
-
+<import type='js' file="js.verifyPwd" />
 </html>

@@ -63,6 +63,17 @@ class AjaxController extends AuthorizedController {
             $this->success('节点添加成功');
         }
     }
+    public function editNodeStatus() {
+        $status = I('post.status', 1, 'int');
+        $nid = I('post.nid', 1, 'int');
+        $Node = M('Node');
+        $Node->status = $status;
+        $res = $Node->where(array('nid' => $nid))->save();
+        if ($res) {
+          // $status = abs($status - 1);
+          $this->ajaxReturn($status);
+        }
+    }
     public function OpenServer() {
         $oid = I('get.oid');
         $uid = I('get.uid');

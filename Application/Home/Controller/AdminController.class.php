@@ -26,7 +26,7 @@ class AdminController extends AuthorizedController {
 		$this->assign('orders_data', $orders_data);
 		$this->display();
 	}
-	
+
 	public function userManage(){
 		$User = M('Login');
 		$count      = $User->count();
@@ -38,7 +38,7 @@ class AdminController extends AuthorizedController {
 		$this->display();
 	}
 	public function nodeManage() {
-		$node_data = M('Node')->where(array('status' => 1))->select();
+		$node_data = M('Node')->select();
 		$this->assign('node_data', $node_data);
 		$this->display();
 	}

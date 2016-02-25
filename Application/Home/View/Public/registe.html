@@ -2,71 +2,85 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>AppSocks - 科学上网您最好的选择</title>
-    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-    <!-- Bootstrap 文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-    <script src="__PUBLIC__/js/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <!-- 字体文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-    <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
-    <link rel="stylesheet" href="__PUBLIC__/css/registe.css">
+  <meta charset="UTF-8">
+  <title>AppSocks - 科学上网您最好的选择</title>
+  <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+  <!-- Bootstrap 文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+  <script src="__PUBLIC__/js/jquery.min.js"></script>
+  <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+  <!-- 字体文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+  <!-- 自定义css文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/Public/default.css">
+  <link rel="stylesheet" href="__PUBLIC__/css/Public/registe.css">
 </head>
 
 <body>
-    <div class="top-nav">
-        <nav class="navbar navbar-fixed-top">
-            <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">AppSocks</a>- <span>您的加速科学上网助手</span></div>
-            <div class="nav-list">
-                <ul>
-                    <li><a  href="__APP__/Home/Index/menu">套餐订购</a></li>
-                    <li><a href="__APP__/Home/Help/download">客户端下载</a></li>
-                    <li><a href="__APP__/Home/Help/method">使用教程</a></li>
-                    <li><a href="__APP__/Home/Help/support">技术支持</a></li>
-                    <li><?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard/uid/'.session('uid').'">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
-                    <li><a class="active" href="__APP__/Home/Public/registe">用户注册</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="main container">
-        <div class="row">
-            <div class="col-md-7 col-xs-12">
-                    <img src="__PUBLIC__/pictures/register_logo.jpg" class="register_logo" alt="register_logo.jpg">
-            </div>
-            <div class="col-md-5 col-xs-12">
-                <div class="log-pannel">
-                    <div class="space-box col-md-12 col-sm-0"></div>
-                    <p class="log-pannel-msg"><span>注册</span>成为<strong>AppSocks</strong>一员，开启高速科学上网体验</p>
-                    <form action="__APP__/Public/doRegiste" method="post">
-                        <div class="form-group input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
-                                <input type="text" class="form-control" name="nickname" placeholder="昵称" required>
-                        </div>
-                        <div class="form-group input-group">
-                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-                                <input type="email" class="form-control" name="email" placeholder="电子邮箱" required>
-                        </div>
-                        <div class="form-group input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></span>
-                            <input type="password" class="form-control" name="password" placeholder="密码" required>
-                        </div>
-                        <div class="form-group input-group">
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></span>
-                            <input type="password" class="form-control" name="repassword" placeholder="确认密码" required>
-                        </div>
-                        <p>注册即表明同意遵守本站相关协议</p>
-                        <button type="submit" class="btn btn-primary registe-btn">注册</button>
-                    </form>
-                    <a role="button" href="__APP__/Home/Public/login">什么！已经有帐号？</a>
-                </div>
-            </div>
+  <div class="top-nav">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#AppSocks" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">AppSocks</a></div>
         </div>
+
+        <div class="collapse navbar-collapse " id="AppSocks">
+          <ul class="nav navbar-nav">
+            <li><a href="__APP__/Home/Index/menu">套餐订购</a></li>
+            <li><a href="__APP__/Home/Help/download" class="active">客户端下载</a></li>
+            <li><a href="__APP__/Home/Help/method">使用教程</a></li>
+            <li><a href="__APP__/Home/Help/support">技术支持</a></li>
+            <li>
+              <?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
+            <li>
+              <?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe">用户注册</a>'; ?></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="main container">
+    <div class="row">
+      <div class="col-md-7 col-xs-12">
+        <img src="__PUBLIC__/pictures/register_logo.jpg" class="register_logo" alt="register_logo.jpg">
+      </div>
+      <div class="col-md-5 col-xs-12">
+        <div class="log-pannel">
+          <div class="space-box col-md-12 col-sm-0"></div>
+          <p class="log-pannel-msg"><span>注册</span>成为<strong>AppSocks</strong>一员，开启高速科学上网体验</p>
+          <form action="__APP__/Public/doRegiste" method="post">
+            <div class="form-group input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+              <input type="text" class="form-control" name="nickname" placeholder="昵称" required>
+            </div>
+            <div class="form-group input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+              <input type="email" class="form-control" name="email" placeholder="电子邮箱" required>
+            </div>
+            <div class="form-group input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></span>
+              <input type="password" class="form-control" id="password" name="password" placeholder="密码" required>
+            </div>
+            <div class="form-group input-group">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></span>
+              <input type="password" class="form-control" id="re-password" name="repassword" placeholder="确认密码" required>
+            </div>
+            <p>注册即表明同意遵守本站相关协议</p>
+            <button type="submit" class="btn btn-primary registe-btn">注册</button>
+          </form>
+          <a role="button" href="__APP__/Home/Public/login">什么！已经有帐号？</a>
+        </div>
+      </div>
     </div>
+  </div>
 
 </body>
+<import type='js' file="js.verifyPwd" />
 
 </html>
