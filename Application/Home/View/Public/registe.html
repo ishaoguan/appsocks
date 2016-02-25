@@ -33,13 +33,13 @@
         <div class="collapse navbar-collapse " id="AppSocks">
           <ul class="nav navbar-nav">
             <li><a href="__APP__/Home/Index/menu">套餐订购</a></li>
-            <li><a href="__APP__/Home/Help/download" class="active">客户端下载</a></li>
+            <li><a href="__APP__/Home/Help/download">客户端下载</a></li>
             <li><a href="__APP__/Home/Help/method">使用教程</a></li>
             <li><a href="__APP__/Home/Help/support">技术支持</a></li>
             <li>
               <?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
             <li>
-              <?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe">用户注册</a>'; ?></li>
+              <?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe" class="active">用户注册</a>'; ?></li>
           </ul>
         </div>
       </div>

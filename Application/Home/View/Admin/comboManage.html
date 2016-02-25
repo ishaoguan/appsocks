@@ -27,19 +27,25 @@
                     <th>套餐时长</th>
                     <th>套餐费用</th>
                     <th>备注说明</th>
-                    <th>是否可用</th>
+                    <th>状态</th>
                 </tr>
             </thead>
             <tbody>
                 <volist name="combo_data" id="combo">
                     <tr>
                         <td>{$i}</td>
-                        <td><a id="edit_combo_info" role="button" data-toggle="modal" data-target="#combo-modal" data-cid="{$combo.cid}">{$combo.title}</a></td>
+                        <td>{$combo.title}</td>
                         <td>{$combo['flow'] / 1024} G</td>
                         <td>{$combo.duration} 天</td>
                         <td>{$combo.cost} RMB</td>
                         <td>{$combo.remark}</td>
-                        <td><?php echo $combo['status'] == 1 ? '可用' : '不可用';?></td>
+                        <!-- <td><?php echo $combo['status'] == 1 ? '可用' : '不可用';?></td> -->
+												<td>
+													<select class="combo-status" name="combo_status" data-cid="{$combo.cid}">
+														<option value="1" <?php echo $combo['status'] == 1 ? 'selected="selected"' : '';?>>可用</option>
+														<option value="0" <?php echo $combo['status'] == 0 ? 'selected="selected"' : '';?>>停用</option>
+													</select>
+												</td>
                     </tr>
                 </volist>
             </tbody>

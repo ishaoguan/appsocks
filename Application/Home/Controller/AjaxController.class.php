@@ -43,6 +43,16 @@ class AjaxController extends AuthorizedController {
     		$this->error('套餐修改失败');
     	}
     }
+    public function editComboStatus() {
+      $cid = I('post.cid','int');
+      $status = I('post.status', 1, 'int');
+      $Combo = M('Combo');
+      $Combo->status = $status;
+      $res = $Combo->where(array('cid' => $cid))->save();
+      if ($res) {
+        $this->ajaxReturn($status);
+      }
+    }
     public function deleteCombo() {
     	$cid = I('get.cid', 'int');
     	$res = M('Combo')->where(array('cid' => $cid))->delete();
