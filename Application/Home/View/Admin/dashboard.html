@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AppSocks - 科学上网您最好的选择</title>
   <base target="mainiframe" />
   <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
@@ -40,7 +42,7 @@
             <li><a href="__APP__/Home/Help/support" target="_self">技术支持</a></li>
             <li>
               <?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard" class="active" target="_self">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login" target="_self">用户登录</a>'; ?></li>
-            <li> 
+            <li>
               <?php echo session('?uid') ? '<a href="__APP__/Public/logout" target="_self">退出</a>' : '<a href="__APP__/Home/Public/registe" target="_self">用户注册</a>'; ?></li>
           </ul>
         </div>
