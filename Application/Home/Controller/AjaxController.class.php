@@ -98,8 +98,8 @@ class AjaxController extends AuthorizedController {
         $order_data = D('OrdersComboView')->where(array('oid' => $oid))->find();
         $order_record['uid'] = $uid;
         $order_record['cid'] = $order_data['cid'];
-        $order_record['purchase_time'] = date('y-m-d h:i:s');
-        $order_record['expire_time'] = date('y-m-d h:i:s', strtotime(date('y-m-d h:i:s')) + $order_data['duration']*86400);
+        $order_record['purchase_time'] = date('Y-m-d H:i:s');
+        $order_record['expire_time'] = date('Y-m-d H:i:s', strtotime(date('y-m-d h:i:s')) + $order_data['duration']*86400);
         $order_record['cost'] = $order_data['cost'];
         $orid = M('OrderRecord')->data($order_record)->add();
         if (!$orid) {

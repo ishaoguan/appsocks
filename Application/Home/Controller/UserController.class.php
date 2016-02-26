@@ -45,8 +45,11 @@ class UserController extends AuthorizedController {
 		if (!I('post.')) {
 			$this->display();
 		} else {
-			$receive['old_password'] = sha1(I('post.old_password'));
-			$receive['new_password'] = sha1(I('post.new_password'));
+			$receive['old_password'] = base64_encode(I('post.old_password'));
+			$receive['new_password'] = base64_encode(I('post.new_password'));
+			if (checkArrayIsNull($receive)) {
+				$this->error('修改错误，事情绝对没有那没简单');
+			}
 			$password = M('Login')->where(array('uid' => session('uid')))->getField('password');
 			if ($receive['old_password'] === $password) {
 				$data['password'] = $receive['new_password'];

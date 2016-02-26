@@ -37,11 +37,15 @@ class PublicController extends Controller {
 		if (checkArrayIsNull($user)) {
 			$this->error('注册错误，事情绝对没有那没简单');
 		}
+		$check_user_is_existed = M('Login')->where(array('email' => $user['email']))->count();
+		if ($check_user_is_existed) {
+			$this->error('该邮箱已被注册');
+		}
 		$res = M('Login')->data($user)->add();
 		if ($res) {
-			session('nickname', $res['nickname']);
+			session('nickname', $user['nickname']);
 			session('uid', $res['uid']);
-			session('admin', $res['admin']);
+			session('admin', 0);
 			$this->success('注册成功', U('Home/Index/index'));
 		} else {
 			$this->error('Opps..注册出错了');

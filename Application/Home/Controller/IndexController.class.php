@@ -29,7 +29,7 @@ class IndexController extends Controller {
               $this->error('注册失败，事情绝对没有那么简单');
             }
             $check_user_is_existed = M('Login')->where(array('email' => $user_data['email']))->count();
-            if (!$check_user_is_existed) {
+            if ($check_user_is_existed) {
               $this->error('该邮箱已被注册');
             }
             $uid = M('Login')->data($user_data)->add();
