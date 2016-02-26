@@ -9,9 +9,12 @@ class PublicController extends Controller {
 		$this->display();
 	}
 	public function doLogin() {
-		$email = I('post.email');
-		$password = sha1(I('post.password'));
-		$res = M('Login')->where(array('email' => $email, 'password' => $password))->field('nickname,uid,admin')->find();
+		$user_input['email'] = I('post.email');
+		$user_input['password'] = base64_encode(I('post.password'));
+		if (checkArrayIsNull($user_input)) {
+			$this->error('登录错误，事情绝对没有那没简单');
+		}
+		$res = M('Login')->where(array('email' => $user_input['email'], 'password' => $user_input['password']))->field('nickname,uid,admin')->find();
 		if ($res) {
 			session('nickname', $res['nickname']);
 			session('uid', $res['uid']);
@@ -27,10 +30,13 @@ class PublicController extends Controller {
 	public function doRegiste() {
 		$user['email'] = I('post.email');
 		$user['nickname'] = I('post.nickname');
-		$user['password'] = sha1(I('post.password'));
+		$user['password'] = base64_encode(I('post.password'));
 		$user['last_login_ip'] = get_client_ip();
 		$user['last_login_time'] = date('Y-m-d H:i:s');
 		$user['actived'] = 1;
+		if (checkArrayIsNull($user)) {
+			$this->error('注册错误，事情绝对没有那没简单');
+		}
 		$res = M('Login')->data($user)->add();
 		if ($res) {
 			session('nickname', $res['nickname']);
@@ -57,6 +63,6 @@ class PublicController extends Controller {
 				continue;
 			}
 		}
-		echo '执行成功';
+		echo (date('y-m-d h:i:s').' 执行成功');
 	}
 }

@@ -23,23 +23,21 @@ class UserController extends AuthorizedController {
 			$server_data[$i]['method'] = $node_data['method'];
 			$server_data[$i]['domain_name'] = $node_data['domain_name'];
 		}
-		if (!$server_data) {
-			$num =	M('Orders')->where(array('uid' => $uid, 'status' => 0))->count();
-			if ($num) {
-				$user_center_data['server_hint'] = '有'.$num.'个套餐待支付，联系售后群513222519与管理员联系转账';
-			} else {
-				$user_center_data['server_hint'] = null;
-			}
+
+		$num =	M('Orders')->where(array('uid' => $uid, 'status' => 1))->count();
+		if ($num) {
+			$user_center_data['server_hint'] = '有'.$num.'个套餐待支付，联系售后群513222519与管理员联系转账';
 		} else {
-			$user_center_data['server_data'] = $server_data;
+			$user_center_data['server_hint'] = null;
 		}
+
+		$user_center_data['server_data'] = $server_data;
 		$this->assign('user_center_data', $user_center_data);
 		$this->display();
 	}
 	public function getPurchasedCombo() {
 		$uid = session('uid');
 		$purchased_combo_data = D('OrderRecordComboView')->where(array('uid' => $uid))->order('purchase_time desc')->select();
-		// dump($purchased_combo_data);
 		$this->assign('purchased_combo_data', $purchased_combo_data);
 		$this->display();
 	}
@@ -53,7 +51,6 @@ class UserController extends AuthorizedController {
 			if ($receive['old_password'] === $password) {
 				$data['password'] = $receive['new_password'];
 				M('Login')->where(array('uid' => session('uid')))->field('password')->save($data);
-				// session(null);
 				$this->success('密码修改成功');
 			} else {
 				$this->error('原始密码不正确');

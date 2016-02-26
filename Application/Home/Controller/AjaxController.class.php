@@ -126,4 +126,17 @@ class AjaxController extends AuthorizedController {
         $res = M('Orders')->where(array('oid' => $oid))->save($order_data);
         $this->success('拒绝成功');
     }
+    public function searchBill() {
+        $up_to_time = I('post.time',date('Y-m-d'), '/^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/');
+        $Bill       = D('OrderRecordUserView');
+        $query_condition['purchase_time'] = array('LT', $up_to_time);
+    		$count      = $Bill->where($query_condition)->count();// 查询满足要求的总记录数
+    		$Page       = new \Think\Page($count,10);
+    		$show       = $Page->show();// 分页显示输出
+    		$bill_data  = $Bill->where($query_condition)->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->up_to_time = $up_to_time;
+    		$this->assign('bill_data',$bill_data);// 赋值数据集
+    		$this->assign('page',$show);// 赋值分页输出
+    		$this->display('Admin:billManage');
+    }
 }

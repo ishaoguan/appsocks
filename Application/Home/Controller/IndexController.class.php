@@ -6,14 +6,7 @@ class IndexController extends Controller {
         $this->display();
     }
     public function menu() {
-        $menu_data = M('Combo')->where(array('status' => 1))->limit(3)->select();
-        $Node = M('Node');
-        for ($i=0; $i < count($menu_data); $i++) {
-            $menu_data[$i]['node'] = $Node->where(array('nid' => $menu_data[$i]['nid']))->getField('name');
-            // dump($menu_data[$i]);
-        }
-
-
+        $menu_data = D('NodeComboView')->where(array('status' => 1))->order('cost')->field('cid,title,name,duration,flow,cost,remark')->limit(3)->select();
         $this->assign('menu_data', $menu_data);
         $this->display();
     }
@@ -22,16 +15,23 @@ class IndexController extends Controller {
     	$combo_data = M('Combo')->where(array('cid' => $mid))->find();
     	$combo_data['summary'] = $combo_data['cost'];
     	$this->assign('combo', $combo_data);
-        $this->display();
+      $this->display();
     }
     public function pay() {
         $cid = I('post.cid');
         if(!session('?uid')) {
             $user_data['nickname'] = I('post.nickname');
             $user_data['email'] = I('post.email');
-            $user_data['password'] = sha1(I('post.password'));
+            $user_data['password'] = base64_encode(I('post.password'));
             $user_data['actived'] = 1;
             $user_data['last_login_ip'] = get_client_ip();
+            if (checkArrayIsNull($user_data)) {
+              $this->error('注册失败，事情绝对没有那么简单');
+            }
+            $check_user_is_existed = M('Login')->where(array('email' => $user_data['email']))->count();
+            if (!$check_user_is_existed) {
+              $this->error('该邮箱已被注册');
+            }
             $uid = M('Login')->data($user_data)->add();
             if (!$uid) {
                 $this->error('用户注册错误，订单提交失败');

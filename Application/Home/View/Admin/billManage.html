@@ -16,22 +16,33 @@
 <body>
     <div class="info">
         <span>账单审核</span>
-        <!-- <button class="btn btn-success add-user">添加</button> -->
+				<form action="{:U('Home/Ajax/searchBill')}" method="post">
+					<input type="date" name="time" value="{$up_to_time}">
+					<button type="submit" class="btn btn-success search-bill">查询</button>
+				</form>
     </div>
     <table class="table table-hover">
         <thead>
-            <!-- <tr>
+            <tr>
                 <th>ID</th>
                 <th>用户昵称</th>
-                <th>邮箱</th>
-                <th>邀请人数</th>
-                <th>是否激活</th>
-                <th>最近一次在线时间</th>
-                <th>最后一次登录IP</th>
-            </tr> -->
+                <th>购买时间</th>
+                <th>费用</th>
+                <th>交易状态</th>
+                <!-- <th>操作</th> -->
+            </tr>
         </thead>
         <tbody>
-            功能暂未实现
+					<volist name="bill_data" id="bill">
+						<tr>
+							<td>{$i}</td>
+							<td>{$bill['nickname']}</td>
+							<td>{$bill['purchase_time']}</td>
+							<td>{$bill['cost']} RMB</td>
+							<td><?php echo $bill['success'] == 1 ? '成功' : '失败';?></td>
+							<!-- <td></td> -->
+						</tr>
+					</volist>
         </tbody>
     </table>
     {$page}
@@ -53,5 +64,5 @@
         </div>
     </div>
 </div>
-<import type='js' file="js.userManage" />
+<import type='js' file="js.billManage" />
 </html>

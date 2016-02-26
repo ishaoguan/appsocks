@@ -1,9 +1,11 @@
 <?php
-function checkPermission($uid) {
-	if ($uid != session('uid')) {
-		redirect('../../../Index/index', 5, 'Permission denied!');
-		return false;
-	} else {
-		return true;
+function checkArrayIsNull($arr) {
+	foreach ($arr as $key => $value) {
+		if (empty($value)) {
+			return 1;
+		} else {
+			continue;
+		}
 	}
+	return 0;
 }
