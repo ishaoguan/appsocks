@@ -1,6 +1,30 @@
-.main .log-pannel {
-	margin-top: 10%;
+.main {
+	margin-top: 5%;
 }
-.main .log-pannel form {
-	/*width: 500px;*/
+.register_logo {
+	width: 100%;
+	padding: 50px;
+}
+.log-pannel {
+	padding: 50px;
+}
+.log-pannel-msg {
+	padding: 10px 0 10px 0;
+	font-size: 15px;
+}
+.log-pannel-msg span {
+	font-size: 23px;
+}
+.registe-btn {
+	width: 100px;
+}
+@media (min-width:768px) {
+	.log-pannel {
+		padding-top: 35%;
+	}
+}
+@media (max-width:768px) {
+	.log-pannel {
+		padding: 10px 0 10px 0;
+	}
 }
