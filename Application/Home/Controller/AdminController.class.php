@@ -63,4 +63,9 @@ class AdminController extends AuthorizedController {
 		$this->assign('page',$show);// 赋值分页输出
 		$this->display();
 	}
+	public function configManage() {
+		$config_data = M('Config')->where(array('id' => 1))->select();
+		$this->assign('config_data', $config_data);
+		$this->display();
+	}
 }
