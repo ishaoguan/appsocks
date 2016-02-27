@@ -46,7 +46,7 @@ class PublicController extends Controller {
 			session('nickname', $user['nickname']);
 			session('uid', $res['uid']);
 			session('admin', 0);
-			$this->success('注册成功', U('Home/Index/index'));
+			$this->success('注册成功', U('Home/User/dashboard'));
 		} else {
 			$this->error('Opps..注册出错了');
 		}
