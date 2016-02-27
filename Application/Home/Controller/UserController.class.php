@@ -26,7 +26,7 @@ class UserController extends AuthorizedController {
 
 		$num =	M('Orders')->where(array('uid' => $uid, 'status' => 1))->count();
 		if ($num) {
-			$user_center_data['server_hint'] = '有'.$num.'个套餐待支付，联系售后群513222519与管理员联系转账';
+			$user_center_data['server_hint'] = '有'.$num.'个套餐待支付，加入售后群 <strong>513222519</strong> 	与管理员联系转账';
 		} else {
 			$user_center_data['server_hint'] = null;
 		}

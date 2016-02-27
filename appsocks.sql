@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Feb 24, 2016 at 04:08 PM
+-- Generation Time: Feb 27, 2016 at 10:24 AM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -31,7 +31,6 @@ CREATE TABLE `combo` (
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '默认1为可用'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-
 -- --------------------------------------------------------
 
 --
@@ -56,7 +55,7 @@ CREATE TABLE `config` (
 --
 
 INSERT INTO `config` (`id`, `init_flow`, `invite`, `registe`, `signin`, `signin_interval`, `signin_max`, `signin_min`, `port_start`, `announcement`) VALUES
-(1, 0, 1, 1, 1, 22, 100, 10, 5000, '欢迎使用AppSocks服务。立刻订购套餐并支付，享受高速科学上网服务。');
+(1, 0, 1, 1, 1, 22, 100, 10, 5000, '欢迎使用AppSocks服务。立刻订购套餐并支付，享受高速科学上网服务');
 
 -- --------------------------------------------------------
 
@@ -111,7 +110,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`uid`, `email`, `nickname`, `password`, `invite`, `actived`, `last_login_time`, `last_login_ip`, `create_time`, `admin`) VALUES
-(1, 'admin@admin.com', 'amdin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 0, 1, '2016-02-24 22:24:13', '0.0.0.0', '2016-02-23 09:54:02', 1);
+(1, 'admin@admin.com', 'amdin', 'MTIzNDU2', 0, 1, '2016-02-27 17:22:06', '0.0.0.0', '2016-02-23 09:54:02', 1);
 
 -- --------------------------------------------------------
 
@@ -121,7 +120,6 @@ INSERT INTO `login` (`uid`, `email`, `nickname`, `password`, `invite`, `actived`
 
 CREATE TABLE `node` (
   `nid` int(11) NOT NULL,
-  `cid` int(11) DEFAULT NULL COMMENT '对应套餐id',
   `name` varchar(128) NOT NULL,
   `server_ip` varchar(128) NOT NULL,
   `domain_name` varchar(30) NOT NULL COMMENT '服务器域名，方便记忆',
@@ -129,7 +127,6 @@ CREATE TABLE `node` (
   `remark` varchar(200) DEFAULT NULL,
   `status` int(2) NOT NULL DEFAULT '1' COMMENT '默认1为可用'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
 
 -- --------------------------------------------------------
 
@@ -145,7 +142,6 @@ CREATE TABLE `orders` (
   `remark` text COMMENT '订单备注',
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '默认1为未处理'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
 
 -- --------------------------------------------------------
 
@@ -164,7 +160,6 @@ CREATE TABLE `order_record` (
   `sid` int(11) DEFAULT NULL COMMENT '开启的服务id'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-
 -- --------------------------------------------------------
 
 --
@@ -182,7 +177,6 @@ CREATE TABLE `user` (
   `enable` int(11) NOT NULL DEFAULT '1',
   `last_get_gift_time` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB AUTO_INCREMENT=5000 DEFAULT CHARSET=utf8;
-
 
 --
 -- Indexes for dumped tables
@@ -255,7 +249,7 @@ ALTER TABLE `combo`
 -- AUTO_INCREMENT for table `config`
 --
 ALTER TABLE `config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `invite`
 --

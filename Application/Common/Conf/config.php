@@ -22,7 +22,6 @@ return array(
 	'DB_DEBUG'  =>  false, // 数据库调试模式 开启后可以记录SQL日志 3.2.3新增
 	// 'SHOW_PAGE_TRACE' =>true,
 	'ADMIN_MARK' => array('root','admin'),
-	'DEFAULT_TIMEZONE'=>'Asia/Shanghai', // 设置默认时区为中国
 	'ERROR_MESSAGE' =>  '页面错误！请稍后再试～',//错误显示信息,非调试模式有效
 	// 'TMPL_ACTION_ERROR'     =>  'Default/error', // 跳转对应的模板文件
 	// 'TMPL_ACTION_SUCCESS'   =>  'Default/success', // 转对应的模板文件

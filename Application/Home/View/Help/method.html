@@ -35,14 +35,14 @@
 
         <div class="collapse navbar-collapse " id="AppSocks">
           <ul class="nav navbar-nav">
-            <li><a href="__APP__/Home/Index/menu">套餐订购</a></li>
-            <li><a href="__APP__/Home/Help/download">客户端下载</a></li>
-            <li><a href="__APP__/Home/Help/method" class="active">使用教程</a></li>
-            <li><a href="__APP__/Home/Help/support">技术支持</a></li>
+            <li><a href="__APP__/Home/Index/menu" target="_self">套餐订购</a></li>
+            <li><a href="__APP__/Home/Help/download" target="_self">客户端下载</a></li>
+            <li><a href="__APP__/Home/Help/method" target="_self"class="active">使用教程</a></li>
+            <li><a href="__APP__/Home/Help/support" target="_self">技术支持</a></li>
             <li>
-              <?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
+              <?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login" target="_self">用户登录</a>'; ?></li>
             <li>
-              <?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe">用户注册</a>'; ?></li>
+              <?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe" target="_self">用户注册</a>'; ?></li>
           </ul>
         </div>
       </div>
@@ -50,17 +50,19 @@
   </div>
   <div class="main container">
     <div class="row">
-      <p>1.订购成功套餐后会得到节点地址、端口、加密方式、密码</p>
-      <div>
-        <p>2.分别填入进安装好的shadowsocks软件（还没有安装？<a href="{:U('Home/Help/download')}">赶紧来</a>）</p>
-        <img src="http://ww1.sinaimg.cn/large/005R1IGWgw1f1bn2nbe85j30ec091mxk.jpg" />
+      <div class="col-md-4">
+        <p class="text-left">1.订购成功套餐后会得到节点地址、端口、加密方式、密码</p>
       </div>
-      <div>
-        <p>3.最后进行配置</p>
-        <img src="http://ww1.sinaimg.cn/large/005R1IGWgw1f1bn4xm8k6j30cg09h752.jpg" alt="">
+      <div class="col-md-4">
+        <p class="text-left">2.分别填入进安装好的shadowsocks软件（还没有安装？<a href="{:U('Home/Help/download')}">赶紧来</a>）</p>
+        <img class="block-center" src="http://ww1.sinaimg.cn/large/005R1IGWgw1f1bn2nbe85j30ec091mxk.jpg" />
       </div>
-      <div>
-        <p>4.打开你的浏览器畅快上网吧</p>
+      <div class="col-md-4">
+        <p class="text-left">3.最后进行配置</p>
+        <img class="block-center" src="http://ww1.sinaimg.cn/large/005R1IGWgw1f1bn4xm8k6j30cg09h752.jpg" alt="">
+      </div>
+      <div class="col-md-4">
+        <p class="text-left">4.打开你的浏览器畅快上网吧 : )</p>
       </div>
     </div>
   </div>
