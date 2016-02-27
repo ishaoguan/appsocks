@@ -1,79 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AppSocks - 科学上网您最好的选择</title>
-    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-    <!-- Bootstrap 文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-    <script src="__PUBLIC__/js/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <!-- 字体文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-    <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/Index/default.css">
-    <link rel="stylesheet" href="__PUBLIC__/css/Index/cart.css">
-</head>
-
-<body>
-  <div class="top-nav">
-      <nav class="navbar navbar-default navbar-fixed-top">
-          <div class="container-fluid">
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#AppSocks" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  </button>
-                  <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">AppSocks</a></div>
-              </div>
-
-              <div class="collapse navbar-collapse " id="AppSocks">
-                  <ul class="nav navbar-nav">
-                      <li><a  href="__APP__/Home/Index/menu">套餐订购</a></li>
-                      <li><a href="__APP__/Home/Help/download">客户端下载</a></li>
-                      <li><a href="__APP__/Home/Help/method">使用教程</a></li>
-                      <li><a href="__APP__/Home/Help/support">技术支持</a></li>
-                      <li><?php echo session('?uid') ? ('<a href="__APP__/Home/User/dashboard">'.session('nickname').'</a>') : '<a href="__APP__/Home/Public/login">用户登录</a>'; ?></li>
-                      <li><?php echo session('?uid') ? '<a href="__APP__/Public/logout">退出</a>' : '<a href="__APP__/Home/Public/registe">用户注册</a>'; ?></li>
-                  </ul>
-              </div>
-          </div>
-      </nav>
-  </div>
-    <div class="main container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron">
-                    <h2>购买清单</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr >
-                                <th>套餐名称</th>
-                                <th>套餐流量/GB</th>
-                                <th>套餐时长/天</th>
-                                <th>套餐费用/RMB</th>
-                                <th>套餐备注</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{$combo['title']}</td>
-                                <td>{$combo['flow'] / 1024}</td>
-                                <td>{$combo['duration']}</td>
-                                <td>{$combo['cost']}</td>
-                                <td>{$combo['remark']}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p>小结：￥{$combo['summary']}</p>
-                </div>
-                <form class="form" action="__APP__/Index/pay" method="post">
-                    <?php echo session('?uid') ?
+<extend name="Public:base" />
+<block name="customer-css">
+  <link rel="stylesheet" href="__PUBLIC__/css/Index/cart.css">
+</block>
+<block name="main">
+  <div class="main container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="jumbotron">
+          <h2>购买清单</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>套餐名称</th>
+                <th>套餐流量/GB</th>
+                <th>套餐时长/天</th>
+                <th>套餐费用/RMB</th>
+                <th>套餐备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{$combo['title']}</td>
+                <td>{$combo['flow'] / 1024}</td>
+                <td>{$combo['duration']}</td>
+                <td>{$combo['cost']}</td>
+                <td>{$combo['remark']}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="summary">小结：￥{$combo['summary']}</p>
+        </div>
+        <form class="form" action="__APP__/Index/pay" method="post">
+          <?php echo session('?uid') ?
                     '' : '<div class="row">
                         <div class="col-md-3">
                             <div class="form-group">
@@ -102,26 +60,27 @@
                     </div>';
                     ?>
 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <input type="hidden" name="cid" value="{$combo['cid']}">
-                                <label for="remark">额外备注</label>
-                                <input type="textarea" class="form-control" name="remark" maxlength="50" id="remark" placeholder="如有特殊要求可在此留言">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-offset-10">
-                            <?php echo session('?uid') ? '' : '<a href="__APP__/Public/login">你已经有帐号？</a>';?>
-                            <button type="submit" class="btn btn-success">确认订购</button>
-                        </div>
-                    </div>
-                </form>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="hidden" name="cid" value="{$combo['cid']}">
+                <label for="remark">额外备注</label>
+                <input type="textarea" class="form-control" name="remark" maxlength="50" id="remark" placeholder="如有特殊要求可在此留言">
+              </div>
             </div>
-        </div>
+          </div>
+          <div class="row">
+            <div class="col-md-offset-10 col-xs-12">
+              <?php echo session('?uid') ? '' : '<a href="__APP__/Public/login">你已经有帐号？</a>';?>
+              <button type="submit" class="btn btn-success btn-submit">确认订购</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-
-</body>
-<import type='js' file="js.verifyPwd" />
-</html>
+  </div>
+</block>
+<block name="footer"></block>
+<block name="customer-js">
+  <import type='js' file="js.verifyPwd" />
+</block>

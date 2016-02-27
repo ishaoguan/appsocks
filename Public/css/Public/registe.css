@@ -5,9 +5,6 @@
 	width: 100%;
 	padding: 50px;
 }
-.space-box {
-	height: 100px;
-}
 .log-pannel {
 	padding: 50px;
 }
@@ -20,4 +17,14 @@
 }
 .registe-btn {
 	width: 100px;
+}
+@media (min-width:768px) {
+	.log-pannel {
+		padding-top: 35%;
+	}
+}
+@media (max-width:768px) {
+	.log-pannel {
+		padding: 10px 0 10px 0;
+	}
 }

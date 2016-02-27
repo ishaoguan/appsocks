@@ -1,6 +1,3 @@
-.main {
-  margin-top: 10%;
-}
 .main p {
   font-size: 2em!important;
 }
@@ -10,8 +7,11 @@
   }
 }
 @media (min-width:768px) {
+  body {
+    padding-top: 100px;
+  }
   .main li {
-    padding: 1% 0 1% 5%;
+    padding: 1% 0 1% 4%;
   }
 }
 @media (max-width:768px) {
