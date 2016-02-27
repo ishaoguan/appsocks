@@ -50,18 +50,24 @@
     font-size: 2em;
   }
 }
-@media (min-width:1400px) {
-  .item {
-    max-height: 800px !important;
-    overflow: hidden;
-  }
-}
 @media (max-width:800px) {
   body {
     margin-top: 10%;
   }
   .item {
     max-height: 100% !important;
+    overflow: hidden;
+  }
+}
+@media (min-width:900px) {
+  .item {
+    max-height: 550px !important;
+    overflow: hidden;
+  }
+}
+@media (min-width:1400px) {
+  .item {
+    max-height: 800px !important;
     overflow: hidden;
   }
 }
