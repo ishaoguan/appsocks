@@ -59,7 +59,7 @@ class PublicController extends Controller {
 		$res = M('OrderRecord')->where(array('success' => 1))->field('sid,expire_time')->select();
 		$Server = M('User');
 		for ($i=0; $i < count($res); $i++) {
-			if($res[$i]['expire_time'] > date('y-m-d h:i:s')) {
+			if($res[$i]['expire_time'] < date('y-m-d h:i:s')) {
 				$Server->enable = 0;
 				$Server->switch = 0;
 				$Server->where(array('port' => $res[$i]['sid'] ))->save();
