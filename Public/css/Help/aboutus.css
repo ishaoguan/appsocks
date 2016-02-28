@@ -1,0 +1,11 @@
+@media (max-width:768px) {
+  body {
+    padding-top: 30%;
+  }
+}
+
+@media (min-width:768px) {
+  body {
+    padding-top: 18%;
+  }
+}

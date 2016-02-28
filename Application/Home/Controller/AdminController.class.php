@@ -64,7 +64,7 @@ class AdminController extends AuthorizedController {
 		$this->display();
 	}
 	public function configManage() {
-		$config_data = M('Config')->where(array('id' => 1))->select();
+		$config_data = M('Config')->where(array('id' => 1))->find();
 		$this->assign('config_data', $config_data);
 		$this->display();
 	}

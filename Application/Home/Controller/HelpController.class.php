@@ -11,4 +11,7 @@ class HelpController extends Controller {
 	public function support() {
 		$this->display();
 	}
+	public function aboutus() {
+		$this->display();
+	}
 }

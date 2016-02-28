@@ -139,4 +139,21 @@ class AjaxController extends AuthorizedController {
     		$this->assign('page',$show);// 赋值分页输出
     		$this->display('Admin:billManage');
     }
+    public function editConfig() {
+      $config_data['announcement'] = I('post.announcement');
+      $config_data['signin'] = I('post.signin');
+      $config_data['signin_interval'] = I('post.signin_interval');
+      $config_data['signin_max'] = I('post.signin_max');
+      $config_data['signin_min'] = I('post.signin_min');
+      $config_data['invite'] = I('post.invite');
+      if(checkArrayIsNull($config_data)) {
+        $this->error('配置不能为空');
+      }
+      $res = M('Config')->where(array('id' => 1))->save($config_data);
+      if ($res) {
+        $this->success('系统配置修改成功');
+      } else {
+        $this->error('系统配置修改失败');
+      }
+    }
 }

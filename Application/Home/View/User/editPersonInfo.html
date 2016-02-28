@@ -2,41 +2,47 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>AppSocks - 科学上网您最好的选择</title>
-    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-    <!-- Bootstrap 文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-    <script src="__PUBLIC__/js/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <!-- 字体文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-    <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/User/getPersonInfo.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AppSocks - 科学上网您最好的选择</title>
+  <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+  <!-- Bootstrap 文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+  <script src="__PUBLIC__/js/jquery.min.js"></script>
+  <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+  <!-- 字体文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+  <!-- 自定义css文件 -->
+  <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-xs-12">
-                <form action="{:U('Home/User/editPersonInfo')}" method="post">
-                    <div class="form-group">
-                        <label for="old-password">原始密码：</label>
-                        <input type="password" class="form-control" name="old_password" id="old-password" placeholder="必填" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="new-password">新密码：</label>
-                        <input type="password" class="form-control" name="new_password" id="password" placeholder="确保密码高强度" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="re-new-password">确认密码：</label>
-                        <input type="password" class="form-control" id="re-password" placeholder="确保密码高强度" required>
-                    </div>
-                    <button type="submit" class="btn btn-warning">修改</button>
-                </form>
-            </div>
-        </div>
+  <div class="info">
+    <span>修改密码</span>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-xs-12">
+        <form action="{:U('Home/User/editPersonInfo')}" method="post">
+          <div class="form-group">
+            <label for="old-password">原始密码：</label>
+            <input type="password" class="form-control" name="old_password" id="old-password" placeholder="必填" required>
+          </div>
+          <div class="form-group">
+            <label for="new-password">新密码：</label>
+            <input type="password" class="form-control" name="new_password" id="password" placeholder="确保密码高强度" required>
+          </div>
+          <div class="form-group">
+            <label for="re-new-password">确认密码：</label>
+            <input type="password" class="form-control" id="re-password" placeholder="确保密码高强度" required>
+          </div>
+          <button type="submit" class="btn btn-warning">修改</button>
+        </form>
+      </div>
     </div>
+  </div>
 </body>
 <import type='js' file="js.verifyPwd" />
+
 </html>
