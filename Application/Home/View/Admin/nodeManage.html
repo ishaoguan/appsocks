@@ -1,115 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-		<title>AppSocks - 科学上网您最好的选择</title>
-		<link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-		<!-- Bootstrap 文件 -->
-		<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-		<script src="__PUBLIC__/js/jquery.min.js"></script>
-		<script src="__PUBLIC__/js/bootstrap.min.js"></script>
-		<!-- 字体文件 -->
-		<link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-		<!-- 自定义css文件 -->
-		<link rel="stylesheet" href="__PUBLIC__/css/Admin/nodeManage.css">
-</head>
-<body>
-		<div class="info">
-						<span>节点管理</span>
-						<a role="button" class="btn btn-success add-node" data-toggle="modal" data-target="#node_info_modal">添加</a>
-		</div>
-		<table class="table table-hover">
-				<thead>
-						<tr>
-								<th>ID</th>
-								<th>节点名称</th>
-								<th>服务器IP地址</th>
-								<th>服务器域名地址</th>
-								<th>加密方式</th>
-								<th>备注说明</th>
-								<th>是否可用</th>
-						</tr>
-				</thead>
-				<tbody>
-						<volist name="node_data" id="node">
-								<tr>
-										<td>{$i}</td>
-										<td>{$node.name}</td>
-										<td>{$node.server_ip}</td>
-										<td>{$node.domain_name}</td>
-										<td>{$node.method}</td>
-										<td>{$node.remark}</td>
-										<td>
-											<select class="node-status" name="node_status" data-nid="{$node.nid}">
-												<option value="1" <?php echo $node['status'] == 1 ? 'selected="selected"' : '';?>>可用</option>
-												<option value="0" <?php echo $node['status'] == 0 ? 'selected="selected"' : '';?>>停用</option>
-											</select>
-										</td>
-								</tr>
-						</volist>
-				</tbody>
-		</table>
+    <head>
+        <meta charset="UTF-8">
+        <title>AppSocks - 科学上网您最好的选择</title>
+        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+        <!-- Bootstrap 文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+        <script src="__PUBLIC__/js/jquery.min.js"></script>
+        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+        <!-- 字体文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+        <!-- 自定义css文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/Admin/nodeManage.css">
+    </head>
+    <body>
+        <div class="info">
+            <span>节点管理</span>
+            <a role="button" class="btn btn-success add-node" data-toggle="modal" data-target="#node_info_modal">添加</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>节点名称</th>
+                        <th>服务器IP地址</th>
+                        <th>服务器域名地址</th>
+                        <th>加密方式</th>
+                        <th>备注说明</th>
+                        <th>是否可用</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="node_data" id="node">
+                        <tr>
+                            <td>{$i}</td>
+                            <td>{$node.name}</td>
+                            <td>{$node.server_ip}</td>
+                            <td>{$node.domain_name}</td>
+                            <td>{$node.method}</td>
+                            <td>{$node.remark}</td>
+                            <td>
+                                <select class="node-status" name="node_status" data-nid="{$node.nid}">
+                                    <option value="1" <?php echo $node['status'] == 1 ? 'selected="selected"' : '';?>>可用</option>
+                                    <option value="0" <?php echo $node['status'] == 0 ? 'selected="selected"' : '';?>>停用</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </body>
 
-</body>
-
-<!-- Modal -->
-<div class="modal fade" id="node_info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-		<div class="modal-dialog" role="document">
-				<div class="modal-content">
-						<form class="form-horizontal" action="{:U('Home/Ajax/addnode')}" method="post">
-								<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="myModalLabel">添加节点</h4>
-								</div>
-								<div class="modal-body">
-										<!-- <input type="hidden" name="cid" value="" id="node-id"> -->
-										<div class="form-group">
-												<label for="node-name" class="col-sm-3 control-label">节点名称</label>
-												<div class="col-sm-9">
-														<input type="text" class="form-control" name="node_name" id="node-name" required>
-												</div>
-										</div>
-										<div class="form-group">
-												<label for="node-server-ip" class="col-sm-3 control-label">服务器IP</label>
-												<div class="col-sm-9">
-														<input type="text" class="form-control" name="node_server_ip" id="node-server-ip" required>
-												</div>
-										</div>
-										<div class="form-group">
-												<label for="node-domain-name" class="col-sm-3 control-label">服务器域名</label>
-												<div class="col-sm-9">
-														<input type="text" class="form-control" name="node_domain_name" id="node-domain-name" min="0" required>
-												</div>
-										</div>
-										<div class="form-group">
-												<label for="node-method" class="col-sm-3 control-label">加密方式</label>
-												<div class="col-sm-9">
-														<input type="text" class="form-control" name="node_method" id="node-method" required>
-												</div>
-										</div>
-										<div class="form-group">
-												<label for="node-remark" class="col-sm-3 control-label">备注说明</label>
-												<div class="col-sm-9">
-														<input type="text" class="form-control" name="node_remark" id="node-remark">
-												</div>
-										</div>
-										<div class="form-group">
-												<label class="col-sm-3 control-label">是否启用</label>
-												<div class="col-sm-9">
-														<select class="form-control" name="node_status" id="node-status">
-																<option value="1" selected="selected">启用</option>
-																<option value="0">停用</option>
-														</select>
-												</div>
-										</div>
-								</div>
-								<div class="modal-footer">
-										<button type="button" class="btn" data-dismiss="modal">取消</button>
-										<button type="submit" class="btn btn-success">确定</button>
-								</div>
-						</form>
-				</div>
-		</div>
-</div>
-<import type='js' file="js.nodeManage" />
+    <!-- Modal -->
+    <div class="modal fade" id="node_info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" action="{:U('Home/Ajax/addnode')}" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">添加节点</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <input type="hidden" name="cid" value="" id="node-id"> -->
+                        <div class="form-group">
+                            <label for="node-name" class="col-sm-3 control-label">节点名称</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="node_name" id="node-name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="node-server-ip" class="col-sm-3 control-label">服务器IP</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="node_server_ip" id="node-server-ip" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="node-domain-name" class="col-sm-3 control-label">服务器域名</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="node_domain_name" id="node-domain-name" min="0" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="node-method" class="col-sm-3 control-label">加密方式</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="node_method" id="node-method" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="node-remark" class="col-sm-3 control-label">备注说明</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="node_remark" id="node-remark">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否启用</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="node_status" id="node-status">
+                                    <option value="1" selected="selected">启用</option>
+                                    <option value="0">停用</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-success">确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <import type='js' file="js.nodeManage"/>
 </html>

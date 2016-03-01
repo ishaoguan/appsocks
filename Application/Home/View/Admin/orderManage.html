@@ -1,54 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-    <title>AppSocks - 科学上网您最好的选择</title>
-    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-    <!-- Bootstrap 文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-    <script src="__PUBLIC__/js/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <!-- 字体文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-    <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/Admin/orderManage.css">
-</head>
-<body>
-    <div class="info">
+    <head>
+        <meta charset="UTF-8">
+        <title>AppSocks - 科学上网您最好的选择</title>
+        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+        <!-- Bootstrap 文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+        <script src="__PUBLIC__/js/jquery.min.js"></script>
+        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+        <!-- 字体文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+        <!-- 自定义css文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/Admin/orderManage.css">
+    </head>
+    <body>
+        <div class="info">
             <span>订单审批</span>
             <!-- <button class="btn btn-success add-node">添加</button> -->
-    </div>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>用户昵称</th>
-                <th>套餐名称</th>
-                <th>申请时间</th>
-                <th>套餐时长</th>
-                <th>需交费用</th>
-                <th>备注说明</th>
-                <th>操作</th>
-            </tr>
-        </thead>
-        <tbody>
-            <volist name="orders_data" id="order">
-                <tr>
-                    <td>{$i}</td>
-                    <td>{$order.nickname}</td>
-                    <td>{$order.title}</td>
-                    <td>{$order.submit_time}</td>
-                    <td>{$order.duration} 天</td>
-                    <td>{$order.cost} RMB</td>
-                    <td>{$order.remark}</td>
-                    <td>
-                        <a role="button" href="{:U('Home/Ajax/closeOrder', array('oid' => $order['oid']))}" class="btn btn-danger choose">拒绝</a>
-                        <a role="button" href="{:U('Home/Ajax/openServer', array('oid' => $order['oid'], 'uid' => $order['uid']))}" class="btn btn-success right-block choose">开通</a>
-                    </td>
-                </tr>
-            </volist>
-        </tbody>
-    </table>
-
-</body>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>用户昵称</th>
+                        <th>套餐名称</th>
+                        <th>申请时间</th>
+                        <th>套餐时长</th>
+                        <th>需交费用</th>
+                        <th>备注说明</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="orders_data" id="order">
+                        <tr>
+                            <td>{$i}</td>
+                            <td>{$order.nickname}</td>
+                            <td>{$order.title}</td>
+                            <td>{$order.submit_time}</td>
+                            <td>{$order.duration} 天</td>
+                            <td>{$order.cost} RMB</td>
+                            <td>{$order.remark}</td>
+                            <td>
+                                <a role="button" href="{:U('Home/Ajax/closeOrder', array('oid' => $order['oid']))}" class="btn btn-danger choose">拒绝</a>
+                                <a role="button" href="{:U('Home/Ajax/openServer', array('oid' => $order['oid'], 'uid' => $order['uid']))}" class="btn btn-success right-block choose">开通</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>

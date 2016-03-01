@@ -1,32 +1,76 @@
-<extend name="Public:base" />
+<extend name="Public:base"/>
 <block name="customer-css">
-  <link rel="stylesheet" href="__PUBLIC__/css/Public/dashboard.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/Public/dashboard.css">
 </block>
 <block name="main">
-  <div class="main container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
-        <div class="sidebar-nav">
-          <ul class="nav nav-pills nav-stacked main-menu">
-            <li><a href="{:U('Home/Admin/statistics')}" target="mainiframe"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 站点统计</a></li>
-            <li><a href="{:U('Home/Admin/orderManage')}" target="mainiframe"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 订单审批</a></li>
-            <li><a href="{:U('Home/Admin/userManage')}" target="mainiframe"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 用户管理</a></li>
-            <li><a href="{:U('Home/Admin/comboManage')}" target="mainiframe"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span> 套餐管理</a></li>
-            <li><a href="{:U('Home/Admin/nodeManage')}" target="mainiframe"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 节点管理</a></li>
-            <li><a href="{:U('Home/Admin/inviteManage')}" target="mainiframe"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> 邀请管理</a></li>
-            <li><a href="{:U('Home/Admin/billManage')}" target="mainiframe"><span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 账单审核</a></li>
-            <li><a href="{:U('Home/Admin/configManage')}" target="mainiframe"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 系统配置</a></li>
-            <li><a href="{:U('Home/User/dashboard')}" target="_self"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 用户中心</a></li>
-          </ul>
+    <div class="main container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                <div class="sidebar-nav hamburger">
+                    <input type='checkbox' id='sideToggle'>
+                    <aside>
+                        <ul class="nav nav-pills nav-stacked main-menu">
+                            <li>
+                                <a href="{:U('Home/Admin/statistics')}" target="mainiframe">
+                                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                                    站点统计</a>
+                            </li>
+                            <li>
+                                <a href="{:U('Home/Admin/orderManage')}" target="mainiframe">
+                                    <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                                    订单审批</a>
+                            </li>
+                            <li>
+                                <a href="{:U('Home/Admin/userManage')}" target="mainiframe">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                    用户管理</a>
+                            </li>
+                            <li>
+                                <a href="{:U('Home/Admin/comboManage')}" target="mainiframe">
+                                    <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+                                    套餐管理</a>
+                            </li>
+                            <li>
+                                <a href="{:U('Home/Admin/nodeManage')}" target="mainiframe">
+                                    <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                                    节点管理</a>
+                            </li>
+                            <li>
+                                <a href="{:U('Home/Admin/inviteManage')}" target="mainiframe">
+                                    <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                                    邀请管理</a>
+                            </li>
+                            <li>
+                                <a href="{:U('Home/Admin/billManage')}" target="mainiframe">
+                                    <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                                    账单审核</a>
+                            </li>
+                            <li>
+                                <a href="{:U('Home/Admin/configManage')}" target="mainiframe">
+                                    <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                    系统配置</a>
+                            </li>
+                            <li>
+                                <a href="{:U('Home/User/dashboard')}" target="_self">
+                                    <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                                    用户中心</a>
+                            </li>
+                        </ul>
+                    </aside>
+                    <div id='wrap'>
+                        <label id='sideMenuControl' for='sideToggle'>
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" id="content">
+                <iframe class="embed-responsive-item" id="iframe" name="mainiframe" src="{:U('Admin/statistics')}"></iframe>
+            </div>
         </div>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10" id="content">
-        <iframe class="embed-responsive-item" id="iframe" name="mainiframe" src="{:U('Admin/statistics')}"></iframe>
-      </div>
     </div>
-  </div>
 </block>
 <block name="footer"></block>
 <block name="customer-js">
-  <script type="text/javascript" src="__PUBLIC__/js/iframe.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/iframe.js"></script>
 </block>
