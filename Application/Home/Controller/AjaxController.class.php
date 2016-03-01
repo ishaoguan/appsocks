@@ -5,7 +5,6 @@ class AjaxController extends AdminAuthorizedController {
     public function getPersonOrderRecord() {
     	$uid = I('post.uid');
     	$record_data = D('OrderRecordComboView')->where(array('uid' => $uid))->select();
-    	// var_dump($record_data);
     	$this->ajaxReturn($record_data);
     }
     public function getCombo() {

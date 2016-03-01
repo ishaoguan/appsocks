@@ -8,6 +8,5 @@ var ifr = document.getElementById('iframe')
 ifr.onload = function() {
   var iDoc = ifr.contentDocument || ifr.document
   var height = calcPageHeight(iDoc)
-  console.log(height)
   ifr.style.height = height + 'px'
 }
