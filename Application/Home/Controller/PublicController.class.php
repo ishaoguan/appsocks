@@ -33,7 +33,6 @@ class PublicController extends Controller {
 		$user['password'] = base64_encode(I('post.password'));
 		$user['last_login_ip'] = get_client_ip();
 		$user['last_login_time'] = date('Y-m-d H:i:s');
-		$user['actived'] = 1;
 		if (checkArrayIsNull($user)) {
 			$this->error('注册错误，事情绝对没有那没简单');
 		}

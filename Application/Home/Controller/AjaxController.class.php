@@ -1,7 +1,7 @@
 <?php
 namespace Home\Controller;
 use Think\Controller;
-class AjaxController extends AuthorizedController {
+class AjaxController extends AdminAuthorizedController {
     public function getPersonOrderRecord() {
     	$uid = I('post.uid');
     	$record_data = D('OrderRecordComboView')->where(array('uid' => $uid))->select();
@@ -111,12 +111,16 @@ class AjaxController extends AuthorizedController {
         $server_data['u'] = 0;
         $server_data['d'] = 0;
         $port = M('User')->data($server_data)->add();
+        // add the port to the tabel order_record
         $OrderRecord = M('OrderRecord');
         if (!$port) {
             $this->error('开通失败');
         } else {
             $OrderRecord->sid = $port;
             $OrderRecord->where(array('oid' => $orid))->save();
+            // active the user account
+            $actived['actived'] = 1;
+            M('Login')->where(array('uid' => $uid))->save($actived);
             $this->success('开通成功');
         }
     }

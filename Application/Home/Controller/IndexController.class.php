@@ -23,7 +23,6 @@ class IndexController extends Controller {
             $user_data['nickname'] = I('post.nickname');
             $user_data['email'] = I('post.email');
             $user_data['password'] = base64_encode(I('post.password'));
-            $user_data['actived'] = 1;
             $user_data['last_login_ip'] = get_client_ip();
             if (checkArrayIsNull($user_data)) {
               $this->error('注册失败，事情绝对没有那么简单');

@@ -7,7 +7,7 @@ class AuthorizedController extends Controller {
         if(session('?uid')) {
         	return true;
         } else {
-            // $this->error('请先登录', U('Home/Public/login'));
+            $this->error('请先登录', U('Home/Public/login'));
         }
    }
 }
