@@ -9,29 +9,18 @@ class UserController extends AuthorizedController {
 		$uid = session('uid');
 		// get the announcement
 		$user_center_data['announcement'] = M('Config')->where(array('id' => 1))->getField('announcement');
-		// get the available order record
-		$query_condition = array('uid' => $uid, 'success' => 1, 'expire_time' => array('gt', date('y-m-d h:i:s')));
-		$available_order_record = D('OrderRecordComboView')->where($query_condition)->field('title,sid,nid,expire_time')->select();
-		$Server = M('User');
-		$Node = M('Node');
-		for ($i=0; $i < count($available_order_record); $i++) {
-			$server_data[$i] = $Server->where(array('port' => $available_order_record[$i]['sid']))->find();
-			$server_data[$i]['used_flow'] = $server_data[$i]['u'] + $server_data[$i]['d'];
-			$server_data[$i]['expire_time'] = $available_order_record[$i]['expire_time'];
-			$nid = $available_order_record[$i]['nid'];
-			$node_data = $Node->where(array('nid' => $nid, 'status' => 1))->find();
-			$server_data[$i]['method'] = $node_data['method'];
-			$server_data[$i]['domain_name'] = $node_data['domain_name'];
-		}
 
-		$num =	M('Orders')->where(array('uid' => $uid, 'status' => 1))->count();
+		// get the available order
+		$num =	M('OrderRecord')->where(array('uid' => $uid, 'success' => 0, 'status' => 1, 'success' => 0))->count();
 		if ($num) {
 			$user_center_data['server_hint'] = '有'.$num.'个套餐待支付，加入售后群 <strong>513222519</strong> 	与管理员联系转账';
 		} else {
 			$user_center_data['server_hint'] = null;
 		}
-
-		$user_center_data['server_data'] = $server_data;
+		$query_condition = array('uid' => $uid, 'success' => 1, 'status' => 0, 'expire_time' => array('gt', date('y-m-d h:i:s')));
+		$available_order = D('OrderRecordComboNodeUserView')->where($query_condition)->field('domain_name,method,passwd,expire_time,port,u,d,transfer_enable')->select();
+		$user_center_data['server_data'] = $available_order;
+		
 		$this->assign('user_center_data', $user_center_data);
 		$this->display();
 	}

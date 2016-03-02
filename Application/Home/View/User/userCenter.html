@@ -1,73 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>AppSocks - 科学上网您最好的选择</title>
-	<link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-	<!-- Bootstrap 文件 -->
-	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-	<script src="__PUBLIC__/js/jquery.min.js"></script>
-	<script src="__PUBLIC__/js/bootstrap.min.js"></script>
-	<!-- 字体文件 -->
-	<link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-	<!-- 自定义css文件 -->
-	<link rel="stylesheet" href="__PUBLIC__/css/User/userCenter.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>AppSocks - 科学上网您最好的选择</title>
+        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+        <!-- Bootstrap 文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+        <script src="__PUBLIC__/js/jquery.min.js"></script>
+        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+        <!-- 字体文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+        <!-- 自定义css文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/User/userCenter.css">
+    </head>
 
-<body>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-6 col-xs-12">
-				<div class="panel panel-info">
-					<div class="panel-heading">用户公告</div>
-					<div class="panel-body">{$user_center_data.announcement}</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-xs-12">
-				<div class="panel panel-success">
-					<div class="panel-heading">可用服务</div>
-					<div class="panel-body">
-						<?php
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">用户公告</div>
+                        <div class="panel-body">{$user_center_data.announcement}</div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">可用服务</div>
+                        <div class="panel-body">
+                        <?php
 														if($user_center_data['server_hint'] || $user_center_data['server_data']) {
 															echo ($user_center_data['server_hint'].'<br>');
 														} else {
 															echo '你还未订购任何套餐喔，<a href="__APP__/Home/Index/menu" target="_blank">马上去订购!</a>';
 														}
 												?>
-							<volist name="user_center_data['server_data']" id="server_data">
-								<table class="table table-bordered server-info">
-									<thead>
-										<tr>
-											<th>可用节点</th>
-											<th>连接端口</th>
-											<th>连接密码</th>
-											<th>加密方式</th>
-											<th>到期时间</th>
-											<th>流量情况</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>{$server_data['domain_name']}</td>
-											<td>{$server_data['port']}</td>
-											<td>{$server_data['passwd']}</td>
-											<td>{$server_data['method']}</td>
-											<td>{$server_data['expire_time']}</td>
-											<td>
-												<?php echo round($server_data['used_flow']/1073741824, 2).'GB / '.round($server_data['transfer_enable']/1073741824, 2).'GB'; ?>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</volist>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</body>
+                            <volist name="user_center_data['server_data']" id="server_data">
+                                <table class="table table-bordered server-info">
+                                    <thead>
+                                        <tr>
+                                            <th>可用节点</th>
+                                            <th>连接端口</th>
+                                            <th>连接密码</th>
+                                            <th>加密方式</th>
+                                            <th>到期时间</th>
+                                            <th>流量情况</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>{$server_data['domain_name']}</td>
+                                            <td>{$server_data['port']}</td>
+                                            <td>{$server_data['passwd']}</td>
+                                            <td>{$server_data['method']}</td>
+                                            <td>{$server_data['expire_time']}</td>
+                                            <td>
+                                                <?php echo round(($server_data['u']+$server_data['d'])/1073741824, 2).'GB / '.round($server_data['transfer_enable']/1073741824, 2).'GB'; ?>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </volist>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 
 </html>

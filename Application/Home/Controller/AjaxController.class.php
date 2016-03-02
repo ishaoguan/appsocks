@@ -8,12 +8,12 @@ class AjaxController extends AdminAuthorizedController {
     	$this->ajaxReturn($record_data);
     }
     public function getCombo() {
-             $cid = I('post.cid', 'int');
+        $cid = I('post.cid', 'int');
     	$combo_data = M('Combo')->where(array('cid' => $cid))->find();
     	$this->ajaxReturn($combo_data);
     }
     public function addCombo() {
-             $combo['title'] = I('post.combo_title', 'Null', 'string');
+        $combo['title'] = I('post.combo_title', 'Null', 'string');
     	$combo['nid'] = I('post.combo_node', 1, 'int');
     	$combo['flow'] = I('post.combo_flow', 5, 'int') * 1024;
     	$combo['duration'] = I('post.combo_duration', 30, 'int');
@@ -86,29 +86,21 @@ class AjaxController extends AdminAuthorizedController {
     public function OpenServer() {
         $oid = I('get.oid');
         $uid = I('get.uid');
-        // mark the record as hvae read
-        $order_data['status'] = 0;
-        $res = M('Orders')->where(array('oid' => $oid))->save($order_data);
-        if (!$res) {
-            $this->error('开通出错');
-        }
-        // add to the order record
-        unset($order_data);
-        $order_data = D('OrdersComboView')->where(array('oid' => $oid))->find();
-        $order_record['uid'] = $uid;
-        $order_record['cid'] = $order_data['cid'];
+        // mark the record as hvae read and update the status
         $order_record['purchase_time'] = date('Y-m-d H:i:s');
         $order_record['expire_time'] = date('Y-m-d H:i:s', strtotime(date('y-m-d h:i:s')) + $order_data['duration']*86400);
-        $order_record['cost'] = $order_data['cost'];
-        $orid = M('OrderRecord')->data($order_record)->add();
-        if (!$orid) {
+        $order_record['success'] = 1;
+        $order_record['status'] = 0;
+        $res = M('OrderRecord')->where(array('oid' => $oid))->save($order_record);
+        if (!$res) {
             $this->error('开通失败');
         }
         // open the server
+        $flow = D('OrderRecordComboView')->where(array('oid' => $oid))->getField('flow');
         $server_data['passwd'] = rand(100000, 999999);
-        $server_data['transfer_enable'] = $order_data['flow']*1024*1024;
         $server_data['u'] = 0;
         $server_data['d'] = 0;
+        $server_data['transfer_enable'] = $flow*1024*1024;
         $port = M('User')->data($server_data)->add();
         // add the port to the tabel order_record
         $OrderRecord = M('OrderRecord');
@@ -116,7 +108,7 @@ class AjaxController extends AdminAuthorizedController {
             $this->error('开通失败');
         } else {
             $OrderRecord->sid = $port;
-            $OrderRecord->where(array('oid' => $orid))->save();
+            $OrderRecord->where(array('oid' => $oid))->save();
             // active the user account
             $actived['actived'] = 1;
             M('Login')->where(array('uid' => $uid))->save($actived);
@@ -141,6 +133,30 @@ class AjaxController extends AdminAuthorizedController {
     		$this->assign('bill_data',$bill_data);// 赋值数据集
     		$this->assign('page',$show);// 赋值分页输出
     		$this->display('Admin:billManage');
+    }
+    public function addDiscount() {
+        $discount_data['discount'] = I('post.discount_discount');
+        $discount_data['remain'] = I('post.discount_remain');
+        $discount_data['remark'] = I('post.discount_remark');
+        $discount_data['create_time'] = date('Y-m-d H:i:s');
+        $discount_data['code'] = sha1(date('Y-m-d H:i:s'));
+        $discount_data['status'] = I('post.discount_status');
+        $res = M('DiscountCode')->add($discount_data);
+        if ($res) {
+            $this->success('添加成功');
+        } else {
+            $this->error('添加失败');
+        }
+    }
+    public function editDiscountStatus() {
+        $did = I('post.did');
+        $data['status'] = I('post.status');
+        $res = M('DiscountCode')->where(array('did' => $did))->save($data);
+        if ($res) {
+            $this->ajaxReturn($res);
+        } else {
+            $this->ajaxReturn('502');
+        }
     }
     public function editConfig() {
       $config_data['announcement'] = I('post.announcement');

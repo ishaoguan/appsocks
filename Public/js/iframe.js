@@ -8,5 +8,10 @@ var ifr = document.getElementById('iframe')
 ifr.onload = function() {
   var iDoc = ifr.contentDocument || ifr.document
   var height = calcPageHeight(iDoc)
+  if ($('.modal')) {
+      if (height < 400) {
+          height += 350
+      }
+  }
   ifr.style.height = height + 'px'
 }

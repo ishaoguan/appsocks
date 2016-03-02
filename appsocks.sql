@@ -60,6 +60,22 @@ INSERT INTO `config` (`id`, `init_flow`, `invite`, `registe`, `signin`, `signin_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `discount_code`
+--
+
+CREATE TABLE `discount_code` (
+  `did` int(11) NOT NULL COMMENT 'id',
+  `code` char(40) NOT NULL COMMENT '优惠码',
+  `discount` float NOT NULL COMMENT '折扣',
+  `remain` int(11) NOT NULL COMMENT '剩余可用数目',
+  `remark` varchar(200) DEFAULT NULL COMMENT '备注说明',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '可用状态'
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `invite`
 --
 
@@ -131,21 +147,6 @@ CREATE TABLE `node` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
---
-
-CREATE TABLE `orders` (
-  `oid` int(11) NOT NULL,
-  `uid` int(11) NOT NULL COMMENT '用户id',
-  `cid` int(11) NOT NULL,
-  `submit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '提交订单时间',
-  `remark` text COMMENT '订单备注',
-  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '默认1为未处理'
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `order_record`
 --
 
@@ -153,10 +154,14 @@ CREATE TABLE `order_record` (
   `oid` int(11) NOT NULL,
   `uid` int(11) NOT NULL COMMENT '用户id',
   `cid` int(11) NOT NULL COMMENT '套餐id',
-  `purchase_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '购买时间',
-  `expire_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '到期时间',
+  `submit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '提交时间',
+  `purchase_time` timestamp NULL DEFAULT NULL COMMENT '购买时间',
+  `expire_time` timestamp NULL DEFAULT NULL COMMENT '到期时间',
+  `discount` float NOT NULL DEFAULT '1' COMMENT '折扣',
   `cost` int(11) NOT NULL COMMENT '费用',
-  `success` tinyint(4) NOT NULL DEFAULT '1' COMMENT '是否购买成功',
+  `remark` text COMMENT '订单备注',
+  `success` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否购买成功',
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '审核状态',
   `sid` int(11) DEFAULT NULL COMMENT '开启的服务id'
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -195,6 +200,12 @@ ALTER TABLE `config`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `discount_code`
+--
+ALTER TABLE `discount_code`
+  ADD PRIMARY KEY (`did`);
+
+--
 -- Indexes for table `invite`
 --
 ALTER TABLE `invite`
@@ -218,11 +229,6 @@ ALTER TABLE `login`
 ALTER TABLE `node`
   ADD PRIMARY KEY (`nid`);
 
---
--- Indexes for table `orders`
---
-ALTER TABLE `orders`
-  ADD PRIMARY KEY (`oid`);
 
 --
 -- Indexes for table `order_record`
@@ -251,6 +257,11 @@ ALTER TABLE `combo`
 ALTER TABLE `config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `discount_code`
+--
+ALTER TABLE `discount_code`
+MODIFY `did` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id',AUTO_INCREMENT=1;
+--
 -- AUTO_INCREMENT for table `invite`
 --
 ALTER TABLE `invite`
@@ -270,11 +281,6 @@ ALTER TABLE `login`
 --
 ALTER TABLE `node`
   MODIFY `nid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
---
--- AUTO_INCREMENT for table `orders`
---
-ALTER TABLE `orders`
-  MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `order_record`
 --

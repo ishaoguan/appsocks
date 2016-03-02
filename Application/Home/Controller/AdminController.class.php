@@ -18,10 +18,11 @@ class AdminController extends AdminAuthorizedController {
 		$this->display();
 	}
 	public function orderManage() {
-		$orders_data = D('OrdersComboView')->where(array('status' => 1))->select();
+		$orders_data = D('OrderRecordComboView')->where(array('status' => 1, 'success' => 0))->select();
 		$User = M('Login');
 		for ($i=0; $i < count($orders_data); $i++) {
 			$orders_data[$i]['nickname'] = $User->where(array('uid' => $orders_data[$i]['uid']))->getField('nickname');
+			$orders_data[$i]['email'] = $User->where(array('uid' => $orders_data[$i]['uid']))->getField('email');
 		}
 		$this->assign('orders_data', $orders_data);
 		$this->display();
@@ -61,6 +62,11 @@ class AdminController extends AdminAuthorizedController {
 		$bill_data  = $Bill->limit($Page->firstRow.','.$Page->listRows)->select();
 		$this->assign('bill_data',$bill_data);// 赋值数据集
 		$this->assign('page',$show);// 赋值分页输出
+		$this->display();
+	}
+	public function discountManage() {
+		$discount_data = M('DiscountCode')->select();
+		$this->assign('discount_data', $discount_data);
 		$this->display();
 	}
 	public function configManage() {
