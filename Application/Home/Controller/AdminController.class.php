@@ -56,10 +56,10 @@ class AdminController extends AdminAuthorizedController {
 	}
 	public function billManage() {
 		$Bill = D('OrderRecordUserView');
-		$count      = $Bill->count();// 查询满足要求的总记录数
+		$count      = $Bill->where(array('success' => 1, 'status' => 0))->count();// 查询满足要求的总记录数
 		$Page       = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数(25)
 		$show       = $Page->show();// 分页显示输出
-		$bill_data  = $Bill->limit($Page->firstRow.','.$Page->listRows)->select();
+		$bill_data  = $Bill->where(array('success' => 1, 'status' => 0))->limit($Page->firstRow.','.$Page->listRows)->field('nickname,email,purchase_time,cost,discount,success')->select();
 		$this->assign('bill_data',$bill_data);// 赋值数据集
 		$this->assign('page',$show);// 赋值分页输出
 		$this->display();

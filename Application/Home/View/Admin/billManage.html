@@ -27,8 +27,10 @@
                     <tr>
                         <th>ID</th>
                         <th>用户昵称</th>
+                        <th>用户邮箱</th>
                         <th>购买时间</th>
                         <th>费用</th>
+                        <th>折扣</th>
                         <th>交易状态</th>
                         <!-- <th>操作</th> -->
                     </tr>
@@ -38,8 +40,10 @@
                         <tr>
                             <td>{$i}</td>
                             <td>{$bill['nickname']}</td>
+                            <td>{$bill['email']}</td>
                             <td>{$bill['purchase_time']}</td>
                             <td>{$bill['cost']} RMB</td>
+                            <td>{$bill['discount']*100} %</td>
                             <td><?php echo $bill['success'] == 1 ? '成功' : '失败';?></td>
                             <!-- <td></td> -->
                         </tr>

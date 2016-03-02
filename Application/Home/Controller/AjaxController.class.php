@@ -87,8 +87,9 @@ class AjaxController extends AdminAuthorizedController {
         $oid = I('get.oid');
         $uid = I('get.uid');
         // mark the record as hvae read and update the status
+        $duration = D('OrderRecordComboView')->where(array('oid' => $oid))->getField('duration');
         $order_record['purchase_time'] = date('Y-m-d H:i:s');
-        $order_record['expire_time'] = date('Y-m-d H:i:s', strtotime(date('y-m-d h:i:s')) + $order_data['duration']*86400);
+        $order_record['expire_time'] = date('Y-m-d H:i:s', strtotime(date('y-m-d h:i:s')) + $duration*86400);
         $order_record['success'] = 1;
         $order_record['status'] = 0;
         $res = M('OrderRecord')->where(array('oid' => $oid))->save($order_record);
@@ -118,8 +119,9 @@ class AjaxController extends AdminAuthorizedController {
     public function closeOrder() {
         $oid = I('get.oid');
         $order_data['status'] = 0;
-        $res = M('Orders')->where(array('oid' => $oid))->save($order_data);
-        $this->success('拒绝成功');
+        $order_data['success'] = 0;
+        $res = M('OrderRecord')->where(array('oid' => $oid))->save($order_data);
+        $this->success('关闭订单成功');
     }
     public function searchBill() {
         $up_to_time = I('post.time',date('Y-m-d'), '/^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/');
