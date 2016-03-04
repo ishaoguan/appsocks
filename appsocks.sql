@@ -158,7 +158,7 @@ CREATE TABLE `order_record` (
   `purchase_time` timestamp NULL DEFAULT NULL COMMENT '购买时间',
   `expire_time` timestamp NULL DEFAULT NULL COMMENT '到期时间',
   `discount` float NOT NULL DEFAULT '1' COMMENT '折扣',
-  `cost` int(11) NOT NULL COMMENT '费用',
+  `cost` float NOT NULL COMMENT '费用',
   `remark` text COMMENT '订单备注',
   `success` tinyint(4) NOT NULL DEFAULT '0' COMMENT '是否购买成功',
   `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '审核状态',
