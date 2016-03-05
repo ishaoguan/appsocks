@@ -59,10 +59,10 @@ class PublicController extends Controller {
 		$this->success('退出成功！', U('Home/Index/index'));
 	}
 	public function cron() {
-		$res = M('OrderRecord')->where(array('success' => 1))->field('sid,expire_time')->select();
+		$order_record = M('OrderRecord')->where(array('success' => 1))->field('sid,expire_time')->select();
 		$Server = M('User');
-		for ($i=0; $i < count($res); $i++) {
-			if($res[$i]['expire_time'] < date('y-m-d h:i:s')) {
+		for ($i=0; $i < count($order_record); $i++) {
+			if(strtotime($order_record[$i]['expire_time']) < time()) {
 				$Server->enable = 0;
 				$Server->switch = 0;
 				$Server->where(array('port' => $res[$i]['sid'] ))->save();
