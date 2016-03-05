@@ -20,7 +20,7 @@ class UserController extends AuthorizedController {
 		$query_condition = array('uid' => $uid, 'success' => 1, 'status' => 0, 'expire_time' => array('gt', date('y-m-d h:i:s')));
 		$available_order = D('OrderRecordComboNodeUserView')->where($query_condition)->field('domain_name,method,passwd,expire_time,port,u,d,transfer_enable')->select();
 		$user_center_data['server_data'] = $available_order;
-		
+
 		$this->assign('user_center_data', $user_center_data);
 		$this->display();
 	}

@@ -18,7 +18,7 @@ class AdminController extends AdminAuthorizedController {
 		$this->display();
 	}
 	public function orderManage() {
-		$orders_data = D('OrderRecordComboView')->where(array('status' => 1, 'success' => 0))->select();
+		$orders_data = D('OrderRecordComboView')->where(array('status' => 1, 'success' => 0))->order('submit_time desc')->select();
 		$User = M('Login');
 		for ($i=0; $i < count($orders_data); $i++) {
 			$orders_data[$i]['nickname'] = $User->where(array('uid' => $orders_data[$i]['uid']))->getField('nickname');
