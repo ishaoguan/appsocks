@@ -65,7 +65,7 @@ class PublicController extends Controller {
 			if(strtotime($order_record[$i]['expire_time']) < time()) {
 				$Server->enable = 0;
 				$Server->switch = 0;
-				$Server->where(array('port' => $res[$i]['sid'] ))->save();
+				$Server->where(array('port' => $order_record[$i]['sid'] ))->save();
 			} else {
 				continue;
 			}
