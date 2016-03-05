@@ -40,13 +40,17 @@ class PublicController extends Controller {
 		if ($check_user_is_existed) {
 			$this->error('该邮箱已被注册');
 		}
-		$res = M('Login')->data($user)->add();
-		if ($res) {
+		$User = M('Login');
+		$User->startTrans();
+		$uid = $User->add($user);
+		if ($uid) {
+			$User->commit();
 			session('nickname', $user['nickname']);
-			session('uid', $res['uid']);
+			session('uid', $uid);
 			session('admin', 0);
 			$this->success('注册成功', U('Home/User/dashboard'));
 		} else {
+			$User->rollback();
 			$this->error('Opps..注册出错了');
 		}
 	}
