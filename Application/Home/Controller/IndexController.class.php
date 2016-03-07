@@ -58,7 +58,7 @@ class IndexController extends Controller {
         if (!$cost) {
             $this->error('订购出错');
         }
-        $order_data['cost'] = $order_data['discount'] * $cost;
+        $order_data['cost'] = (float)$order_data['discount'] * $cost;
         if (!empty(I('post.remark'))) {
             $order_data['remark'] = I('post.remark');
         }
