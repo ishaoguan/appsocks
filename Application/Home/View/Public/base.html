@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="__PUBLIC__/css/Index/default.css">
   <block name="customer-css"></block>
   <block name="title">
-    <title>AppSocks - 您的最佳高速科学上网解决方案 Your best choice for high speed and affordable internet proxy solution</title>
+    <title>{:C('SITE_NAME')} - 您的最佳高速科学上网解决方案 Your best choice for high speed and affordable internet proxy solution</title>
   </block>
 </head>
 
@@ -32,7 +32,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">AppSocks</a></div>
+            <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">{:C('SITE_NAME')}</a></div>
           </div>
 
           <div class="collapse navbar-collapse " id="AppSocks">
@@ -57,7 +57,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="footer">
-          <p class="text-center">Copyright © 2016 <a href="http://appsocks.net">AppSocks.net</a> All Rights Reserved. AppSocks 版权所有 使用本站服务请遵守中国大陆以及香港法律</p>
+          <p class="text-center">Copyright © 2016 <a href="{:C('SITE_URL')}">{:C('SITE_NAME')}</a> All Rights Reserved. {:C('SITE_NAME')} 版权所有 使用本站服务请遵守中国大陆以及香港法律</p>
         </div>
       </div>
     </div>

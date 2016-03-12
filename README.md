@@ -25,7 +25,7 @@
 
 ## 安装
 
-1. 在Application/Common/config.php里修改数据库相关配置
+1. 在Application/Common/config.php里修改**数据库**相关配置及**站点名称和地址**
 2. 把源码放入网站根目录（请保证/Application/Runtime有足够的读写权限）
 3. Apache开启rewrite模块/Nginx在配置文件中url重写并重启服务
 
