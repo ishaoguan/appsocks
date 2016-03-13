@@ -140,8 +140,13 @@ class AjaxController extends AdminAuthorizedController {
         }
     }
     public function closeRenew() {
-        $oid = I('get.rid');
-        dump($oid);
+        $rid = I('get.rid');
+        $res = M('Renew')->where(array('rid' => $rid, 'status' => 1))->setDec('status');
+        if ($res) {
+            $this->success('拒绝成功');
+        } else {
+            $this->error('拒绝失败');
+        }
     }
     public function searchBill() {
         $up_to_time = I('post.time',date('Y-m-d'), '/^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/');
