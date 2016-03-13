@@ -51,7 +51,7 @@ class UserController extends AuthorizedController {
 			$renew_data['cost'] = $price;
 			$renew_data['submit_time'] = date('y-m-d h:i:s');
 			$rid = M('Renew')->add($renew_data);
-			$this->success('订单已提交', U('User/usercenter'));
+			$this->success('订单已提交', U('User/dashboard'));
 		} else {
 			$this->error('不可续费！');
 		}
