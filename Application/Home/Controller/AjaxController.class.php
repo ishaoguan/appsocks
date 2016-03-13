@@ -83,7 +83,7 @@ class AjaxController extends AdminAuthorizedController {
           $this->ajaxReturn($status);
         }
     }
-    public function OpenServer() {
+    public function openServer() {
         $oid = I('get.oid');
         $uid = I('get.uid');
         // mark the record as hvae read and update the status
@@ -122,6 +122,26 @@ class AjaxController extends AdminAuthorizedController {
         $order_data['success'] = 0;
         $res = M('OrderRecord')->where(array('oid' => $oid))->save($order_data);
         $this->success('关闭订单成功');
+    }
+    public function openRenew() {
+        $rid = I('get.rid');
+        $oid = I('get.oid');
+        $res = M('Renew')->where(array('rid' => $rid, 'status' => 1))->find();
+        if ($res) {
+            $renew_data['status'] = 0;
+            $order_data = M('OrderRecord')->where(array('oid' => $oid, 'status' => 0, 'expire_time' => array('gt', date('Y-m-d h:i:s'))))->field('cost,expire_time')->find();
+            $order_data['expire_time'] = date('Y-m-d H:i:s', strtotime($order_data['expire_time']) + $res['time']*2592000);
+            $order_data['cost'] += $res['cost'];
+            M('Renew')->where(array('rid' => $rid, 'status' => 1))->save($renew_data);
+            M('OrderRecord')->where(array('oid' => $oid))->field('expire_time,cost')->save($order_data);
+            $this->success('开通成功');
+        } else {
+            $this->error('开通失败！');
+        }
+    }
+    public function closeRenew() {
+        $oid = I('get.rid');
+        dump($oid);
     }
     public function searchBill() {
         $up_to_time = I('post.time',date('Y-m-d'), '/^(?:(?!0000)[0-9]{4}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:0[13-9]|1[0-2])-(?:29|30)|(?:0[13578]|1[02])-31)|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)$/');

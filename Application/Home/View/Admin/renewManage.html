@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>{:C('SITE_NAME')} - 科学上网您最好的选择</title>
+        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+        <!-- Bootstrap 文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+        <script src="__PUBLIC__/js/jquery.min.js"></script>
+        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+        <!-- 字体文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+        <!-- 自定义css文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/Admin/orderManage.css">
+    </head>
+    <body>
+        <div class="info">
+            <span>续费审批</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>用户昵称</th>
+                        <th>用户邮箱</th>
+                        <th>申请时间</th>
+                        <th>续费时长</th>
+                        <th>需交费用</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <volist name="renew_data" id="renew">
+                        <tr>
+                            <td>{$i}</td>
+                            <td>{$renew.nickname}</td>
+                            <td>{$renew.email}</td>
+                            <td>{$renew.submit_time}</td>
+                            <td>{$renew.time} 月</td>
+                            <td>{$renew.cost} RMB</td>
+                            <td>
+                                <a role="button" href="{:U('Home/Ajax/closeRenew', array('rid' => $renew['rid']))}" class="btn btn-danger choose">拒绝</a>
+                                <a role="button" href="{:U('Home/Ajax/openRenew', array('oid' => $renew['oid'], 'rid' => $renew['rid']))}" class="btn btn-success right-block choose">开通</a>
+                            </td>
+                        </tr>
+                    </volist>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

@@ -18,11 +18,43 @@ class UserController extends AuthorizedController {
 			$user_center_data['server_hint'] = null;
 		}
 		$query_condition = array('uid' => $uid, 'success' => 1, 'status' => 0, 'expire_time' => array('gt', date('y-m-d h:i:s')));
-		$available_order = D('OrderRecordComboNodeUserView')->where($query_condition)->field('domain_name,method,passwd,expire_time,port,u,d,transfer_enable')->select();
+		$available_order = D('OrderRecordComboNodeUserView')->where($query_condition)->field('oid,domain_name,method,passwd,expire_time,port,u,d,transfer_enable')->select();
 		$user_center_data['server_data'] = $available_order;
 
 		$this->assign('user_center_data', $user_center_data);
+		// dump($user_center_data);
 		$this->display();
+	}
+	function renew() {
+		$oid = I('get.id');
+		$query_condition = array('oid' => $oid, 'uid' => session('uid'), 'expire_time' => array('gt', date('y-m-d h:i:s')));
+		$res = D('OrderRecordComboView')->where($query_condition)->field('oid,cid,expire_time,discount,cost,price')->find();
+		if ($res) {
+			$this->assign('renew_data', $res);
+			$this->display();
+		} else {
+			$this->error('不可续费！');
+		}
+    }
+	function renewing() {
+		$renew_data = I('post.');
+		$is_null = checkArrayIsNull($renew_data);
+		if ($is_null) {
+			$this->error('续费错误，事情绝对没有那没简单');
+		}
+		$query_condition = array('oid' => $renew_data['id'], 'uid' => session('uid'), 'expire_time' => array('gt', date('y-m-d h:i:s')));
+		$order_record = D('OrderRecordComboView')->where($query_condition)->field('oid,cid,expire_time,discount,cost,price')->find();
+		if ($order_record) {
+			$price = $order_record['price'] * $order_record['discount'] * $renew_data['time'];
+			$renew_data['oid'] = $order_record['oid'];
+			$renew_data['uid'] = session('uid');
+			$renew_data['cost'] = $price;
+			$renew_data['submit_time'] = date('y-m-d h:i:s');
+			$rid = M('Renew')->add($renew_data);
+			$this->success('订单已提交', U('User/usercenter'));
+		} else {
+			$this->error('不可续费！');
+		}
 	}
 	public function getPurchasedCombo() {
 		$uid = session('uid');

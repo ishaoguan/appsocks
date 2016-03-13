@@ -28,6 +28,12 @@ class AdminController extends AdminAuthorizedController {
 		$this->display();
 	}
 
+	public function renewManage() {
+		$renew_data = D('RenewUserView')->where(array('status' => 1))->order('submit_time desc')->select();
+		// dump($renew_data);
+		$this->assign('renew_data', $renew_data);
+		$this->display();
+	}
 	public function userManage(){
 		$User = M('Login');
 		$count      = $User->count();

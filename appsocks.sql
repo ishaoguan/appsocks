@@ -168,6 +168,22 @@ CREATE TABLE `order_record` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `renew`
+--
+
+CREATE TABLE `renew` (
+  `rid` int(11) NOT NULL,
+  `oid` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `cost` float NOT NULL,
+  `time` int(11) NOT NULL COMMENT '续订时长',
+  `submit_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -237,6 +253,12 @@ ALTER TABLE `order_record`
   ADD PRIMARY KEY (`oid`);
 
 --
+-- Indexes for table `renew`
+--
+ALTER TABLE `renew`
+  ADD PRIMARY KEY (`rid`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -286,6 +308,11 @@ ALTER TABLE `node`
 --
 ALTER TABLE `order_record`
   MODIFY `oid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
+--
+-- AUTO_INCREMENT for table `renew`
+--
+ALTER TABLE `renew`
+  MODIFY `rid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=1;
 --
 -- AUTO_INCREMENT for table `user`
 --

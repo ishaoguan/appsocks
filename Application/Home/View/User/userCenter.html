@@ -34,7 +34,7 @@
 														if($user_center_data['server_hint'] || $user_center_data['server_data']) {
 															echo ($user_center_data['server_hint'].'<br>');
 														} else {
-															echo '你还未订购任何套餐喔，<a href="__APP__/Home/Index/menu" target="_blank">马上去订购!</a>';
+															echo '你还未订购任何套餐喔，<a href="'.U("Index/menu").'" target="_blank">马上去订购!</a>';
 														}
 												?>
                             <volist name="user_center_data['server_data']" id="server_data">
@@ -47,6 +47,7 @@
                                             <th>加密方式</th>
                                             <th>到期时间</th>
                                             <th>流量情况</th>
+                                            <th>操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,6 +60,7 @@
                                             <td>
                                                 <?php echo round(($server_data['u']+$server_data['d'])/1073741824, 2).'GB / '.round($server_data['transfer_enable']/1073741824, 2).'GB'; ?>
                                             </td>
+                                            <td><a class="btn-sm btn-primary" href="{:U('User/renew', array('id' => $server_data['oid']))}">续费</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
