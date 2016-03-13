@@ -42,7 +42,7 @@
 
 
 4. 将appsocks.sql导入数据库(注意设置字符集编码为utf8防止乱码)
-5. 设置云监控（360、阿里云都有免费的）定时任务去http请求 /index.php/Home/Public/cron
+5. 设置云监控（360、阿里云都有免费的）定时任务去http请求 /Public/cron
 5. 打开站点
 6. 后台管理正常登录后面板点击进入（默认管理帐号 admin@admin.com 密码 123456）
 7. 安装[manyuser](https://github.com/mengskysama/shadowsocks/tree/manyuser)，填写数据库连接信息，启动服务后一切完成
