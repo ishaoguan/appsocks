@@ -22,7 +22,7 @@ class PublicController extends Controller {
 			$user_data['last_login_time'] = date('Y-m-d H:i:s');
 			$user_data['last_login_ip'] = get_client_ip();
 			M('Login')->where(array('uid' => $res['uid']))->save($user_data);
-			$this->success('登录成功', U('Home/User/dashboard'));
+			$this->success('登录成功', U('User/dashboard'));
 		} else {
 			$this->error('账号或密码不正确');
 		}
@@ -48,7 +48,7 @@ class PublicController extends Controller {
 			session('nickname', $user['nickname']);
 			session('uid', $uid);
 			session('admin', 0);
-			$this->success('注册成功', U('Home/User/dashboard'));
+			$this->success('注册成功', U('User/dashboard'));
 		} else {
 			$User->rollback();
 			$this->error('Opps..注册出错了');
@@ -56,7 +56,7 @@ class PublicController extends Controller {
 	}
 	public function logout() {
 		session(null);
-		$this->success('退出成功！', U('Home/Index/index'));
+		$this->success('退出成功！', U('Index/index'));
 	}
 	public function cron() {
 		$order_record = M('OrderRecord')->where(array('success' => 1))->field('sid,expire_time')->select();
@@ -70,6 +70,6 @@ class PublicController extends Controller {
 				continue;
 			}
 		}
-		echo (date('y-m-d h:i:s').' 执行成功');
+		echo (date('Y-m-d h:i:s').' 执行成功');
 	}
 }
