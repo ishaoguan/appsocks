@@ -6,6 +6,7 @@ return array(
     	'Lib' => APP_PATH.'Lib',
 	),
 	'URL_MODEL' => '2', //URL模式
+	'URL_CASE_INSENSITIVE'  =>  false, // 不区分大小写
 	'SESSION_AUTO_START' => true, //是否开启session
 	'APP_GROUP_LIST' => 'Home', //项目分组设定
 	'DEFAULT_GROUP' => 'Home', //默认分组
