@@ -1,6 +1,6 @@
-.main {
-	margin-top: 20%;
+#banner {
+	height: 100vh;
 }
-h3 {
-	padding: 20px;
+p {
+	text-align: left;
 }

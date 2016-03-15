@@ -1,11 +1,9 @@
-@media (max-width:768px) {
-	h2 {
-		padding-left: 12px;
-	}
-	.summary {
-		padding-left: 12px;
-	}
+.combo-details {
+	background-color: transparent!important;
 }
-body {
-	padding: 80px 0 0 0;
+.have-account {
+	font-size: 12px;
+}
+.have-account:hover {
+			color: #3385ff;
 }

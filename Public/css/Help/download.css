@@ -1,21 +1,13 @@
-.main p {
-  font-size: 2em!important;
-}
-@media (max-width:768px) {
-  .main li {
-    padding: 2% 0 2% 10%;
-  }
+p {
+    margin: 5px 0 5px 0;
 }
 @media (min-width:768px) {
-  body {
-    padding-top: 100px;
-  }
-  .main li {
-    padding: 1% 0 1% 4%;
-  }
+    .software-box {
+        padding: 20px 0 20px 0;
+    }
 }
 @media (max-width:768px) {
-  .main {
-    margin-top: 30%;
-  }
+    .software-box {
+        padding: 10px 0 10px 0;
+    }
 }

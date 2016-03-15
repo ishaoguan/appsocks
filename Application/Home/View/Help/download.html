@@ -1,71 +1,65 @@
-<extend name="Public:base" />
+<extend name="Public:base"/>
 <block name="customer-css">
-  <link rel="stylesheet" target="_blank" href="__PUBLIC__/css/Help/download.css">
+    <link rel="stylesheet" target="_blank" href="__PUBLIC__/css/Help/download.css">
 </block>
 <block name="main">
-  <div class="main container">
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <div class="win">
-          <p>Windows 客户端</p>
-          <ul>
-            <li><a target="_blank" href="http://pan.baidu.com/s/1o7rq7mM?qq-pf-to=pcqq.c2c">Shadowsocks-gui</a></li>
-          </ul>
+    <section id="banner">
+        <div class="main container">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div class="win software-box">
+                        <p>Windows 客户端<br>
+                            <a target="_blank" href="http://pan.baidu.com/s/1o7rq7mM?qq-pf-to=pcqq.c2c">Shadowsocks-gui</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-xs-12">
+                    <div class="mac software-box">
+                        <p>OS X 客户端<br>
+                            <a target="_blank" href="https://github.com/shadowsocks/shadowsocks-iOS/releases">Shadowsocks-for-Mac</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="ios software-box">
+                        <p>IOS 客户端 Surge（已下架）</p>
+                            解决方案：
+                            <ul>
+                                <li>淘宝购买安装</li>
+                                <li>通过91助手安装并修复 (<a target="_blank" href="http://pan.baidu.com/s/1bnRSdTt">安装包</a>
+                                    密码：ggrw)</li>
+                            </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-12">
+                    <div class="linux software-box">
+                        <p>Linux 客户端<br>
+                            <a target="_blank" href="https://github.com/shadowsocks/shadowsocks-qt5">Shadowsocks-qt5</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div class="android software-box">
+                        <p>Android 客户端<br>
+                            <a target="_blank" href="https://github.com/shadowsocks/shadowsocks-android/releases/download/v2.9.10/shadowsocks-nightly-2.9.10.apk">shadowsocks-android.apk</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <div class="openwrt software-box">
+                        <p>路由器 客户端<br>
+                            <a target="_blank" href="https://github.com/haohaolee/shadowsocks-openwrt">shadowsocks-openwrt - works on OpenWRT routers</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <div class="mac">
-          <p>OS X 客户端</p>
-          <ul>
-            <li><a target="_blank" href="https://github.com/shadowsocks/shadowsocks-iOS/releases">Shadowsocks-for-Mac</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <div class="linux">
-          <p>Linux 客户端</p>
-          <ul>
-            <li><a target="_blank" href="https://github.com/shadowsocks/shadowsocks-qt5">Shadowsocks-qt5</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <div class="linux">
-          <p>IOS 客户端 Surge（已下架）</p>
-          解决方案：
-          <ul>
-            <li>1.淘宝购买安装</li>
-            <li>2.通过91助手安装并修复 (<a target="_blank" href="http://pan.baidu.com/s/1bnRSdTt">安装包</a> 密码：ggrw)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <div class="android">
-          <p>Android 客户端</p>
-          <ul>
-            <li><a target="_blank" href="https://github.com/shadowsocks/shadowsocks-android/releases/download/v2.9.10/shadowsocks-nightly-2.9.10.apk">shadowsocks-android.apk</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 col-xs-12">
-        <div class="openwrt">
-          <p>路由器 客户端</p>
-          <ul>
-            <li><a target="_blank" href="https://github.com/haohaolee/shadowsocks-openwrt">shadowsocks-openwrt - works on OpenWRT routers</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+    </section>
 </block>
 <block name="footer"></block>

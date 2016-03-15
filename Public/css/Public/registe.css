@@ -1,5 +1,9 @@
-.main {
-	margin-top: 5%;
+.registe-logo {
+	width: 40%;
+	padding: 50px;
+}
+.not-have-account {
+	font-size: 11px;
 }
 .register_logo {
 	width: 100%;
@@ -19,11 +23,18 @@
 	width: 100px;
 }
 @media (min-width:768px) {
+	.registe-logo {
+		margin-top: 35%;
+	}
 	.log-pannel {
 		padding-top: 35%;
 	}
 }
 @media (max-width:768px) {
+	.registe-logo {
+		margin-top: 0%;
+		width: 70%;
+	}
 	.log-pannel {
 		padding: 10px 0 10px 0;
 	}

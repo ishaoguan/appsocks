@@ -1,236 +1,158 @@
 <extend name="Public:base"/>
 <block name="customer-css">
-    <!--[if lte IE 8]><script src="__PUBLIC__/js/ie/html5shiv.js"></script><![endif]-->
     <link rel="stylesheet" href="__PUBLIC__/css/Index/index.css">
-    <!--[if lte IE 8]><link rel="stylesheet" href="__PUBLIC__/css/ie8.css" /><![endif]-->
-    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 </block>
 <block name="nav-bar"></block>
 <block name="main">
-    <!-- Page Wrapper -->
-    <div id="page-wrapper">
-
-        <!-- Header -->
-        <header id="header" class="alt">
-            <h1>
-                <a href="index.html">Appsocks — 科学网络加速</a>
-            </h1>
-            <nav id="nav">
-                <ul>
-                    <li class="special">
-                        <a href="#menu" class="menuToggle">
-                            <span>菜单</span>
-                        </a>
-                        <div id="menu">
-                            <ul>
-                                <li>
-                                    <a href="{:U('Index/index')}">主页</a>
-                                </li>
-                                <li>
-                                    <a href="{:U('Index/menu')}">套餐列表</a>
-                                </li>
-                                <li>
-                                    <a href="{:U('Help/method')}">使用教程</a>
-                                </li>
-                                <li>
-                                    <a href="{:U('Help/download')}">软件下载</a>
-                                </li>
-                                <li>
-                                    <a href="{:U('Help/support')}">技术支持</a>
-                                </li>
-                                <li>
-                                    <a href="{:U('Help/aboutus')}">关于我们</a>
-                                </li>
-                                <li>
-                                    <?php echo session('?uid') ? ('<a href="'.U("User/dashboard").'">'.session('nickname').'</a>') : '<a href="'.U("Public/login").'">登录</a>'; ?>
-                                </li>
-                                <li>
-                                    <?php echo session('?uid') ? '<a href="'.U("Public/logout").'">退出</a>' : '<a href="'.U("Public/registe").'">注册</a>'; ?>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-
-        <!-- Banner -->
-        <section id="banner">
-            <div class="inner">
-                <h2>{:C('SITE_NAME')}</h2>
-                <p>稳定的服务和速度<br/>
-                    给你不一样的体验<br/>
-                    <!-- 马上
-                    <a href="{:C('SITE_URL')}">订购套餐</a>.</p> -->
-                <ul class="actions">
-                    <li>
-                        <a href="#three" class="button special">立即订购</a>
-                    </li>
-                </ul>
-            </div>
-            <a href="#one" class="more scrolly">了解更多</a>
-        </section>
-
-        <!-- One -->
-        <section id="one" class="wrapper style1 special">
-            <div class="inner">
-                <header class="major">
-                    <h2>Appsocks致力于专业科学上网<br/></h2>
-                    <p>我们拥有遍布全球的超快服务器<br/>
-                        让世界触手可及，让你快人一步。</p>
-                </header>
-                <ul class="icons major">
-                    <li>
-                        <span class="icon fa-share-alt major style1">
-                            <span class="label">Lorem</span>
-                        </span>
-                    </li>
-                    <li>
-                        <span class="icon fa-internet-explorer major style2">
-                            <span class="label">Ipsum</span>
-                        </span>
-                    </li>
-                    <li>
-                        <span class="icon fa-skyatlas major style3">
-                            <span class="label">Dolor</span>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Two -->
-        <section id="two" class="wrapper alt style2">
-            <section class="spotlight">
-                <div class="image"><img src="__PUBLIC__/pictures/pic01.jpg" alt=""/></div>
-                <div class="content">
-                    <h2>仅需几步操作<br/>
-                        即可享受超快服务</h2>
-                    <p>提供各平台最完善的使用教程，还有专业客服进行指导，售后没有顾虑。</p>
-                </div>
-            </section>
-            <section class="spotlight">
-                <div class="image"><img src="__PUBLIC__/pictures/pic02.jpg" alt=""/></div>
-                <div class="content">
-                    <h2>多种套餐<br/>
-                        合适自己的才是最好的</h2>
-                    <p>分别提供高性价比、高速度、高稳定、高流量多阶梯类型的套餐，省心又省钱。</p>
-                </div>
-            </section>
-            <section class="spotlight">
-                <div class="image"><img src="__PUBLIC__/pictures/pic03.jpg" alt=""/></div>
-                <div class="content">
-                    <h2>支付保障<br/>
-                        使用支付宝交易安全明了</h2>
-                    <p>采用国内最知名的交易方 支付宝 进行安全交易。同时Appsocks承诺，不满意可在一日内全额退款。</p>
-                </div>
-            </section>
-        </section>
-
-        <!-- Three -->
-        <section id="three" name="menu-list" class="wrapper style3 special">
-            <div class="inner">
-                <header class="major">
-                    <h2>云加速标准服务套餐</h2>
-                    <p>丰富的种类、不同的特色<br/>
-                        你的任何一个选择都不会错</p>
-                </header>
-                <ul class="features">
-                    <volist name="menu_data" id="menu">
-                        <li class="icon fa-paper-plane-o">
-                            <h3>{$menu.title}</h3>
-                            <p>每月{$menu['flow']/1024}GB流量</p>
-                            <p>{$menu.name}</p>
-                            <p>{$menu.remark}</p>
-                            <p>UDP转发：不支持</p>
-                            <p>{$menu.cost} RMB</p>
-                            <p>{$menu.duration}天</p>
-                            <a type="role" class="btn btn-primary" href="{:U('Home/Index/cart', array('cid' => $menu['cid']))}">立即订购</a>
-                        </li>
-                    </volist>
-                    <!-- <li class="icon fa-laptop">
-                        <h3>Ac Augue Eget</h3>
-                        <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                    </li>
-                    <li class="icon fa-code">
-                        <h3>Mus Scelerisque</h3>
-                        <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                    </li>
-                    <li class="icon fa-headphones">
-                        <h3>Mauris Imperdiet</h3>
-                        <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                    </li>
-                    <li class="icon fa-heart-o">
-                        <h3>Aenean Primis</h3>
-                        <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                    </li>
-                    <li class="icon fa-flag-o">
-                        <h3>Tortor Ut</h3>
-                        <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                    </li> -->
-                </ul>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section id="cta" class="wrapper style4">
-            <div class="inner">
-                <header>
-                    <h2>联系我们</h2>
-                    <p>及时提供邮件的咨询和售后服务</p>
-                </header>
-                <ul class="actions vertical">
-                    <li>
-                        <a href="mailto:appsocks2016@gmail.com" class="button fit special">反馈与建议</a></li>
-                    <li>
-                        <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=b276d45ea49eda2565bacb8bc200ec0d36d2c8725815beac3919f0ec456e7e4f" class="button fit">售后咨询</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer id="footer">
-            <ul class="icons">
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <h2>{:C('SITE_NAME')}</h2>
+            <p>稳定的服务和速度<br/>
+                给你不一样的体验<br/></p>
+            <ul class="actions">
                 <li>
-                    <a href="#" class="icon fa-twitter">
-                        <span class="label">Twitter</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="icon fa-facebook">
-                        <span class="label">Facebook</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="icon fa-instagram">
-                        <span class="label">Instagram</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="icon fa-dribbble">
-                        <span class="label">Dribbble</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="icon fa-envelope-o">
-                        <span class="label">Email</span>
-                    </a>
+                    <a href="#three" class="button special">立即订购</a>
                 </li>
             </ul>
-            <ul class="copyright">
-                <li>&copy; <a href="{:C('SITE_URL')}">Appsocks</a></li>
-                <li>使用本站服务请遵守中国大陆以及香港法律</li>
-            </ul>
-        </footer>
+        </div>
+        <a href="#one" class="more scrolly">了解更多</a>
+    </section>
 
-    </div>
+    <!-- One -->
+    <section id="one" class="wrapper style1 special">
+        <div class="inner">
+            <header class="major">
+                <h2>Appsocks致力于专业科学上网<br/></h2>
+                <p>我们拥有遍布全球的超快服务器<br/>
+                    让世界触手可及，让你快人一步。</p>
+            </header>
+            <ul class="icons major">
+                <li>
+                    <span class="icon fa-share-alt major style1">
+                        <span class="label">Lorem</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="icon fa-internet-explorer major style2">
+                        <span class="label">Ipsum</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="icon fa-skyatlas major style3">
+                        <span class="label">Dolor</span>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Two -->
+    <section id="two" class="wrapper alt style2">
+        <section class="spotlight">
+            <div class="image"><img src="__PUBLIC__/pictures/pic01.jpg" alt=""/></div>
+            <div class="content">
+                <h2>仅需几步操作<br/>
+                    即可享受超快服务</h2>
+                <p>提供各平台最完善的使用教程，还有专业客服进行指导，售后没有顾虑。</p>
+            </div>
+        </section>
+        <section class="spotlight">
+            <div class="image"><img src="__PUBLIC__/pictures/pic02.jpg" alt=""/></div>
+            <div class="content">
+                <h2>多种套餐<br/>
+                    合适自己的才是最好的</h2>
+                <p>分别提供高性价比、高速度、高稳定、高流量多阶梯类型的套餐，省心又省钱。</p>
+            </div>
+        </section>
+        <section class="spotlight">
+            <div class="image"><img src="__PUBLIC__/pictures/pic03.jpg" alt=""/></div>
+            <div class="content">
+                <h2>支付保障<br/>
+                    使用支付宝交易安全明了</h2>
+                <p>采用国内最知名的交易方 支付宝 进行安全交易。同时Appsocks承诺，不满意可在一日内全额退款。</p>
+            </div>
+        </section>
+    </section>
+
+    <!-- Three -->
+    <section id="three" name="menu-list" class="wrapper style3 special">
+        <div class="inner">
+            <header class="major">
+                <h2>云加速标准服务套餐</h2>
+                <p>丰富的种类、不同的特色<br/>
+                    你的任何一个选择都不会错</p>
+            </header>
+            <ul class="features">
+                <volist name="menu_data" id="menu">
+                    <li class="icon fa-paper-plane-o">
+                        <h3>{$menu.title}</h3>
+                        <p>每月{$menu['flow']/1024}GB流量</p>
+                        <p>{$menu.name}</p>
+                        <p>{$menu.remark}</p>
+                        <p>UDP转发：不支持</p>
+                        <p>{$menu.cost} RMB</p>
+                        <p>{$menu.duration}天</p>
+                        <a type="role" class="btn btn-primary" href="{:U('Home/Index/cart', array('cid' => $menu['cid']))}">立即订购</a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="wrapper style4">
+        <div class="inner">
+            <header>
+                <h2>联系我们</h2>
+                <p>及时提供邮件的咨询和售后服务</p>
+            </header>
+            <ul class="actions vertical">
+                <li>
+                    <a href="mailto:appsocks2016@gmail.com" class="button fit special">反馈与建议</a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=b276d45ea49eda2565bacb8bc200ec0d36d2c8725815beac3919f0ec456e7e4f" class="button fit">售后咨询</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <ul class="icons">
+            <li>
+                <a href="#" class="icon fa-twitter">
+                    <span class="label">Twitter</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon fa-facebook">
+                    <span class="label">Facebook</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon fa-instagram">
+                    <span class="label">Instagram</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon fa-dribbble">
+                    <span class="label">Dribbble</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="icon fa-envelope-o">
+                    <span class="label">Email</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="copyright">
+            <li>&copy;
+                <a href="{:C('SITE_URL')}">Appsocks</a>
+            </li>
+            <li>使用本站服务请遵守中国大陆以及香港法律</li>
+        </ul>
+    </footer>
 </block>
-<block name="customer-js">
-    <script src="__PUBLIC__/js/jquery.scrollex.min.js"></script>
-    <script src="__PUBLIC__/js/jquery.scrolly.min.js"></script>
-    <script src="__PUBLIC__/js/skel.min.js"></script>
-    <script src="__PUBLIC__/js/util.js"></script>
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-    <script src="__PUBLIC__/js/index.js"></script>
-</block>
+<block name="customer-js"></block>

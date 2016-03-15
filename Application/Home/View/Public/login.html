@@ -1,31 +1,39 @@
-<extend name="Public:base" />
+<extend name="Public:base"/>
 <block name="customer-css">
-  <link rel="stylesheet" href="__PUBLIC__/css/Public/login.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/Public/login.css">
 </block>
 <block name="main">
-  <div class="main container">
-    <div class="row">
-      <div class="col-md-7 col-xs-12">
-        <img src="http://ww4.sinaimg.cn/large/005R1IGWgw1f1brurkmimj318g141wlv.jpg" class="register_logo" alt="register_logo.jpg">
-      </div>
-      <div class="col-md-5 col-xs-12">
-        <div class="log-pannel">
-          <p class="log-pannel-msg"><span>登录</span><b>{:C('SITE_NAME')}</b>,一秒都等不及了</p>
-          <form action="__APP__/Public/doLogin" method="post">
-            <div class="form-group input-group">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-              <input type="email" class="form-control" name="email" placeholder="电子邮箱" required>
+    <section id="banner">
+        <div class="main container">
+            <div class="row">
+                <div class="col-md-7 col-xs-12">
+                    <img src="__PUBLIC__/pictures/Connection.png" class="login-logo" alt="login_logo">
+                </div>
+                <div class="col-md-5 col-xs-12">
+                    <div class="log-pannel">
+                        <p class="log-pannel-msg">
+                            <span>登录</span>
+                            <b>{:C('SITE_NAME')}</b>,一秒都等不及了</p>
+                        <form action="__APP__/Public/doLogin" method="post">
+                            <div class="form-group input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                </span>
+                                <input type="email" class="form-control" name="email" placeholder="电子邮箱" required>
+                            </div>
+                            <div class="form-group input-group">
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span>
+                                </span>
+                                <input type="password" class="form-control" name="password" placeholder="密码" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary registe-btn">登录</button>
+                        </form>
+                        <a class="not-have-account" role="button" href="__APP__/Public/registe">听说你还没有帐号？</a>
+                    </div>
+                </div>
             </div>
-            <div class="form-group input-group">
-              <span class="input-group-addon"><span class="glyphicon glyphicon-option-horizontal" aria-hidden="true"></span></span>
-              <input type="password" class="form-control" name="password" placeholder="密码" required>
-            </div>
-            <button type="submit" class="btn btn-primary registe-btn">登录</button>
-          </form>
-          <a role="button" href="__APP__/Home/Public/registe">听说你还没有帐号？</a>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 </block>
 <block name="footer"></block>

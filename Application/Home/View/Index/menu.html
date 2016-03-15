@@ -1,27 +1,29 @@
-<extend name="Public:base" />
+<extend name="Public:base"/>
 <block name="customer-css">
-  <link rel="stylesheet" href="__PUBLIC__/css/Index/menu.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/Index/menu.css">
 </block>
 <block name="main">
-  <div class="main container">
-    <div class="row">
-      <volist name="menu_data" id="menu">
-        <div class="col-md-4">
-          <div class="panel panel-info">
-            <div class="panel-heading">{$menu.title}</div>
-            <div class="panel-body">
-              <p>每月{$menu['flow']/1024}GB流量</p>
-              <p>{$menu.name}</p>
-              <p>{$menu.remark}</p>
-              <p>UDP转发：不支持</p>
-              <p>{$menu.cost} RMB</p>
-              <p>{$menu.duration}天</p>
-              <a type="role" class="btn btn-primary" href="{:U('Home/Index/cart', array('cid' => $menu['cid']))}">立即订购</a>
+    <section id="banner">
+        <div class="container">
+            <div class="row">
+                <volist name="menu_data" id="menu">
+                    <div class="col-md-4">
+                        <div class="combo combo-info">
+                            <div class="combo-heading">{$menu.title}</div>
+                            <div class="combo-body">
+                                <p>每月{$menu['flow']/1024}GB流量</p>
+                                <p>{$menu.name}</p>
+                                <p>{$menu.remark}</p>
+                                <p>UDP转发：不支持</p>
+                                <p>{$menu.cost} RMB</p>
+                                <p>{$menu.duration}天</p>
+                                <a type="role" class="btn btn-primary" href="{:U('Home/Index/cart', array('cid' => $menu['cid']))}">立即订购</a>
+                            </div>
+                        </div>
+                    </div>
+                </volist>
             </div>
-          </div>
         </div>
-      </volist>
-    </div>
-  </div>
+    </section>
 </block>
 <block name="footer"></block>

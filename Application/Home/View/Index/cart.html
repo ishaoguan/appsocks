@@ -3,10 +3,11 @@
     <link rel="stylesheet" href="__PUBLIC__/css/Index/cart.css">
 </block>
 <block name="main">
+    <section id="banner">
     <div class="main container">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <div class="jumbotron">
+                <div class="">
                     <h2>购买清单</h2>
                     <table class="table table-striped">
                         <thead>
@@ -19,7 +20,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr  class="combo-details">
                                 <td>{$combo['title']}</td>
                                 <td>{$combo['flow'] / 1024}</td>
                                 <td>{$combo['duration']}</td>
@@ -31,9 +32,9 @@
                     <p class="summary">小结：￥{$combo['summary']}</p>
                 </div>
                 <form class="form" action="__APP__/Index/pay" method="post">
-                    <?php echo session('?uid') ? '' : '<div class="row"> <div class="col-md-3"> <div class="form-group"> <label for="nickname">昵称</label> <input type="text" class="form-control" name="nickname" id="nickname" placeholder="张全蛋" required> </div> </div> <div
-                    class="col-md-3"> <div class="form-group"> <label for="password">密码</label> <input type="password" class="form-control" name="password" id="password" placeholder="不少于6位数" required> </div> </div> <div class="col-md-3"> <div class="form-group"> <label
-                    for="password">确认密码</label> <input type="password" class="form-control" id="re-password" placeholder="不少于6位数" required> </div> </div> <div class="col-md-3"> <div class="form-group"> <label for="email">邮箱</label> <input type="email"
+                    <?php echo session('?uid') ? '' : '<div class="row"> <div class="col-md-3 col-xs-12"> <div class="form-group"> <label for="nickname">昵称</label> <input type="text" class="form-control" name="nickname" id="nickname" placeholder="张全蛋" required> </div> </div> <div
+                    class="col-md-3 col-xs-12"> <div class="form-group"> <label for="password">密码</label> <input type="password" class="form-control" name="password" id="password" placeholder="不少于6位数" required> </div> </div> <div class="col-md-3 col-xs-12"> <div class="form-group"> <label
+                    for="password">确认密码</label> <input type="password" class="form-control" id="re-password" placeholder="不少于6位数" required> </div> </div> <div class="col-md-3 col-xs-12"> <div class="form-group"> <label for="email">邮箱</label> <input type="email"
                     class="form-control" name="email" id="email" placeholder="quandan@example.com" required> </div> </div> </div>'; ?>
 
                     <div class="row">
@@ -41,19 +42,19 @@
                             <div class="form-group">
                                 <input type="hidden" name="cid" value="{$combo['cid']}">
                                 <label for="remark">额外备注</label>
-                                <input type="textarea" class="form-control" name="remark" maxlength="50" id="remark" placeholder="如有特殊要求可在此留言">
+                                <input type="text" class="form-control" name="remark" maxlength="50" id="remark" placeholder="如有特殊要求可在此留言">
                             </div>
                         </div>
                         <div class="col-md-4 col-xs-12">
                             <div class="form-group">
                                 <label for="discount_code">优惠码</label>
-                                <input type="textarea" class="form-control" name="discount_code" maxlength="40" id="discount_code" placeholder="没有则不需要填">
+                                <input type="text" class="form-control" name="discount_code" maxlength="40" id="discount_code" placeholder="没有则不需要填">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
-                            <?php echo session('?uid') ? '' : '<a href="__APP__/Public/login">你已经有帐号？</a>';?>
+                            <?php echo session('?uid') ? '' : '<a class="have-account" href="__APP__/Public/login">你已经有帐号？</a>';?>
                             <button type="submit" class="btn btn-success btn-submit">确认订购</button>
                         </div>
                     </div>
@@ -61,6 +62,7 @@
             </div>
         </div>
     </div>
+</sectioin>
 </block>
 <block name="footer"></block>
 <block name="customer-js">

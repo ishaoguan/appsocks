@@ -1,17 +1,14 @@
 p {
-  padding: 30px;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 img {
-  width: 80%;
+  width: 85%;
 }
 @media (min-width:768px) {
-  .main {
-    margin-top: 15%;
-  }
+
 }
 @media (max-width:768px) {
-  body {
-    padding-top: 15%;
-  }
+    p {
+        padding: 20px 0 0 0;
+    }
 }
