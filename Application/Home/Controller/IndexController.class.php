@@ -3,6 +3,8 @@ namespace Home\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
+        $menu_data = D('NodeComboView')->where(array('status' => 1))->order('cost')->field('cid,title,name,duration,flow,cost,remark')->limit(6)->select();
+        $this->assign('menu_data', $menu_data);
         $this->display();
     }
     public function menu() {
