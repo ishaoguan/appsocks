@@ -38,34 +38,36 @@
                             <a href="#menu" class="menuToggle">
                                 <span>菜单</span>
                             </a>
-                            <div id="menu">
-                                <ul>
-                                    <li>
-                                        <a href="{:U('Index/index')}">主页</a>
-                                    </li>
-                                    <li>
-                                        <a href="{:U('Index/menu')}">套餐列表</a>
-                                    </li>
-                                    <li>
-                                        <a href="{:U('Help/method')}">使用教程</a>
-                                    </li>
-                                    <li>
-                                        <a href="{:U('Help/download')}">软件下载</a>
-                                    </li>
-                                    <li>
-                                        <a href="{:U('Help/support')}">技术支持</a>
-                                    </li>
-                                    <li>
-                                        <a href="{:U('Help/aboutus')}">关于我们</a>
-                                    </li>
-                                    <li>
-                                        <?php echo session('?uid') ? ('<a href="'.U("User/dashboard").'">'.session('nickname').'</a>') : '<a href="'.U("Public/login").'">登录</a>'; ?>
-                                    </li>
-                                    <li>
-                                        <?php echo session('?uid') ? '<a href="'.U("Public/logout").'">退出</a>' : '<a href="'.U("Public/registe").'">注册</a>'; ?>
-                                    </li>
-                                </ul>
-                            </div>
+                            <block name="menu">
+                                <div id="menu">
+                                    <ul>
+                                        <li>
+                                            <a href="{:U('Index/index')}">主页</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Index/menu')}">套餐列表</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Help/method')}">使用教程</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Help/download')}">软件下载</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Help/support')}">技术支持</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Help/aboutus')}">关于我们</a>
+                                        </li>
+                                        <li>
+                                            <?php echo session('?uid') ? ('<a href="'.U("User/dashboard").'">'.session('nickname').'</a>') : '<a href="'.U("Public/login").'">登录</a>'; ?>
+                                        </li>
+                                        <li>
+                                            <?php echo session('?uid') ? '<a href="'.U("Public/logout").'">退出</a>' : '<a href="'.U("Public/registe").'">注册</a>'; ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </block>
                         </li>
                     </ul>
                 </nav>
@@ -82,5 +84,5 @@
     <script src="__PUBLIC__/js/jquery.scrolly.min.js"></script>
     <script src="__PUBLIC__/js/default.js"></script>
     <script src="__PUBLIC__/js/baidutongji.js"></script>
-    <block name="customer-js"> </block>
+    <block name="customer-js"></block>
 </html>

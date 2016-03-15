@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{:C('SITE_NAME')} - 科学上网您最好的选择</title>
+        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+        <!-- Bootstrap 文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+        <script src="__PUBLIC__/js/jquery.min.js"></script>
+        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+        <!-- 字体文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
+        <!-- 自定义css文件 -->
+        <block name="customer-css"></block>
+    </head>
+
+    <body>
+        <div class="info">
+            <block name="info">
+                <span>提示信息</span>
+            </block>
+        </div>
+        <block name="main"></block>
+    </body>
+    <block name="customer-js"></block>
+</html>

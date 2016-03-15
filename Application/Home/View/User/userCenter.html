@@ -20,13 +20,14 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-xs-12">
+                <br>
+                <div class="col-md-12 col-xs-12">
                     <div class="panel panel-info">
                         <div class="panel-heading">用户公告</div>
                         <div class="panel-body">{$user_center_data.announcement}</div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xs-12">
+                <div class="col-md-12 col-xs-12">
                     <div class="panel panel-success">
                         <div class="panel-heading">可用服务</div>
                         <div class="panel-body">
@@ -37,34 +38,38 @@
 															echo '你还未订购任何套餐喔，<a href="'.U("Index/menu").'" target="_blank">马上去订购!</a>';
 														}
 												?>
-                            <volist name="user_center_data['server_data']" id="server_data">
-                                <table class="table table-bordered server-info">
-                                    <thead>
-                                        <tr>
-                                            <th>服务器</th>
-                                            <th>远程端口</th>
-                                            <th>连接密码</th>
-                                            <th>加密方式</th>
-                                            <th>到期时间</th>
-                                            <th>流量情况</th>
-                                            <th>操作</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>{$server_data['domain_name']}</td>
-                                            <td>{$server_data['port']}</td>
-                                            <td>{$server_data['passwd']}</td>
-                                            <td>{$server_data['method']}</td>
-                                            <td>{$server_data['expire_time']}</td>
-                                            <td>
-                                                <?php echo round(($server_data['u']+$server_data['d'])/1073741824, 2).'GB / '.round($server_data['transfer_enable']/1073741824, 2).'GB'; ?>
-                                            </td>
-                                            <td><a class="btn-sm btn-primary" href="{:U('User/renew', array('id' => $server_data['oid']))}">续费</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </volist>
+                            <div class="table-responsive">
+                                <volist name="user_center_data['server_data']" id="server_data">
+                                    <table class="table table-bordered server-info">
+                                        <thead>
+                                            <tr>
+                                                <th>服务器</th>
+                                                <th>远程端口</th>
+                                                <th>连接密码</th>
+                                                <th>加密方式</th>
+                                                <th>到期时间</th>
+                                                <th>流量情况</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>{$server_data['domain_name']}</td>
+                                                <td>{$server_data['port']}</td>
+                                                <td>{$server_data['passwd']}</td>
+                                                <td>{$server_data['method']}</td>
+                                                <td>{$server_data['expire_time']}</td>
+                                                <td>
+                                                    <?php echo round(($server_data['u']+$server_data['d'])/1073741824, 2).'GB / '.round($server_data['transfer_enable']/1073741824, 2).'GB'; ?>
+                                                </td>
+                                                <td>
+                                                    <a class="btn-sm btn-primary" href="{:U('User/renew', array('id' => $server_data['oid']))}">续费</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </volist>
+                            </div>
                         </div>
                     </div>
                 </div>

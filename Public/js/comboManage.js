@@ -1,33 +1,4 @@
 $(document).ready(function() {
-  // $('a#edit_combo_info').each(function(event) {
-  //   $(this).click(function() {
-  //     var cid = $(this).data('cid');
-  //     var modal = $('#combo-modal');
-  //     modal.find('.modal-title').text('修改套餐');
-  //     modal.find('#variable_btn').text('修改');
-  //     var comboid = modal.find('#combo-id');
-  //     var title = modal.find('#combo-title');
-  //     var flow = modal.find('#combo-flow');
-  //     var duration = modal.find('#combo-duration');
-  //     var cost = modal.find('#combo-cost');
-  //     var remark = modal.find('#combo-remark');
-  //     var status = modal.find('#combo-status');
-  //     var form = modal.find('form');
-  //     // modal.find('#variable_btn').prev('button').after('<a role="button" class="btn btn-danger" href="index.php/Home/Ajax/editCombo/cid/' + cid + '">删除</a>');
-  //     var url = './../Ajax/getCombo';
-  //     $.post(url, {
-  //       cid: cid
-  //     }, function(data, textStatus, xhr) {
-  //       comboid.val(cid);
-  //       title.val(data['title']);
-  //       flow.val(data['flow'] / 1024);
-  //       duration.val(data['duration']);
-  //       cost.val(data['cost']);
-  //       remark.val(data['remark']);
-  //       status.val(data['status']);
-  //     });
-  //   });
-  // });
   $('.combo-status').change(function() {
     var cid = $(this).data('cid');
     var status = $(this).children('option:selected').val();
