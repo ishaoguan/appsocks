@@ -1,10 +1,10 @@
-/*.container {
+/*.load {
 	display: none;
-}
-
-.container.show {
-	display: block;
 }*/
+
+.load.show {
+	display: block;
+}
 
 .pageload-overlay {
 	position: fixed;
