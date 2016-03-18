@@ -2,9 +2,9 @@
 namespace Home\Controller;
 use Think\Controller;
 class AdminController extends AdminAuthorizedController {
-	public function dashboard() {
-		$this->display();
-	}
+	// public function dashboard() {
+	// 	$this->display();
+	// }
 	public function statistics() {
 		$statistics_data['user_sign'] = M('Login')->count();
 		$statistics_data['user_active'] = M('Login')->where(array('actived' => 1))->count();

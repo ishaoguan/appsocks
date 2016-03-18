@@ -30,7 +30,7 @@
             <!-- Header -->
             <header id="header" class="alt">
                 <h1>
-                    <a href="index.html">Appsocks — 科学网络加速</a>
+                    <a href="index.html">{:C('SITE_NAME')} — 科学网络加速服务</a>
                 </h1>
                 <nav id="nav">
                     <ul>
@@ -60,7 +60,7 @@
                                             <a href="{:U('Help/aboutus')}">关于我们</a>
                                         </li>
                                         <li>
-                                            <?php echo session('?uid') ? ('<a href="'.U("User/dashboard").'">'.session('nickname').'</a>') : '<a href="'.U("Public/login").'">登录</a>'; ?>
+                                            <?php echo session('?uid') ? ('<a href="'.U("User/userCenter").'">'.session('nickname').'</a>') : '<a href="'.U("Public/login").'">登录</a>'; ?>
                                         </li>
                                         <li>
                                             <?php echo session('?uid') ? '<a href="'.U("Public/logout").'">退出</a>' : '<a href="'.U("Public/registe").'">注册</a>'; ?>

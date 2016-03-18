@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-    <title>{:C('SITE_NAME')} - 科学上网您最好的选择</title>
-    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-    <!-- Bootstrap 文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-    <script src="__PUBLIC__/js/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <!-- 字体文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-    <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/Admin/statistics.css">
-</head>
-<body>
+<extend name="Admin:dashboard"/>
+<block name="title"><title>{:C('SITE_NAME')} 后台管理</title></block>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css"> -->
+</block>
+<block name="main">
     <div class="panel panel-info">
         <div class="panel-heading">统计信息</div>
         <div class="panel-body">
@@ -22,5 +12,4 @@
             <p>共产生流量：{$statistics_data['flow_used']} M ≈ {$statistics_data['flow_used']/1024|round} G</p>
         </div>
     </div>
-</body>
-</html>
+</block>

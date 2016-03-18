@@ -14,15 +14,19 @@ class PublicController extends Controller {
 		if (checkArrayIsNull($user_input)) {
 			$this->error('登录错误，事情绝对没有那没简单');
 		}
-		$res = M('Login')->where(array('email' => $user_input['email'], 'password' => $user_input['password']))->field('nickname,uid,admin')->find();
+		$res = M('Login')->where(array('email' => $user_input['email'], 'password' => $user_input['password']))->field('nickname,uid,admin,create_time')->find();
 		if ($res) {
+			// 获取用户个人信息
 			session('nickname', $res['nickname']);
 			session('uid', $res['uid']);
+			session('registe', substr($res['create_time'], 0,10));
 			session('admin', $res['admin']);
+			$sum_cost = M('OrderRecord')->where(array('uid' => session('uid'), 'status' => 0, 'success' => 1))->sum('cost');
+			session('sum_cost', $sum_cost);
 			$user_data['last_login_time'] = date('Y-m-d H:i:s');
 			$user_data['last_login_ip'] = get_client_ip();
 			M('Login')->where(array('uid' => $res['uid']))->save($user_data);
-			$this->success('登录成功', U('User/dashboard'));
+			$this->success('登录成功', U('User/userCenter'));
 		} else {
 			$this->error('账号或密码不正确');
 		}
@@ -48,7 +52,7 @@ class PublicController extends Controller {
 			session('nickname', $user['nickname']);
 			session('uid', $uid);
 			session('admin', 0);
-			$this->success('注册成功', U('User/dashboard'));
+			$this->success('注册成功', U('User/userCenter'));
 		} else {
 			$User->rollback();
 			$this->error('Opps..注册出错了');

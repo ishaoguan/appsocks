@@ -70,7 +70,7 @@ class IndexController extends Controller {
         }
         $res = M('OrderRecord')->data($order_data)->add();
         if ($res) {
-            $this->success('订单提交成功，马上进入后台', U('Home/User/dashboard'));
+            $this->success('订单提交成功，马上进入后台', U('User/userCenter'));
         } else {
             $this->error('订单提交失败，请联系管理员');
         }

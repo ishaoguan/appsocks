@@ -1,76 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>{:C('SITE_NAME')} - 科学上网您最好的选择</title>
-        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-        <!-- Bootstrap 文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-        <script src="__PUBLIC__/js/jquery.min.js"></script>
-        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-        <!-- 字体文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-        <!-- 自定义css文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/Admin/billManage.css">
-    </head>
-    <body>
-        <div class="info">
-            <span>账单审核</span>
-            <form action="{:U('Home/Ajax/searchBill')}" method="post">
-                <input type="date" name="time" value="{$up_to_time}">
-                <button type="submit" class="btn btn-success search-bill">查询</button>
-            </form>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
+<extend name="Admin:dashboard"/>
+<block name="title">
+    <title>{:C('SITE_NAME')} 后台管理</title>
+</block>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css"> -->
+</block>
+<block name="main">
+    <div class="info">
+        <span>账单审核</span>
+        <form action="{:U('Home/Ajax/searchBill')}" method="post">
+            <input type="date" name="time" value="{$up_to_time}">
+            <button type="submit" class="btn btn-success search-bill">查询</button>
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户昵称</th>
+                    <th>用户邮箱</th>
+                    <th>购买时间</th>
+                    <th>费用</th>
+                    <th>折扣</th>
+                    <th>交易状态</th>
+                    <!-- <th>操作</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="bill_data" id="bill">
                     <tr>
-                        <th>ID</th>
-                        <th>用户昵称</th>
-                        <th>用户邮箱</th>
-                        <th>购买时间</th>
-                        <th>费用</th>
-                        <th>折扣</th>
-                        <th>交易状态</th>
-                        <!-- <th>操作</th> -->
+                        <td>{$i}</td>
+                        <td>{$bill['nickname']}</td>
+                        <td>{$bill['email']}</td>
+                        <td>{$bill['purchase_time']}</td>
+                        <td>{$bill['cost']} RMB</td>
+                        <td>{$bill['discount']*100} %</td>
+                        <td><?php echo $bill['success'] == 1 ? '成功' : '失败';?></td>
+                        <!-- <td></td> -->
                     </tr>
-                </thead>
-                <tbody>
-                    <volist name="bill_data" id="bill">
-                        <tr>
-                            <td>{$i}</td>
-                            <td>{$bill['nickname']}</td>
-                            <td>{$bill['email']}</td>
-                            <td>{$bill['purchase_time']}</td>
-                            <td>{$bill['cost']} RMB</td>
-                            <td>{$bill['discount']*100} %</td>
-                            <td><?php echo $bill['success'] == 1 ? '成功' : '失败';?></td>
-                            <!-- <td></td> -->
-                        </tr>
-                    </volist>
-                </tbody>
-            </table>
-        </div>
-        {$page}
-    </body>
+                </volist>
+            </tbody>
+        </table>
+    </div>
+    {$page}
+</body>
 
-    <!-- Modal -->
-    <div class="modal fade" id="user_info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">最近账单</h4>
-                </div>
-                <div class="modal-body"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">修改用户信息</button>
-                    <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="user_info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">最近账单</h4>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger">修改用户信息</button>
+                <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
             </div>
         </div>
     </div>
-    <!-- <import type='js' file="js.billManage"/> -->
-</html>
+</div>
+<!-- <import type='js' file="js.billManage"/> -->
+</block>

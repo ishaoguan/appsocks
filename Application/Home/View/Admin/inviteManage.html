@@ -1,21 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>{:C('SITE_NAME')} - 科学上网您最好的选择</title>
-	<link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-	<!-- Bootstrap 文件 -->
-	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-	<script src="__PUBLIC__/js/jquery.min.js"></script>
-	<script src="__PUBLIC__/js/bootstrap.min.js"></script>
-	<!-- 字体文件 -->
-	<link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-	<!-- 自定义css文件 -->
-	<link rel="stylesheet" href="__PUBLIC__/css/Admin/inviteManage.css">
-</head>
-
-<body>
+<extend name="Admin:dashboard"/>
+<block name="title"><title>{:C('SITE_NAME')} 后台管理</title></block>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css"> -->
+</block>
+<block name="main">
 	<div class="main">
 		<div class="info">
 			<span>邀请管理</span>
@@ -23,6 +11,4 @@
 		</div>
 		功能暂未开通
 	</div>
-</body>
-
-</html>
+</block>

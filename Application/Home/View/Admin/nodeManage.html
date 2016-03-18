@@ -1,57 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>{:C('SITE_NAME')} - 科学上网您最好的选择</title>
-        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-        <!-- Bootstrap 文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-        <script src="__PUBLIC__/js/jquery.min.js"></script>
-        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-        <!-- 字体文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-        <!-- 自定义css文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/Admin/nodeManage.css">
-    </head>
-    <body>
-        <div class="info">
-            <span>节点管理</span>
-            <a role="button" class="btn btn-success add-node" data-toggle="modal" data-target="#node_info_modal">添加</a>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
+<extend name="Admin:dashboard"/>
+<block name="title">
+    <title>{:C('SITE_NAME')} 后台管理</title>
+</block>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css"> -->
+</block>
+<block name="main">
+    <div class="info">
+        <span>节点管理</span>
+        <a role="button" class="btn btn-success add-node" data-toggle="modal" data-target="#node_info_modal">添加</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>节点名称</th>
+                    <th>服务器IP地址</th>
+                    <th>服务器域名地址</th>
+                    <th>加密方式</th>
+                    <th>备注说明</th>
+                    <th>是否可用</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="node_data" id="node">
                     <tr>
-                        <th>ID</th>
-                        <th>节点名称</th>
-                        <th>服务器IP地址</th>
-                        <th>服务器域名地址</th>
-                        <th>加密方式</th>
-                        <th>备注说明</th>
-                        <th>是否可用</th>
+                        <td>{$i}</td>
+                        <td>{$node.name}</td>
+                        <td>{$node.server_ip}</td>
+                        <td>{$node.domain_name}</td>
+                        <td>{$node.method}</td>
+                        <td>{$node.remark}</td>
+                        <td>
+                            <select class="node-status" name="node_status" data-nid="{$node.nid}">
+                                <option value="1" <?php echo $node['status'] == 1 ? 'selected="selected"' : '';?>>可用</option>
+                                <option value="0" <?php echo $node['status'] == 0 ? 'selected="selected"' : '';?>>停用</option>
+                            </select>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <volist name="node_data" id="node">
-                        <tr>
-                            <td>{$i}</td>
-                            <td>{$node.name}</td>
-                            <td>{$node.server_ip}</td>
-                            <td>{$node.domain_name}</td>
-                            <td>{$node.method}</td>
-                            <td>{$node.remark}</td>
-                            <td>
-                                <select class="node-status" name="node_status" data-nid="{$node.nid}">
-                                    <option value="1" <?php echo $node['status'] == 1 ? 'selected="selected"' : '';?>>可用</option>
-                                    <option value="0" <?php echo $node['status'] == 0 ? 'selected="selected"' : '';?>>停用</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </volist>
-                </tbody>
-            </table>
-        </div>
-    </body>
+                </volist>
+            </tbody>
+        </table>
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="node_info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -114,5 +105,7 @@
             </div>
         </div>
     </div>
+</block>
+<block name="customer-js">
     <import type='js' file="js.nodeManage"/>
-</html>
+</block>

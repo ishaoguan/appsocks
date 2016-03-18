@@ -13,7 +13,7 @@ class UserController extends AuthorizedController {
 		// get the available order
 		$num =	M('OrderRecord')->where(array('uid' => $uid, 'success' => 0, 'status' => 1, 'success' => 0))->count();
 		if ($num) {
-			$user_center_data['server_hint'] = '有'.$num.'个套餐待支付，加入售后群 <strong>513222519</strong> 	与管理员联系转账';
+			$user_center_data['server_hint'] = '有'.$num.'个套餐待支付，加入售后群 <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=b276d45ea49eda2565bacb8bc200ec0d36d2c8725815beac3919f0ec456e7e4f">513222519</a> 与管理员联系转账';
 		} else {
 			$user_center_data['server_hint'] = null;
 		}

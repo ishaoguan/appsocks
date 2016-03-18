@@ -1,58 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>{:C('SITE_NAME')} - 科学上网您最好的选择</title>
-        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-        <!-- Bootstrap 文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-        <script src="__PUBLIC__/js/jquery.min.js"></script>
-        <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-        <!-- 字体文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-        <!-- 自定义css文件 -->
-        <link rel="stylesheet" href="__PUBLIC__/css/Admin/comboManage.css">
-    </head>
-    <body>
-        <div class="info">
-            <span>套餐管理</span>
-            <button type="button" id="add-combo-btn" class="btn btn-success add-combo" data-toggle="modal" data-target="#combo-modal">添加</button>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
+<extend name="Admin:dashboard"/>
+<block name="title">
+    <title>{:C('SITE_NAME')} 后台管理</title>
+</block>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css"> -->
+</block>
+<block name="main">
+    <div class="info">
+        <span>套餐管理</span>
+        <button type="button" id="add-combo-btn" class="btn btn-success add-combo" data-toggle="modal" data-target="#combo-modal">添加</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>套餐名称</th>
+                    <th>套餐流量</th>
+                    <th>套餐时长</th>
+                    <th>套餐费用</th>
+                    <th>备注说明</th>
+                    <th>状态</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="combo_data" id="combo">
                     <tr>
-                        <th>ID</th>
-                        <th>套餐名称</th>
-                        <th>套餐流量</th>
-                        <th>套餐时长</th>
-                        <th>套餐费用</th>
-                        <th>备注说明</th>
-                        <th>状态</th>
+                        <td>{$i}</td>
+                        <td>{$combo.title}</td>
+                        <td>{$combo['flow'] / 1024} G</td>
+                        <td>{$combo.duration} 天</td>
+                        <td>{$combo.cost} RMB</td>
+                        <td>{$combo.remark}</td>
+                        <!-- <td><?php echo $combo['status'] == 1 ? '可用' : '不可用';?></td> -->
+                        <td>
+                            <select class="combo-status" name="combo_status" data-cid="{$combo.cid}">
+                                <option value="1" <?php echo $combo['status'] == 1 ? 'selected="selected"' : '';?>>可用</option>
+                                <option value="0" <?php echo $combo['status'] == 0 ? 'selected="selected"' : '';?>>停用</option>
+                            </select>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    <volist name="combo_data" id="combo">
-                        <tr>
-                            <td>{$i}</td>
-                            <td>{$combo.title}</td>
-                            <td>{$combo['flow'] / 1024} G</td>
-                            <td>{$combo.duration} 天</td>
-                            <td>{$combo.cost} RMB</td>
-                            <td>{$combo.remark}</td>
-                            <!-- <td><?php echo $combo['status'] == 1 ? '可用' : '不可用';?></td> -->
-                            <td>
-                                <select class="combo-status" name="combo_status" data-cid="{$combo.cid}">
-                                    <option value="1" <?php echo $combo['status'] == 1 ? 'selected="selected"' : '';?>>可用</option>
-                                    <option value="0" <?php echo $combo['status'] == 0 ? 'selected="selected"' : '';?>>停用</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </volist>
-                </tbody>
-            </table>
-        </div>
-    </body>
+                </volist>
+            </tbody>
+        </table>
+    </div>
+
     <!-- Modal -->
     <div class="modal fade" id="combo-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
@@ -125,5 +117,7 @@
             </div>
         </div>
     </div>
+</block>
+<block name="customer-js">
     <import type='js' file="js.comboManage"/>
-</html>
+</block>
