@@ -32,9 +32,9 @@ class PublicController extends Controller {
 		}
 	}
 	public function doRegiste() {
-		$user['email'] = I('post.email');
-		$user['nickname'] = I('post.nickname');
-		$user['password'] = base64_encode(I('post.password'));
+		$user['email'] = I('post.email', '', 'email');
+		$user['nickname'] = I('post.nickname', '');
+		$user['password'] = base64_encode(substr(I('post.password', ''), 0, 20));
 		$user['last_login_ip'] = get_client_ip();
 		$user['last_login_time'] = date('Y-m-d H:i:s');
 		if (checkArrayIsNull($user)) {
