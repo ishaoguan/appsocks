@@ -60,8 +60,8 @@
                                 <input class="form-control validation-text" name="verify" placeholder="请输入验证码" type="text" required>
                             </div>
                             <div class="col-md-4 col-xs-12">
-                                <?php echo session('?uid') ? '' : '<a class="have-account" href="__APP__/Public/login">你已经有帐号？</a>';?>
                                 <button type="submit" class="form-control btn btn-success btn-submit">确认订购</button>
+                                <?php echo session('?uid') ? '' : '<a class="have-account" href="__APP__/Public/login">你已经有帐号？</a>';?>
                             </div>
                         </div>
                     </form>
