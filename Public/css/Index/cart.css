@@ -7,3 +7,25 @@
 .have-account:hover {
 			color: #3385ff;
 }
+.validation-img {
+	padding: 0;
+	width: 50%;
+}
+@media (max-width:1000px) {
+	.validation-img {
+		width: 100%;
+		border: none;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.validation-text {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.btn-submit {
+		margin-top: 10px;
+	}
+}
+.block-left {
+	float: left;
+}

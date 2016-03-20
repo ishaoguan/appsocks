@@ -20,10 +20,22 @@ class IndexController extends Controller {
         $this->display();
     }
     public function pay() {
+        // 验证码的验证
+        $verify = I('post.verify', '');
+        if(!checkVerify($verify)){
+            $this->error("亲，验证码输错了哦！",$this->site_url,5);
+        }
+        // 新用户的注册
         if(!session('?uid')) {
-            $user_data['nickname'] = I('post.nickname', '');
-            $user_data['email'] = I('post.email', '', 'email');
-            $user_data['password'] = base64_encode(substr(I('post.password' , ''), 0, 20));
+            $user_data['nickname'] = I('post.nickname', '', 'strip_tags,stripslashes,htmlspecialchars');
+            $user_data['email'] = I('post.email', '', 'email, strip_tags,stripslashes,htmlspecialchars');
+
+            // 验证邮箱格式
+            if (!checkEmail($user_data['email'])) {
+    			$this->error("亲，邮箱格式不对哦！",$this->site_url,5);
+    		}
+            
+            $user_data['password'] = base64_encode(substr(I('post.password' , '', 'strip_tags,stripslashes,htmlspecialchars'), 0, 20));
             $user_data['last_login_ip'] = get_client_ip();
             if (checkArrayIsNull($user_data)) {
               $this->error('注册失败，事情绝对没有那么简单');
@@ -42,6 +54,7 @@ class IndexController extends Controller {
         } else {
             $uid = session('uid');
         }
+        // 优惠码的验证
         if (I('post.discount_code')) {
             $discount = M('DiscountCode')->where(array('code' => I('post.discount_code'), 'remain' => array('gt', 0)))->getField('discount');
             if ($discount) {
@@ -54,7 +67,7 @@ class IndexController extends Controller {
             $order_data['discount'] = 1;
         }
         $order_data['uid'] = $uid;
-        $order_data['cid'] = I('post.cid', 1);
+        $order_data['cid'] = I('post.cid', 1, 'int');
         $order_data['submit_time'] = date('Y-m-d h:i:s');
         $cost = M('Combo')->where(array('cid' => $order_data['cid'], 'status' => 1))->getField('cost');
         if (!$cost) {
@@ -64,7 +77,6 @@ class IndexController extends Controller {
         if (!empty(I('post.remark'))) {
             $order_data['remark'] = I('post.remark');
         }
-        // dump($order_data);die;
         if (checkArrayIsNull($order_data)) {
             $this->error('订购出错...');
         }

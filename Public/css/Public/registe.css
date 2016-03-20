@@ -2,12 +2,8 @@
 	width: 40%;
 	padding: 50px;
 }
-.not-have-account {
-	font-size: 11px;
-}
-.register_logo {
-	width: 100%;
-	padding: 50px;
+.have-account {
+	font-size: 0.8em;
 }
 .log-pannel {
 	padding: 50px;
@@ -19,8 +15,12 @@
 .log-pannel-msg span {
 	font-size: 23px;
 }
-.registe-btn {
-	width: 100px;
+.validation-img {
+	padding: 0;
+	border: 0;
+}
+.tip {
+	margin: 5% 0 4% 0;
 }
 @media (min-width:768px) {
 	.registe-logo {
@@ -38,4 +38,11 @@
 	.log-pannel {
 		padding: 10px 0 10px 0;
 	}
+
+}
+.validation-img {
+	margin: 20px 0 20px 0;
+}
+.validation-text {
+	margin: 20px 0 20px 0;
 }

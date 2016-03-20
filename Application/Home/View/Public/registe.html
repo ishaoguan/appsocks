@@ -39,10 +39,18 @@
                                 </span>
                                 <input type="password" class="form-control" id="re-password" name="repassword" placeholder="确认密码" required>
                             </div>
-                            <p>注册即表明同意遵守本站相关协议</p>
-                            <button type="submit" class="btn btn-primary registe-btn">注册</button>
+                            <div class="form-group input-group row">
+                                <div class="col-md-6 col-xs-12">
+                                    <img class="form-control validation-img" alt="验证码" src="{:U('Public/verifyCode')}" title="点击刷新">
+                                </div>
+                                <div class="col-md-6 col-xs-12">
+                                    <input class="form-control validation-text" name="verify" placeholder="请输入验证码" type="text" required>
+                                </div>
+                            </div>
+                            <p class="tip">注册即表明同意遵守本站相关协议</p>
+                            <button type="submit" class="btn btn-primary registe-btn form-control">注册</button>
                         </form>
-                        <a role="button" href="__APP__/Public/login">什么！已经有帐号？</a>
+                        <a class="have-account" role="button" href="__APP__/Public/login">什么！已经有帐号？</a>
                     </div>
                 </div>
             </div>
@@ -52,4 +60,5 @@
 <block name="footer"></block>
 <block name="customer-js">
     <import type='js' file="js.verifyPwd"/>
+    <import type='js' file="js.verifyCode"/>
 </block>

@@ -31,4 +31,5 @@ return array(
 	// 'TMPL_ACTION_SUCCESS'   =>  'Default/success', // 转对应的模板文件
 	// 'TMPL_EXCEPTION_FILE'   =>  MODULE_PATH.'View/Default/exception.html',
 	'URL_HTML_SUFFIX'       =>  'html',  // URL伪静态后缀设置
+	'DEFAULT_FILTER' => 'htmlspecialchars', //默认过滤函数
 );
