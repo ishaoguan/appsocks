@@ -8,7 +8,7 @@ class IndexController extends Controller {
         $this->display();
     }
     public function menu() {
-        $menu_data = D('NodeComboView')->where(array('status' => 1))->order('cost')->field('cid,title,name,duration,flow,cost,remark')->limit(6)->select();
+        $menu_data = D('NodeComboView')->where(array('status' => 1))->order('cost')->field('cid,title,name,duration,flow,cost,remark')->select();
         $this->assign('menu_data', $menu_data);
         $this->display();
     }
@@ -34,7 +34,7 @@ class IndexController extends Controller {
             if (!checkEmail($user_data['email'])) {
     			$this->error("亲，邮箱格式不对哦！",$this->site_url,5);
     		}
-            
+
             $user_data['password'] = base64_encode(substr(I('post.password' , '', 'strip_tags,stripslashes,htmlspecialchars'), 0, 20));
             $user_data['last_login_ip'] = get_client_ip();
             if (checkArrayIsNull($user_data)) {

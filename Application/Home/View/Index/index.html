@@ -93,10 +93,11 @@
                         <p>UDP转发：不支持</p>
                         <p>{$menu.cost} RMB</p>
                         <p>{$menu.duration}天</p>
-                        <a type="role" class="btn btn-primary" href="{:U('Home/Index/cart', array('cid' => $menu['cid']))}">立即订购</a>
+                        <a type="role" class="btn btn-primary" href="{:U('Index/cart', array('cid' => $menu['cid']))}">立即订购</a>
                     </li>
                 </volist>
             </ul>
+            <p><a type="role" class="btn btn-success" href="{:U('Index/menu')}" target="_blank">更多套餐</a></p>
         </div>
     </section>
 
