@@ -1,0 +1,21 @@
+/*.panel-body {
+    color: #000;
+}
+thead>tr>th {
+    color: #000;
+}
+@media (max-width:1000px) {
+    #banner {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .table-responsive {
+        overflow: auto;
+    }
+}
+@media (min-width:1000px) {
+    #banner {
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+}*/

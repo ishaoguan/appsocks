@@ -1,60 +1,295 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>AppSocks - 科学上网您最好的选择</title>
-    <base target="mainiframe" />
-    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-    <!-- Bootstrap 文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-    <script src="__PUBLIC__/js/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <!-- 字体文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-    <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
-    <link rel="stylesheet" href="__PUBLIC__/css/dashboard.css">
-    <script type="text/javascript" src="__PUBLIC__/js/iframe.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+        <meta name="description" content="我们站点提供各类上网服务,科学上网,翻墙,影梭,fq,ss,shadowsocks,fanqiang,youtube,google,facebook,twitter,socks等,保护隐私极速上网">
+        <meta name="keywords" content="科学上网,翻墙,影梭,vpn,fq,ss,shadowsocks,fanqiang,youtube,google,facebook,twitter,socks,appsocks">
+        <!-- Bootstrap 文件 -->
+        <link rel="stylesheet" href="https://staticfile.qnssl.com/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://staticfile.qnssl.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://staticfile.qnssl.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- AdminTLE 文件 -->
+        <link rel="stylesheet" href="__PUBLIC__/css/Dashboard/AdminLTE.min.css">
+        <link rel="stylesheet" href="__PUBLIC__/css/Dashboard/skin-blue.min.css">
+        <!-- 字体文件 -->
+        <!-- <link rel="stylesheet" href="__PUBLIC__/css/typo.css"> -->
+        <!-- 自定义css文件 -->
+        <!--[if lte IE 8]><script src="__PUBLIC__/js/ie/html5shiv.js"></script><![endif]-->
+        <!-- <link rel="stylesheet" href="__PUBLIC__/css/Index/default.css"> -->
+        <!--[if lte IE 8]><link rel="stylesheet" href="__PUBLIC__/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="__PUBLIC__/css/ie9.css" /><![endif]-->
+        <block name="customer-css"></block>
+        <block name="title">
+            <title>{:C('SITE_NAME')} - 您的最佳高速科学上网解决方案 Your best choice for high speed and affordable internet proxy solution</title>
+        </block>
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
 
-<body>
-    <div class="top-nav">
-        <nav class="navbar navbar-fixed-top">
-            <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}" target="_self">AppSocks</a>- <span>您的加速科学上网助手</span></div>
-            <div class="nav-list">
-                <ul>
-                    <li><a href="__APP__/Home/Index/menu" target="_self">套餐订购</a></li>
-                    <li><a href="__APP__/Home/Help/download" target="_self">客户端下载</a></li>
-                    <li><a href="__APP__/Home/Help/method" target="_self">使用教程</a></li>
-                    <li><a href="__APP__/Home/Help/support" target="_self">技术支持</a></li>
-                    <li><a href="__APP__/Home/Public/login" target="_self">用户登录</a></li>
-                    <li><a href="__APP__/Home/Public/registe" target="_self">用户注册</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="main container">
-        <div class="row">
-            <div class="col-sm-2 col-lg-2">
-                <div class="sidebar-nav">
-                    <ul class="nav nav-pills nav-stacked main-menu">
-                        <li><a href="{:U('Home/Admin/statistics')}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 站点统计</a></li>
-                        <li><a href="{:U('Home/Admin/userManage')}"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 用户管理</a></li>
-                        <li><a href="{:U('Home/Admin/comboManage')}"><span class="glyphicon glyphicon-sort" aria-hidden="true"></span> 套餐管理</a></li>
-                        <li><a href="{:U('Home/Admin/nodeManage')}"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span> 节点管理</a></li>
-                        <li><a href="{:U('Home/Admin/inviteManage')}"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> 邀请管理</a></li>
+            <!-- Main Header -->
+            <header class="main-header">
+
+                <!-- Logo -->
+                <a href="{:U('Index/index')}" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini">
+                        <b>AS</b>
+                    </span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg">
+                        <b>{:C('SITE_NAME')}</b>
+                    </span>
+                </a>
+
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!-- The user image in the navbar-->
+                                    <img src="__PUBLIC__/pictures/user1-128x128.jpg" class="user-image" alt="User Image">
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="hidden-xs">{$Think.session.nickname}</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- The user image in the menu -->
+                                    <li class="user-header">
+                                        <img src="__PUBLIC__/pictures/user1-128x128.jpg" class="img-circle" alt="User Image">
+                                        <p>
+                                            {$Think.session.nickname}
+                                            <small>注册于 {$Think.session.registe}</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="col-xs-12 text-center">
+                                            <a href="#">总消费：{$Think.session.sum_cost} RMB</a>
+                                        </div>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="{:U('Index/index')}" class="btn btn-default btn-flat">首页</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="{:U('Public/logout')}" class="btn btn-default btn-flat">注销</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- Control Sidebar Toggle Button -->
+                            <li>
+                                <a href="#" data-toggle="control-sidebar">
+                                    <i class="fa fa-gears"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="__PUBLIC__/pictures/user1-128x128.jpg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>{$Think.session.nickname}</p>
+                            <!-- Status -->
+                            <a href="#">
+                                <i class="fa fa-circle text-success"></i>
+                                在线</a>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Menu -->
+                    <ul class="sidebar-menu">
+                        <li class="header">管理面板</li>
+                        <!-- Optionally, you can add icons to the links -->
+                        <li class="<?php echo $Think.ACTION_NAME == 'statistics' ? 'active' : '';?>">
+                            <a href="{:U('Admin/statistics')}">
+                                <i class="fa fa-bar-chart-o"></i>
+                                <span>站点统计</span>
+                            </a>
+                        </li>
+                        <li class="<?php echo $Think.ACTION_NAME == 'userManage' ? 'active' : '';?>">
+                            <a href="{:U('Admin/userManage')}">
+                                <i class="fa fa-users"></i>
+                                <span>用户管理</span>
+                            </a>
+                        </li>
+                        <li class="<?php echo $Think.ACTION_NAME == 'orderManage' ? 'active' : '';?>">
+                            <a href="{:U('Admin/orderManage')}">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>订单审核</span>
+                            </a>
+                        </li>
+                        <li class="<?php echo $Think.ACTION_NAME == 'renewManage' ? 'active' : '';?>">
+                            <a href="{:U('Admin/renewManage')}">
+                                <i class="fa fa-send"></i>
+                                <span>续费审核</span>
+                            </a>
+                        </li>
+                        <li class="<?php echo $Think.ACTION_NAME == 'billManage' ? 'active' : '';?>">
+                            <a href="{:U('Admin/billManage')}">
+                                <i class="fa fa-fax"></i>
+                                <span>交易记录</span>
+                            </a>
+                        </li>
+                        <li class="<?php echo $Think.ACTION_NAME == 'nodeManage' ? 'active' : '';?>">
+                            <a href="{:U('Admin/nodeManage')}">
+                                <i class="fa fa-compass"></i>
+                                <span>节点管理</span>
+                            </a>
+                        </li>
+                        <li class="<?php echo $Think.ACTION_NAME == 'comboManage' ? 'active' : '';?>">
+                            <a href="{:U('Admin/comboManage')}">
+                                <i class="fa fa-gift"></i>
+                                <span>套餐管理</span>
+                            </a>
+                        </li>
+                        <li class="<?php echo $Think.ACTION_NAME == 'discountManage' ? 'active' : '';?>">
+                            <a href="{:U('Admin/discountManage')}">
+                                <i class="fa fa-credit-card"></i>
+                                <span>折扣优惠</span>
+                            </a>
+                        </li>
+                        <li class="<?php echo $Think.ACTION_NAME == 'configManage' ? 'active' : '';?>">
+                            <a href="{:U('Admin/configManage')}">
+                                <i class="fa fa-cogs"></i>
+                                <span>系统配置</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{:U('User/userCenter')}">
+                                <i class="fa fa-undo"></i>
+                                <span>返回前台</span>
+                            </a>
+                        </li>
                     </ul>
-                </div>
+                    <!-- /.sidebar-menu -->
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Main content -->
+                <section class="content">
+
+                    <block name="main"></block>
+
+                </section>
+                <!-- /.content -->
             </div>
-            <div class="col-sm-10 col-lg-10" id="content">
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" name="mainiframe" src="{:U('Admin/statistics')}"></iframe>
+            <!-- /.content-wrapper -->
+
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+                    <b>Appsocks</b>
+                    Your best choice for high speed and affordable internet proxy solution
                 </div>
-            </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; 2016
+                    <a href="{:C(SITE_URL)}">{:C(SITE_NAME)}</a>.</strong>
+                All rights reserved.
+            </footer>
+
+            <!-- Control Sidebar -->
+            <aside class="control-sidebar control-sidebar-dark">
+                <!-- Create the tabs -->
+                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                    <li class="active">
+                        <a href="#control-sidebar-home-tab" data-toggle="tab">
+                            <i class="fa fa-home"></i>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- Home tab content -->
+                    <div class="tab-pane active" id="control-sidebar-home-tab">
+                        <ul class="control-sidebar-menu">
+                            <li>
+                                <a href="{:U('Index/index')}" class="">
+                                    <div class="menu-info">
+                                        <h4 class="control-sidebar-subheading">首页</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:U('Index/menu')}" class="">
+                                    <div class="menu-info">
+                                        <h4 class="control-sidebar-subheading">套餐列表</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:U('Help/method')}" class="">
+                                    <div class="menu-info">
+                                        <h4 class="control-sidebar-subheading">使用教程</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:U('Help/download')}" class="">
+                                    <div class="menu-info">
+                                        <h4 class="control-sidebar-subheading">软件下载</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:U('Help/support')}" class="">
+                                    <div class="menu-info">
+                                        <h4 class="control-sidebar-subheading">技术支持</h4>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{:U('Help/aboutus')}" class="">
+                                    <div class="menu-info">
+                                        <h4 class="control-sidebar-subheading">关于我们</h4>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+            <!-- /.control-sidebar -->
+            <div class="control-sidebar-bg"></div>
         </div>
-    </div>
+        <!-- ./wrapper -->
 
-</body>
+        <!-- REQUIRED JS SCRIPTS -->
 
+        <!-- jQuery 2.1.4 -->
+        <script src="https://staticfile.qnssl.com/jquery/1.10.0/jquery.min.js"></script>
+        <!-- Bootstrap 3.3.5 -->
+        <script src="https://staticfile.qnssl.com/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="__PUBLIC__/js/app.min.js"></script>
+        <block name="customer-js"></block>
+    </body>
 </html>

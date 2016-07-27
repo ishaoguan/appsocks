@@ -1,0 +1,41 @@
+<extend name="User:dashboard"/>
+<block name="customer-css">
+    <!-- 自定义css文件 -->
+    <link rel="stylesheet" href="__PUBLIC__/css/User/getPurchasedCombo.css">
+</block>
+<block name="main">
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>套餐名称</th>
+                            <th>开通时间</th>
+                            <th>到期时间</th>
+                            <th>费用</th>
+                            <th>购买状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <volist name="purchased_combo_data" id="purchased_combo">
+                            <tr>
+                                <td>{$i}</td>
+                                <td>{$purchased_combo.title}</td>
+                                <td>{$purchased_combo.purchase_time}</td>
+                                <td>{$purchased_combo.expire_time}</td>
+                                <td>{$purchased_combo.cost}RMB</td>
+                                <td>
+                                    <?php echo $purchased_combo['success'] == 1 ? '成功' : '待支付';?>
+                                </td>
+                            </tr>
+                        </volist>
+                    </tbody>
+                </table>
+            </div>
+            {$page}
+        </div>
+    </div>
+</block>
+<block name="footer"></block>

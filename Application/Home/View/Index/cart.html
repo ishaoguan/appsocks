@@ -1,102 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
+<extend name="Public:base"/>
+<block name="customer-css">
+    <link rel="stylesheet" href="__PUBLIC__/css/Index/cart.css">
+</block>
+<block name="main">
+    <section id="banner">
+        <div class="main container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="">
+                        <h2>购买清单</h2>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>套餐名称</th>
+                                    <th>套餐流量/GB</th>
+                                    <th>套餐时长/天</th>
+                                    <th>套餐费用/RMB</th>
+                                    <th>套餐备注</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="combo-details">
+                                    <td>{$combo['title']}</td>
+                                    <td>{$combo['flow'] / 1024}</td>
+                                    <td>{$combo['duration']}</td>
+                                    <td>{$combo['cost']}</td>
+                                    <td>{$combo['remark']}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="summary">小结：￥{$combo['summary']}</p>
+                    </div>
+                    <form class="form" action="__APP__/Index/pay" method="post">
+                        <?php echo session('?uid') ? '' : '<div class="row"> <div class="col-md-3 col-xs-12"> <div class="form-group"> <label for="nickname">昵称</label> <input type="text" class="form-control" name="nickname" id="nickname" placeholder="张全蛋" required> </div>
+                        </div> <div class="col-md-3 col-xs-12"> <div class="form-group"> <label for="password">密码</label> <input type="password" class="form-control" name="password" id="password" placeholder="不少于6位数" required> </div> </div> <div class="col-md-3 col-xs-12">
+                        <div class="form-group"> <label for="password">确认密码</label> <input type="password" class="form-control" id="re-password" placeholder="不少于6位数" required> </div> </div> <div class="col-md-3 col-xs-12"> <div class="form-group"> <label
+                        for="email">邮箱</label> <input type="email" class="form-control" name="email" id="email" placeholder="quandan@example.com" required> </div> </div> </div>'; ?>
 
-<head>
-    <meta charset="UTF-8">
-    <title>AppSocks - 科学上网您最好的选择</title>
-    <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
-    <!-- Bootstrap 文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
-    <script src="__PUBLIC__/js/jquery.min.js"></script>
-    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <!-- 字体文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/typo.css">
-    <!-- 自定义css文件 -->
-    <link rel="stylesheet" href="__PUBLIC__/css/default.css">
-    <link rel="stylesheet" href="__PUBLIC__/css/cart.css">
-</head>
-
-<body>
-    <div class="top-nav">
-        <nav class="navbar navbar-fixed-top">
-            <div class="brand"><span class="glyphicon glyphicon-send" aria-hidden="true"></span><a href="{:U('Home/Index/index')}">AppSocks</a>- <span>您的加速科学上网助手</span></div>
-            <div class="nav-list">
-                <ul>
-                    <li><a class="active" href="__APP__/Home/Index/menu">套餐订购</a></li>
-                    <li><a href="__APP__/Home/Help/download">客户端下载</a></li>
-                    <li><a href="__APP__/Home/Help/method">使用教程</a></li>
-                    <li><a href="__APP__/Home/Help/support">技术支持</a></li>
-                    <li><a href="__APP__/Home/Public/login">用户登录</a></li>
-                    <li><a href="__APP__/Home/Public/registe">用户注册</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    <div class="main container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron">
-                    <h2>购买清单</h2>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr >
-                                <th>套餐名称</th>
-                                <th>套餐流量/GB</th>
-                                <th>套餐时长/天</th>
-                                <th>套餐费用/RMB</th>
-                                <th>套餐备注</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{$combo['title']}</td>
-                                <td>{$combo['flow'] / 1024}</td>
-                                <td>{$combo['duration']}</td>
-                                <td>{$combo['cost']}</td>
-                                <td>{$combo['remark']}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p>小结：￥{$combo['summary']}</p>
+                        <div class="row">
+                            <div class="col-md-8 col-xs-12">
+                                <div class="form-group">
+                                    <input type="hidden" name="cid" value="{$combo['cid']}">
+                                    <label for="remark">额外备注</label>
+                                    <input type="text" class="form-control" name="remark" maxlength="50" id="remark" placeholder="如有特殊要求可在此留言">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                                <div class="form-group">
+                                    <label for="discount_code">优惠码</label>
+                                    <input type="text" class="form-control" name="discount_code" maxlength="40" id="discount_code" placeholder="没有则不需要填">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-xs-12">
+                                <img class="form-control validation-img" alt="验证码" src="{:U('Public/verifyCode')}" title="点击刷新">
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                                <input class="form-control validation-text" name="verify" placeholder="请输入验证码" type="text" required>
+                            </div>
+                            <div class="col-md-4 col-xs-12">
+                                <button type="submit" class="form-control btn btn-success btn-submit">确认订购</button>
+                                <?php echo session('?uid') ? '' : '<a class="have-account" href="__APP__/Public/login">你已经有帐号？</a>';?>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <form class="form" action="__APP__/Index/pay" method="post">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="nickname">昵称</label>
-                                <input type="text" class="form-control" id="nickname" placeholder="张全蛋" required>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="password">密码</label>
-                                <input type="password" class="form-control" id="password" placeholder="不少于6位数" required>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="password">确认密码</label>
-                                <input type="password" class="form-control" id="password" placeholder="不少于6位数" required>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="email">邮箱</label>
-                                <input type="email" class="form-control" id="email" placeholder="quandan@example.com" required>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-offset-10">
-                            <a href="__APP__/Public/login">你已经有帐号？</a>
-                            <button type="submit" class="btn btn-success">确认订购</button>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
-    </div>
-
-</body>
-
-</html>
+    </sectioin>
+</block>
+<block name="footer"></block>
+<block name="customer-js">
+    <script type="text/javascript">
+        var path = "{:U('Public/verifyCode')}";
+    </script>>
+    <import type='js' file="js.verifyPwd"/>
+    <import type='js' file="js.verifyCode"/>
+</block>

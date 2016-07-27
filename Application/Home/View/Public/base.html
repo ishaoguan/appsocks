@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="__PUBLIC__/pictures/logo.ico" rel="shortcut icon">
+        <meta name="description" content="我们站点提供各类上网服务,科学上网,翻墙,影梭,fq,ss,shadowsocks,fanqiang,youtube,google,facebook,twitter,socks等,保护隐私极速上网">
+        <meta name="keywords" content="科学上网,翻墙,影梭,vpn,fq,ss,shadowsocks,fanqiang,youtube,google,facebook,twitter,socks,appsocks">
+        <!-- Bootstrap 文件 -->
+        <link rel="stylesheet" href="https://staticfile.qnssl.com/twitter-bootstrap/3.3.4/css/bootstrap.min.css">
+        <!-- 字体文件 -->
+        <!-- <link rel="stylesheet" href="http://apps.bdimg.com/libs/typo.css/2.0/typo.min.css"> -->
+        <!-- 自定义css文件 -->
+        <!--[if lte IE 8]><script src="__PUBLIC__/js/ie/html5shiv.js"></script><![endif]-->
+        <link rel="stylesheet" href="__PUBLIC__/css/Index/default.css">
+        <!--[if lte IE 8]><link rel="stylesheet" href="__PUBLIC__/css/ie8.css" /><![endif]-->
+        <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+        <block name="customer-css"></block>
+        <block name="title">
+            <title>{:C('SITE_NAME')} - 专业的云加速服务  Professional cloud speed up</title>
+        </block>
+    </head>
+
+    <body class="landing">
+        <!-- Page Wrapper -->
+        <div id="page-wrapper">
+
+            <!-- Header -->
+            <header id="header" class="alt">
+                <h1>
+                    <a href="index.html">{:C('SITE_NAME')} — 科学云加速服务</a>
+                </h1>
+                <nav id="nav">
+                    <ul>
+                        <li class="special">
+                            <a href="#menu" class="menuToggle">
+                                <span>菜单</span>
+                            </a>
+                            <block name="menu">
+                                <div id="menu">
+                                    <ul>
+                                        <li>
+                                            <a href="{:U('Index/index')}">主页</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Index/menu')}">云加速套餐列表</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Help/method')}">使用教程</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Help/download')}">软件下载</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Help/support')}">路由器列表</a>
+                                        </li>
+                                        <li>
+                                            <a href="{:U('Help/aboutus')}">关于我们</a>
+                                        </li>
+                                        <li>
+                                            <?php echo session('?uid') ? ('<a href="'.U("User/userCenter").'">'.session('nickname').'</a>') : '<a href="'.U("Public/login").'">登录</a>'; ?>
+                                        </li>
+                                        <li>
+                                            <?php echo session('?uid') ? '<a href="'.U("Public/logout").'">退出</a>' : '<a href="'.U("Public/registe").'">注册</a>'; ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </block>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+            <block name="main"></block>
+        </div>
+    </body>
+    <script src="https://staticfile.qnssl.com/jquery/1.10.0/jquery.min.js"></script>
+    <script src="https://staticfile.qnssl.com/twitter-bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!--[if lte IE 8]><script src="__PUBLIC__/js/ie/respond.min.js"></script><![endif]-->
+    <script src="__PUBLIC__/js/skel.min.js"></script>
+    <script src="__PUBLIC__/js/util.js"></script>
+    <script src="__PUBLIC__/js/jquery.scrollex.min.js"></script>
+    <script src="__PUBLIC__/js/jquery.scrolly.min.js"></script>
+    <script src="__PUBLIC__/js/default.js"></script>
+    <script src="__PUBLIC__/js/baidutongji.js"></script>
+    <block name="customer-js"></block>
+</html>

@@ -1,0 +1,43 @@
+<extend name="Admin:dashboard"/>
+<block name="title">
+    <title>{:C('SITE_NAME')} 后台管理</title>
+</block>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css"> -->
+</block>
+<block name="main">
+    <div class="info">
+        <span>续费审批</span>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户昵称</th>
+                    <th>用户邮箱</th>
+                    <th>申请时间</th>
+                    <th>续费时长</th>
+                    <th>需交费用</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="renew_data" id="renew">
+                    <tr>
+                        <td>{$i}</td>
+                        <td>{$renew.nickname}</td>
+                        <td>{$renew.email}</td>
+                        <td>{$renew.submit_time}</td>
+                        <td>{$renew.time} 月</td>
+                        <td>{$renew.cost} RMB</td>
+                        <td>
+                            <a role="button" href="{:U('Home/Ajax/closeRenew', array('rid' => $renew['rid']))}" class="btn btn-danger choose">拒绝</a>
+                            <a role="button" href="{:U('Home/Ajax/openRenew', array('oid' => $renew['oid'], 'rid' => $renew['rid']))}" class="btn btn-success right-block choose">开通</a>
+                        </td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+    </div>
+</block>

@@ -1,0 +1,48 @@
+<extend name="Admin:dashboard"/>
+<block name="title">
+    <title>{:C('SITE_NAME')} 后台管理</title>
+</block>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css"> -->
+</block>
+<block name="main">
+    <div class="info">
+        <span>订单审批</span>
+        <!-- <button class="btn btn-success add-node">添加</button> -->
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>用户昵称</th>
+                    <th>用户邮箱</th>
+                    <th>套餐名称</th>
+                    <th>申请时间</th>
+                    <th>套餐时长</th>
+                    <th>需交费用</th>
+                    <th>备注说明</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="orders_data" id="order">
+                    <tr>
+                        <td>{$i}</td>
+                        <td>{$order.nickname}</td>
+                        <td>{$order.email}</td>
+                        <td>{$order.title}</td>
+                        <td>{$order.submit_time}</td>
+                        <td>{$order.duration} 天</td>
+                        <td>{$order.cost} RMB</td>
+                        <td>{$order.remark}</td>
+                        <td>
+                            <a role="button" href="{:U('Home/Ajax/closeOrder', array('oid' => $order['oid']))}" class="btn btn-danger choose">拒绝</a>
+                            <a role="button" href="{:U('Home/Ajax/openServer', array('oid' => $order['oid'], 'uid' => $order['uid']))}" class="btn btn-success right-block choose">开通</a>
+                        </td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+    </div>
+</block>

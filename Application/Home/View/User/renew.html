@@ -1,0 +1,27 @@
+<extend name="User:dashboard"/>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/renew.css"> -->
+</block>
+<block name="main">
+    <div class="main container">
+        <div class="col-lg-3 col-md-4 col-xs-12">
+            <form action="{:U('User/renewing')}" method="post">
+                <div class="form-group">
+                    <label>每月原价：{$renew_data['price']}RMB &nbsp;&nbsp;折扣价：{$renew_data['discount']*100}%</label>
+                    <input type="hidden" name="id" value="{$renew_data['oid']}">
+                </div>
+                <div class="form-group">
+                    <label>续费时长</label>
+                    <select class="form-control" name="time">
+                        <option value="1">1个月 -- {$renew_data['discount']*1*$renew_data['price']} RMB</option>
+                        <option value="2">2个月 -- {$renew_data['discount']*2*$renew_data['price']} RMB</option>
+                        <option value="3">3个月 -- {$renew_data['discount']*3*$renew_data['price']} RMB</option>
+                        <option value="6">6个月 -- {$renew_data['discount']*6*$renew_data['price']} RMB</option>
+                        <option value="12">1年 -- {$renew_data['discount']*12*$renew_data['price']} RMB</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-default">确认提交</button>
+            </form>
+        </div>
+    </div>
+</block>

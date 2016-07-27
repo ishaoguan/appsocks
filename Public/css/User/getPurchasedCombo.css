@@ -1,0 +1,18 @@
+/*.info {
+    margin-bottom: 20px;
+}
+.info span {
+  font-size: 25px;
+}
+table>tbody>tr:hover {
+    color: #000;
+}*/
+
+@media (min-width:1000px) {
+    table {
+        width: 80%!important;
+        margin-top: 5%;
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+}

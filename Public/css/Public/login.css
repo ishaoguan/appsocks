@@ -1,0 +1,34 @@
+.login-logo {
+	width: 40%;
+	padding: 50px;
+}
+.log-pannel {
+	padding: 50px;
+}
+.log-pannel-msg {
+	padding: 10px 0 10px 0;
+	font-size: 15px;
+}
+.log-pannel-msg span {
+	font-size: 23px;
+}
+.registe-btn {
+	width: 100px;
+}
+@media (min-width:768px) {
+	.login-logo {
+		margin-top: 20%;
+	}
+	.log-pannel {
+		padding-top: 35%;
+	}
+}
+@media (max-width:768px) {
+	.login-logo {
+		margin-top: 0%;
+		width: 70%;
+	}
+	.log-pannel {
+		padding: 10px 0 10px 0;
+	}
+}

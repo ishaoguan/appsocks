@@ -1,0 +1,102 @@
+<extend name="Admin:dashboard"/>
+<block name="title">
+    <title>{:C('SITE_NAME')} 后台管理</title>
+</block>
+<block name="customer-css">
+    <!-- <link rel="stylesheet" href="__PUBLIC__/css/User/editPersonInfo.css"> -->
+</block>
+<block name="main">
+    <div class="info">
+        <span>优惠折扣</span>
+        <a role="button" class="btn btn-success add-discount" data-toggle="modal" data-target="#discount_info_modal">添加</a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>优惠码</th>
+                    <th>折扣额度</th>
+                    <th>剩余激活次数</th>
+                    <th>创建时间</th>
+                    <th>备注说明</th>
+                    <th>是否可用</th>
+                </tr>
+            </thead>
+            <tbody>
+                <volist name="discount_data" id="discount">
+                    <tr>
+                        <td>{$i}</td>
+                        <td>{$discount.code}</td>
+                        <td>{$discount.discount}</td>
+                        <td>{$discount.remain}</td>
+                        <td>{$discount.create_time}</td>
+                        <td>{$discount.remark}</td>
+                        <td>
+                            <select class="discount-status" name="discount_status" data-did="{$discount.did}">
+                                <option value="1" <?php echo $discount['status'] == 1 ? 'selected="selected"' : '';?>>可用</option>
+                                <option value="0" <?php echo $discount['status'] == 0 ? 'selected="selected"' : '';?>>停用</option>
+                            </select>
+                        </td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="discount_info_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form class="form-horizontal" action="{:U('Home/Ajax/addDiscount')}" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">添加折扣码</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <input type="hidden" name="cid" value="" id="discount-id"> -->
+                        <div class="form-group">
+                            <label for="discount-discount" class="col-sm-3 control-label">折扣额度</label>
+                            <div class="col-sm-9">
+                                <input type="number" min="0" max="1" step="0.1" class="form-control" name="discount_discount" id="discount-discount" placeholder="填写0-1之间的小数" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="discount-remain" class="col-sm-3 control-label">激活次数</label>
+                            <div class="col-sm-9">
+                                <input type="number" min="0" class="form-control" name="discount_remain" id="discount-remain" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="discount-remark" class="col-sm-3 control-label">备注说明</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="discount_remark" id="discount-remark">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">是否启用</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" name="discount_status" id="discount-status">
+                                    <option value="1" selected="selected">启用</option>
+                                    <option value="0">停用</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-success">确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var url = '{:U('Home/Ajax/editDiscountStatus')}';
+    </script>
+</block>
+<block name="customer-js">
+    <import type='js' file="js.discountManage"/>
+</block>

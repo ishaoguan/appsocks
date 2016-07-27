@@ -1,0 +1,14 @@
+p {
+  font-size: 1em;
+}
+img {
+  width: 85%;
+}
+@media (min-width:768px) {
+
+}
+@media (max-width:768px) {
+    p {
+        padding: 20px 0 0 0;
+    }
+}
